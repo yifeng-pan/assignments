@@ -1,0 +1,157 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+\usepackage{amsmath}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{22.54448pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan
+     \\UCID: 30063828}
+
+\usepackage{amssymb}
+\newcommand{\0}{\varnothing}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\{ 1 \}}
+\newcommand{\2}{\{ (1,1) \}}
+\newcommand{\OTO}{one-to-one}
+\newcommand{\gof}{g \circ f}
+
+%Title page
+\title{MATH 273 Assignment 1}
+\author{Instructor: Thi Ngoc Dinh
+    \\UCID: 30063828}
+\date{Fall 2018}
+
+\begin{document}
+    \maketitle
+
+    \section{For each true statement, give a proof. For each false statement, write out its negation and prove that.}
+        \subsection{For all sets $A, B$ and $C$, if $A \setminus B = C$ then $A = B \cup C$.}
+            This statement is False.
+            Its negation: $\exists$ sets $A, B,C$, such that $A \setminus B = C$ and $A \neq B \cup C$.
+            Proof of negation by example:
+            Choose $A = C = \0, B = \1$, where $A, B, C$ are sets.
+            Then $A \setminus B = \0 \setminus \1 = \0 = C$.
+            And $A = \0 \neq \1 = \1 \cup \0 = B \cup C$.
+            Therefore the negation is true and the statement is false.
+
+        \subsection{For all sets $A, B$ and $C$, if $A \setminus (B \cap C) = \0$ then $A \setminus C \subseteq B$.}
+            This statement is True.
+            Proof:
+            Let $A, B, C$ be sets, such that $A \setminus (B \cap C) = \0$.
+            This means that if $x \in A$ then $x \in B$ and $x \in C$.
+            Thus $A \subseteq B$ and $A \subseteq C$.
+            So $A \setminus C = \0 \subseteq B$.
+            Therefore the statement is true.
+
+        \subsection{For all sets $A, B$ and $C$, if $A \setminus C \subseteq B$ then $A \setminus (B \cap C) = \0$.}
+            This statement is False.
+            Its negation: $\exists$ sets $A, B, C$, such that $A \setminus C \subseteq B$ and $A \setminus (B \cap C) \neq \0$.
+            Proof of negation by example:
+            Choose $A = B = \1, C = \0$, where $A, B, C$ are sets.
+            Then $A \setminus C = \1 \setminus \0 = \1 \subseteq \1 = B$.
+            And $A \setminus (B \cap C) = \1 \setminus (\1 \cap \0) = \1 \setminus \0 = \1 \neq \0$.
+            Therefore the negation is true and the statement is false.
+
+    \section{Let $f : A \to B$ and $g : B \to C$ be functions. Prove or disprove each of the following.}
+        \subsection{If $f$ and $g$ are \OTO \ then $\gof$ is \OTO.}
+            This statement is True.
+            Proof:
+            Let $f : A \to B$ and $g : B \to C$ be functions.
+            Let $f$ and $g$ be \OTO.
+            Suppose $a, b \in A$, and $c, d \in B$.
+            This means, if $f(a) = f(b)$, then $a = b$.
+            And, if $g(c) = g(d)$, then $c = d$.
+            I'm trying to prove that $\gof$ is \OTO.
+            Suppose $\gof(a) = \gof(b)$.
+            \begin{align*}
+                g(f(a)) &= g(f(b)) && \\
+                   f(a) &= f(b)    && \text{because g is \OTO}\\
+                      a &= b       && \text{because f is \OTO}
+            \end{align*}
+            Therefore $\gof$ is \OTO, and the statement is true.
+
+        \subsection{If $\gof$ is \OTO \ then $f$ is \OTO.}
+            This statement is True.
+            Proof:
+            Let $f : A \to B$ and $g : B \to C$ be functions.
+            Let $\gof$ be \OTO.
+            Suppose $a, b \in A$, such that $f(a) = f(b)$.
+            Because $f(a) = f(b), \gof(a) = \gof(b)$.
+            Because $\gof$ is \OTO, $a = b$.
+            Therefore $f$ is \OTO, and the statement is true.
+
+        \subsection{If $\gof$ is \OTO \ then $g$ is \OTO.}
+            This statement is False.
+            Its negation: $\exists$ functions $f: A \to B$ and $g: B \to C$ such that, $\gof$ is \OTO, and $g$ is not \OTO.
+            Proof of negation by example:
+            Let $f : A \to B$ and $g : B \to C$ be functions.
+            Choose $A = C = \1, B = \{ 1,2 \}$.
+            Choose $f = \2, g = \{ (1,1), (2,1) \}$.
+            So $\gof = \2$, and it is \OTO. 
+            Choose $a = 1, b = 2$.
+            $g(a) = g(b)$ and $a \neq b$, thus $g$ is not \OTO. 
+            Therefore the negation is true and the statement is false.
+        
+        \subsection{If $\gof$ is \OTO \ and $f$ is onto then $g$ is \OTO.}
+            This statement is True.
+            Proof:
+            Let $f : A \to B$ and $g : B \to C$ be functions.
+            Let $\gof$ be \OTO, and $f$ be onto.
+            Suppose $a, b \in B$, and $g(a) = g(b)$.
+            Because $f$ is onto, for every $y \in B, \exists x \in A$, such that $y = f(x)$.
+            Hence $g(a) = g(b)$ can be rewritten as $g(f(c)) = g(f(d))$, where $c, d \in A$ such that, $a = f(c), b = f(d)$.
+            Because $\gof$ is \OTO, $c = d$.
+            Becasue $c = d$, $f(c) = f(d)$, which means $a = b$.
+            Therefore $g$ is \OTO, and the statement is true.
+
+    \section{Let $A = \{ 1,2,3,4 \}$. Prove or disprove each of the following statements.}
+        \subsection{For all functions $f: A \to A$, there exists a function $g : A \to A$ so that $\gof(1) = 2$.}
+            This statement is True.
+            Proof:
+            Let $f: A \to A$.
+            Choose $g: A \to A$, such that $\forall x \in A, g(x) = 2$.
+            Since $f(1) \in A, \gof(1) = 2$.
+            Therefore the statement is true.
+
+        \subsection{There exists a function $g: A \to A$ so that for all functions $f: A \to A, \gof(1) = 2$.}
+            This statement is True.
+            Proof:
+            Choose $g = \{ (1,2), (2,2), (3,2), (4,2) \}$.
+            So that $\forall x \in A, g(x) = 2$.
+            Let $f: A \to A$ be a function.
+            Since $1 \in A$, and $f(1) \in A$, this means $\gof(1) = 2, \forall f:A \to A$.
+            Therefore the statement is true.
+
+        \subsection{For all functions $f: A \to A$, there is a function $g: A \to A$ so that $\gof(1) = 2$ and $\gof(2) = 1$.}
+            This statement is False.
+            Its negation: $\exists f: A \to A$, such that $\forall g: A \to A$, $\gof(1) \neq 2$, or $\gof(2) \neq 1$.
+            Proof of negation by contradiction:
+            Choose $f = \{ (1,1), (2,1), (3,1), (4,1) \}$.
+            Let $g: A \to A$.
+            Assume the negation to be false, so $\gof(1) = 2$ and $\gof(2) = 1.$
+            It's true that $f(2) = f(1)$ as $1 = 1$.
+            So $\gof(2) = \gof(1)$.
+            However from assumption, $\gof(2) = 1 \neq 2 = \gof(1)$ leading to a contradiction.
+            Therefore the negation can't be false, and the statement is false.
+
+        \subsection{There exists a function $g: A \to A$ so that for all functions $f: A \to A, \gof(1) = 2$ and $\gof(2) = 1$.}
+            This statment is False.
+            Its negation: $\forall g: A \to A$, $\exists f: A \to A$, such that, $\gof(1) \neq 2$, or $\gof(2) \neq 1$.
+            Proof of negation by contridiction:
+            Let $g: A \to A$.
+            Choose $f: A \to A$ such that, $f(1) = f(2)$.
+            Assume the negation to be false, so $\gof(1) = 2$ and $\gof(2) = 1.$
+            Because $f(1) = f(2)$, so $\gof(1) = \gof(2)$.
+            However from assumption, $\gof(1) = 2 \neq 1 = \gof(2)$, which is a contridiction.
+            Thus the negation can not be false, and the statement is false.
+
+\end{document}

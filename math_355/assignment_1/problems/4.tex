@@ -1,0 +1,47 @@
+\section{Suppose $x_1, x_2, y_1, y_2$ are real numbers. Show that 
+    \[x_1y_1 + x_2y_2 \leq \sqrt{x_1^2 + x_2^2}\sqrt{y_1^2 + y_2^2}
+        \]
+    Fully describe the set of points for which the above inequality is an equality.}
+    Proof: 
+    \begin{align*}
+        x_1y_1 + x_2y_2 &\leq \abs{x_1y_1 + x_2y_2} \\ 
+        &= \sqrt{(x_1y_1 + x_2y_2)^2} \\ 
+        &= \sqrt{x_1^2y_1^2 + 2x_1y_1x_2y_2 + x_2^2y_2^2} \\ 
+        &\leq \sqrt{x_1^2y_1^2 + x_2^2y_1^2 + x_1^2y_2^2 + x_2^2y_2^2} \text{ (Lemma)}\\ 
+        &= \sqrt{(x_1^2 + x_2^2) (y_1^2 + y_2^2)} \\ 
+        &= \sqrt{x_1^2 + x_2^2}\sqrt{y_1^2 + y_2^2} \\ 
+    \end{align*}
+    Lemma:
+
+    $(\sqrt{x_1^2y_1^2 + 2x_1y_1x_2y_2 + x_2^2y_2^2} 
+    \leq \sqrt{x_1^2y_1^2 + x_2^2y_1^2 + x_1^2y_2^2 + x_2^2y_2^2})$
+    IFF $(2x_1y_1x_2y_2 \leq x_2^2y_1^2 + x_1^2y_2^2)$.
+
+    Proof that $(2x_1y_1x_2y_2 \leq x_2^2y_1^2 + x_1^2y_2^2)$:
+    \begin{align*}
+        2x_1y_1x_2y_2
+        &\leq (x_2y_1 - x_1y_2)^2 + 2x_1y_1x_2y_2 \\ 
+        &= x_2^2y_1^2 + x_1^2y_2^2 - 2x_1y_1x_2y_2 + 2x_1y_1x_2y_2 \\ 
+        &= x_2^2y_1^2 + x_1^2y_2^2
+    \end{align*}
+
+    Set of points: 
+
+    Using the above proof, it's easy to see that: \\ 
+    $x_1y_1 + x_2y_2 = \sqrt{x_1^2 + x_2^2}\sqrt{y_1^2 + y_2^2}$
+    IFF 
+    ($x_1y_1 + x_2y_2 = \abs{x_1y_1 + x_2y_2}$
+    AND $2x_1y_1x_2y_2 = x_2^2y_1^2 + x_1^2y_2^2$).
+
+    $x_1y_1 + x_2y_2 = \abs{x_1y_1 + x_2y_2}$ means $x_1y_1 + x_2y_2$ is non-negative.
+
+    Now, 
+    \begin{align*}
+        2x_1y_1x_2y_2 &= x_2^2y_1^2 + x_1^2y_2^2 \\ 
+        0 &= x_2^2y_1^2 + x_1^2y_2^2 - 2x_1y_1x_2y_2 \\ 
+        &= (x_2y_1 - x_1y_2)^2
+    \end{align*}
+    Therefore $x_2y_1 - x_1y_2 = 0, x_1y_2 = x_2y_1$.
+
+    The solutions to $x_1y_1 + x_2y_2 = \sqrt{x_1^2 + x_2^2}\sqrt{y_1^2 + y_2^2}$
+    are $\set{x_1,x_2,y_1,y_2 \in \R | x_1y_1 + x_2y_2 \geq 0, x_1y_2 = x_2y_1}$.

@@ -1,0 +1,654 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+% \documentclass[10pt, letterpaper, titlepage]{report}
+
+% % Packages
+\input{../../packages.tex}
+\input{../../commands.tex}
+\input{../../setup.tex}
+
+% \usepackage{hyperref} % Doesn't like math in section titles
+% \newcommand{\smath}[2]{\texorpdfstring{#1}{#2}} % Use this to not break hyperref
+
+% \setcounter{secnumdepth}{-1} % Sets sectioning level for numbering 
+% % -1 part     1 section     3 subsubsection  5 subparagraph
+% %  0 chapter  2 subsection  4 paragraph
+
+% % Debug
+% % For \hbox too wide errors.
+% \overfullrule=.01cm
+
+% Header
+\geometry{margin = 1in}
+\pagestyle{fancy}
+\headheight = 23.01503pt
+\lhead{}
+\rhead{Yifeng Pan
+     \\ UCID: 30063828}
+
+% Title page
+\title{MATH 355 Assignment 2}
+\author{Instructor: Dr Ryan Hamilton
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Fall 2019}
+
+%% Temp
+% Limits
+\newcommand\limntoinfty{\lim_{n \to \infty}}
+\newcommand\limntoninfty{\lim_{n \to -\infty}}
+\newcommand\limxtoinfty{\lim_{x \to \infty}}
+\newcommand\limxtoninfty{\lim_{x \to -\infty}}
+
+\begin{document}
+    \maketitle
+    % P1
+    \section{Using formal $\e$ arguments, prove the following}
+      \subsection{${\limntoinfty\frac{2n^3-1}{-n^3+1} = -2}$.}
+        Let $\e\in\R, \e > 0$.
+        Let $N > \sqrt[3]{1/\e + 1}$.
+        Let $n \in \N, n \geq N$.
+        Now: 
+        \begin{align*}
+          \abs{a_n - L} = \abs{\frac{2n^3 - 1}{-n^3 + 1} + 2} 
+          &= \abs{\frac{2n^3 - 1}{-n^3 + 1} + \frac{-2n^3 + 2}{-n^3 + 1}} \\ 
+          &= \abs{\frac{1}{-n^3 + 1}} =  \frac{1}{\abs{1 - n^3}} \\
+          &= \frac{1}{n^3 - 1} \text{ (as $n \geq 1$)} \\
+          &\leq \frac{1}{N^3 - 1}
+          < \frac{1}{\sqrt[3]{1/\e + 1}^3 - 1}
+          = \frac{1}{1/\e}
+          = \e
+        \end{align*}
+
+      \subsection{${\limntoinfty\sqrt{9n^2 -n} - 3n=-\frac{1}{6}}$.}
+        Let $\e\in\R, \e > 0$.
+        Let $N > \max(\frac{1/(6\e) + 1}{18 + 6\sqrt{8}}, 1)$.
+        Let $n \in \N, n \geq N$.
+        Now: 
+        \begin{align*}
+          \abs{a_n - L} 
+          &= \abs{\sqrt{9n^2 -n} - 3n + \frac{1}{6}} 
+          = \abs{\frac{- n}{\sqrt{9n^2 -n} + 3n} + \frac{1}{6}}
+          = \abs{\frac{\sqrt{9n^2 -n} + 3n - 6n}{6(\sqrt{9n^2 -n} + 3n)}} \\ 
+          &= \abs{\frac{\sqrt{9n^2 -n} - 3n}{6(\sqrt{9n^2 -n} + 3n)}}
+          = \abs{\frac{-n}{6(\sqrt{9n^2 -n} + 3n)^2}} \\ 
+          &= \frac{n}{6(\sqrt{9n^2 -n} + 3n)^2}
+          = \frac{n}{6(9n^2 -n + 9n^2 + 6n\sqrt{9n^2 -n})}
+          = \frac{1}{6(18n + 6\sqrt{9n^2 -n} - 1)} \\ 
+          &< \frac{1}{6(18n + 6\sqrt{9n^2 - n^2} - 1)} \text{ (as $n > 1$)}
+          = \frac{1}{6(18n + 6n\sqrt{8} - 1)}
+          = \frac{1}{6(n(18 + 6\sqrt{8}) - 1)} \\ 
+          &< 1/(6(\frac{1/(6\e) + 1}{18 + 6\sqrt{8}}(18 + 6\sqrt{8}) - 1))
+          = 1/(6(1/(6\e) + 1 - 1))
+          = \frac{1}{6\frac{1}{6\e}} 
+          = \e
+        \end{align*}
+
+    % P2
+    \section{Find a divergent sequence $a_n$ with the property that 
+      $\limntoinfty (a_{n+p} - a_n) = 0$ for every natural number $p$}
+      Let $a_n = \ln(n)$.
+      Let $\e\in\R, \e > 0$.
+      Let $p \in \N$.
+      Let $N \geq p/(e^\e - 1)$.
+      Let $n \in \N, n > N$.
+      Now:
+      \begin{align*}
+        \abs{a_{n+p} - a_n - L} = \abs{\ln(n+p) - \ln(n)}
+        &= \abs{\ln(\frac{n+p}{n})} \\ 
+        &= \ln(1 + \frac{p}{n}) \\ 
+        &< \ln(1 + \frac{p}{p/(e^\e - 1)}) \\ 
+        &= \ln(1 + (e^\e - 1)) \\ 
+        &= \e \\ 
+      \end{align*}
+      Where $a_n$ itself is divergent.
+
+      % TODO
+
+    % P3
+    \newpage
+    \section{}
+      \subsection{Show that if $\limntoinfty a_n = L$, 
+        then $\limntoinfty \frac{a_1 + a_2 + \dots + a_n}{n} = L$}
+        % We prove the contrapositive.
+        % Suppose $\limntoinfty \frac{a_1 + a_2 + \dots + a_n}{n} \neq L$
+        % This means $\lis \e > 0, \lall N \in \R, \lis n > N$ 
+        % such that $\abs{a_n - L} > \e$.
+
+        % Now fix $\e$,
+        % choose an arbitary $N$,
+        % then choose $n$ so that $n > N$.
+        % So:
+        % \begin{align*}
+        %   \abs{a_n - L} &> \e \\ 
+        %   \abs{\frac{a_1 + a_2 + \dots + a_n}{n} - L} &> \e \\ 
+        %   \frac{\sum_{k=1}^n\abs{a_k - L}}{n} &> \e \\ 
+        %   \max(\abs{a_{\set{1 \hdots n}} - L}) &> \frac{\sum_{k=1}^n\abs{a_k - L}}{n} \\ 
+        % \end{align*}
+        
+        % Let $\e' = 1$.
+        % Let $N' \in \R$.
+        % Let $n' = m$ such that $a_m = \max(\abs{a_{\set{1 \hdots n}} - L})$.
+        
+        Suppose $\limntoinfty a_n = L$.
+
+        Since $a_n$ is convergent, we know it's bounded. %(Lemma).  
+        So $\lis M \in \R$ such that $\lall n \in \N, \abs{a_n} \leq M$.
+        
+        Let $\e\in\R, \e > 0$.
+
+        Since $a_n$ is convergent to $L$,
+        we can choose $S \in \N$ such that $\lall s \in \N, s \geq S, \abs{a_n - L} < \frac{\e}{2}$.
+
+        Let $N > \max(\frac{2S(M +\abs{L})}{\e}, S)$.
+        % \footnote{$\max(\hdots , S)$ in case $\e$ is really big, the max function can ignored otherwise.}
+        \footnote{In case $\e$ is really big.}
+        Let $n \in \N, n \geq N$.
+        So $1 \leq S < N \leq n$.
+        \begin{align*}
+          \abs{\frac{a_1 + a_2 + \dots + a_n}{n} - L}
+          &= \abs{\frac{a_1 + a_2 + \dots + a_n - nL}{n}} \\ 
+          &= \abs{\frac{(a_1 - L) + (a_2 - L) + \dots + (a_n - L)}{n}} \\ 
+          &= \abs{\frac{\sum_{k=1}^n(a_k - L)}{n}} \\ 
+          &= \frac{\abs{\sum_{k=1}^n(a_k - L)}}{n} \\ 
+          &\leq \frac{\sum_{k=1}^n\abs{a_k - L}}{n} \\ 
+          &= \frac{\sum_{k=1}^S\abs{a_k - L}}{n} + \frac{\sum_{k=S+1}^n\abs{a_k - L}}{n} \\ 
+          &\leq \frac{\sum_{k=1}^S\abs{a_k} + \abs{L}}{n} + \frac{\sum_{k=S+1}^n\abs{a_k - L}}{n} \\ 
+          &\leq \frac{S(M + \abs{L})}{n} + \frac{\sum_{k=S+1}^n\abs{a_k - L}}{n} \\ 
+          &< \frac{S(M + \abs{L})}{n} + \frac{\sum_{k=S+1}^n \e/2}{n} \\ 
+          &= \frac{S(M + \abs{L})}{n} + \frac{(n - S)}{n}\frac{\e}{2} \\ 
+          &< \frac{S(M + \abs{L})}{n} + \frac{\e}{2} \\ 
+          &< \frac{S(M + \abs{L})}{2S(M +\abs{L})/\e} + \frac{\e}{2} \\ 
+          &= \frac{\e}{2}+ \frac{\e}{2} = \e
+        \end{align*}
+
+      \subsection{Is the converse to the above statement true? Justify your reasoning.}
+      False.
+      Suppose $a_n = (-1)^n$.
+      Then $\limntoinfty \frac{a_1 + a_2 + \dots + a_n}{n} = 0$ by the Squeeze Theorem.
+      \footnote{Let $c_n = \abs{\sum_{k=1}^n a_n}, b_n = - c_n$.
+        $-1 = b_n \leq \sum_{k=1}^n a_n \leq c_n = 1$ for all $n \in \N$. 
+        Divide everything by $n$, then apply Squeeze.}
+      But $a_n$ itself is divergent.
+      \footnote{$\sub(a_n) = \set{0,1}$, therefore $a_n$ not convergent.}
+
+    % P4
+    \newpage
+    \section{Suppose $x > 1$ and define a sequence $\set{y_i}$ 
+      by $y_1 = x$, $y_{k+1} = \frac{1}{2} (y_k + \frac{x}{y_k})$ for $k \geq 1$.}
+
+      \subsection{Show that $y_k - y_{k+1} = \frac{y_k^2 -x}{2y_k}$ and 
+        $y_{k+1}^2 - x = \frac{(y_k^2 - x)^2}{4y_k^2}$.}
+        \begin{multicols}{2}
+          \begin{proposition}
+            $y_k - y_{k+1} = \frac{y_k^2 -x}{2y_k}$.
+          \end{proposition}
+            Proof by induction:
+            Base case $k = 1$:
+            \begin{align*}
+              y_k - y_{k+1}
+              &= x - \frac{1}{2}(x+\frac{x}{x})
+              = x - \frac{x + 1}{2} \\ 
+              &= \frac{2x - x - 1}{2}
+              = \frac{x-1}{2} \\ 
+              &= \frac{x^2 - x}{2x}
+              = \frac{y_k^2 - x}{2y_k}
+            \end{align*}
+            Now, suppose $y_k - y_{k+1} = \frac{y_k^2 - x}{2y_k}$ for $k \geq 1$.
+            \footnote{Not concise. 
+              Apparently I did'nt need induction, but I can't be bothered to redo it.}
+            \begin{align*}
+              y_{k+1} - y_{k+2}
+              &= \frac{1}{2} (y_{k} + \frac{x}{y_{k}}) - \frac{1}{2} (y_{k+1} + \frac{x}{y_{k+1}}) \\ 
+              &= \frac{1}{2} (y_{k} + \frac{x}{y_{k}} - y_{k+1} - \frac{x}{y_{k+1}}) \\ 
+              &= \frac{1}{2} (\frac{y_k^2 - x}{2y_k} + \frac{x}{y_{k}} - \frac{x}{y_{k+1}}) \\ 
+              &= \frac{1}{2} (\frac{y_k^2}{2y_k} + \frac{x}{y_{k}}) - \frac{x}{4y_k} - \frac{x}{2y_{k+1}} \\ 
+              &= \frac{1}{2} (\frac{y_k}{2} + \frac{x}{y_{k}}) - \frac{x}{4y_k} - \frac{x}{2y_{k+1}} \\ 
+              &= \frac{1}{2} (y_k + \frac{x}{y_{k}})- \frac{y_k}{4} - \frac{x}{4y_k} - \frac{x}{2y_{k+1}} \\ 
+              &= y_{k+1}- \frac{y_k}{4} - \frac{x}{4y_k} - \frac{x}{2y_{k+1}} \\ 
+              &= \frac{2y_{k+1}^2}{2y_{k+1}} - \frac{x}{2y_{k+1}} - \frac{y_k}{4} - \frac{x}{4y_k}\\ 
+              &= \frac{2y_{k+1}^2 - x}{2y_{k+1}} - \frac{1}{4}(y_k+ \frac{x}{y_k})\\ 
+              &= \frac{2y_{k+1}^2 - x}{2y_{k+1}} - \frac{y_{k+1}}{2}\\ 
+              &= \frac{2y_{k+1}^2 - x}{2y_{k+1}} - \frac{y_{k+1}^2}{2y_{k+1}}\\ 
+              &= \frac{y_{k+1}^2 - x}{2y_{k+1}} \qed
+            \end{align*}
+  
+          \begin{proposition}
+            $y_{k+1}^2 - x = \frac{(y_k^2 - x)^2}{4y_k^2}$.
+          \end{proposition}
+            Proof:
+            \begin{align*}
+              y_{k+1}^2 - x
+              &= (\frac{1}{2} (y_k + \frac{x}{y_k}))^2 - x \\ 
+              &= \frac{1}{4} (y_k^2 + (\frac{x}{y_k})^2 + 2y_k\frac{x}{y_k}) - x \\ 
+              &= \frac{1}{4} (y_k^2 + \frac{x^2}{y_k^2} + 2x) - x \\ 
+              &= \frac{y_k^2 + \frac{x^2}{y_k^2} + 2x - 4x}{4} \\ 
+              &= \frac{y_k^4 + x^2 - 2xy_k^2}{4y_k^2} \\ 
+              &= \frac{(y_k^2 - x)^2}{4y_k^2} \qed
+            \end{align*}
+        \end{multicols}
+
+      \newpage
+      \subsection{Show that $y_k \geq 1$ and $y_k^2 \geq x$ for each $k \geq 1$.}
+        \begin{lemma}
+          $y_k > 0, \lall k \in\N$.
+        \end{lemma}
+          Proof by induction:
+          Base case: $y_1 = x > 1 > 0$.
+          Now suppose $y_k > 0$ for $k \geq 1$.
+          So
+          \(
+            y_{k+1} 
+            = \frac{y_k + x / y_k}{2} 
+            > \frac{x / y_k}{2} 
+            % = \frac{x}{2y_k} 
+            > 0
+          \)
+          , as $x > 0$ and $y_k >0$. 
+          \qed
+
+        \begin{lemma}
+          $\set{y_k}$ is decreasing.
+        \end{lemma}
+          Proof by induction: 
+          We need to prove $y_k - y_{k+1} \geq 0, \lall k \in \N$.
+          Base case: 
+          \(
+              y_1 - y_{2} 
+              = x - \frac{x + 1}{2} 
+              = \frac{2x - x - 1}{2} 
+              = \frac{x-1}{2}
+              \geq 0 \text{ (as $x \geq 1$)} 
+          \).
+          Now, suppose $y_k - y_{k+1} \geq 0$ for $k \geq 1$.
+          From (Proposition 1, 2), we know $y_k - y_{k+1} = \frac{y_k^2 -x}{2y_k}$
+          and $y_{k+1}^2 - x = \frac{(y_k^2 - x)^2}{4y_k^2}$.
+          \begin{align*}
+            y_{k+1} - y_{k+2} 
+            &= \frac{y_{k+1}^2 - x}{2y_{k+1}} 
+            = \frac{\frac{(y_k^2 - x)^2}{4y_k^2}}{2y_{k+1}} 
+            = \frac{(y_k^2 - x)^2}{8y_k^2y_{k+1}} \\
+            (y_k^2 - x)^2 &\geq 0 \\
+            8y_k^2 &> 0 \text{ (Lemma 1)} \\
+            y_{k+1} &> 0 \text{ (Lemma 1)} \\
+            &\therefore y_{k+1} - y_{k+2} 
+            = \frac{(y_k^2 - x)^2}{8y_k^2y_{k+1}} 
+            \geq 0 
+          \end{align*}
+          \qed
+
+        \begin{corollary}
+          $y_k \leq x, \lall k \in \N$.
+        \end{corollary}
+          Proof: 
+          We know $y_1 = x$ and $\set{y_k}$ is decreasing (Lemma 2),
+          therefore $y_k \leq x, \lall k \in\N$.
+          \qed
+
+          \begin{proposition}
+            $y_k \geq 1, \lall k \in \N$.
+          \end{proposition}
+          Proof by induction:
+          Base case: $y_1 = x \geq 1$. 
+          Now, suppose $y_k \geq 1$ for $k \geq 1$.
+          So
+          \begin{align*}
+            y_{k+1} &= \frac{1}{2} (y_k + \frac{x}{y_k})\\
+            &= \frac{1}{2}y_k + \frac{1}{2}\frac{x}{y_k}\\
+            &\geq \frac{1}{2} + \frac{1}{2}\frac{x}{y_k}\\
+            &\geq \frac{1}{2} + \frac{1}{2}\frac{x}{x} \text{ (Corollary 1: $y_k \leq x$)}\\
+            &= 1 
+          \end{align*}
+          \qed
+
+        \begin{proposition}
+          $y_k^2 \geq x, \lall k \in \N$.
+        \end{proposition}
+          Proof by induction: 
+          Base case: $y_k^2 = x^2 > x$ as $x > 1$.
+          Now, suppose $y_k^2 \geq x$ for $k \geq 1$.
+          From (Proposition 2), we know $y_{k+1}^2 - x = \frac{(y_k^2 - x)^2}{4y_k^2}$. 
+          So, 
+          \begin{align*}
+            y_{k+1}^2 &= \frac{(y_k^2 - x)^2}{4y_k^2} + x \\
+            (y_k^2 - x)^2 &\geq 0 \\
+            4y_k^2 &\geq 4x > 4 > 0 \\
+            &\therefore \frac{(y_k^2 - x)^2}{4y_k^2} \geq 0 \\
+            &\therefore y_{k+1}^2 \geq 0 + x = x 
+          \end{align*}
+          \qed
+
+      \subsection{By applying the Monotone Convergence Theorem, prove that $y_k$ converges and find its limit.}
+        Since $y_k$ is decreasing (Lemma 2) 
+        and $1$ is a lower bound of $y_k$ (Proposition 3), 
+        $y_k$ is convergent by MCT.
+
+        To find the limit:
+        \begin{align*}
+          L &= \frac{1}{2} (L + \frac{x}{L})\\
+          2L &= L + \frac{x}{L}\\
+          L^2 &= x \\
+          L &= + \sqrt{x} \text{\ \ (as $1$ is a lower bound)}
+        \end{align*}
+
+    % P5
+    % \newpage
+    \section{For the following sets of real numbers,  calculate all interior points, boundary points, 
+      accumulation points and isolated points.  Are they open, closed or compact (or several or none)?}
+      \begin{multicols}{2}
+        \subsection{${S= \mathbb{Q} \cap (0,1)}$.}
+          $\interior(S) = \emptyset$. Proof: 
+          Suppose $x \in \interior(S)$.
+          Then $\lis \e > 0$ so that $N_\e(x) \subseteq S$.
+          Now, the interval $(x-\e, x+\e)$ is uncountable.
+          Therefore $(x-\e, x+\e) = N_\e(x) \not\subseteq \Q$,
+          so $N_\e(x) \not\subseteq S \subseteq \Q$.
+          Contradiction.
+          Therefore there exists no such $x$,
+          and $\interior(S) = \emptyset $.
+          \qed
+
+          $S' = [0,1]$. Proof: 
+          If $x < 0$ or $x > 1$, 
+          let $\e = \frac{\min(\abs{x-1}, \abs{x-0})}{2} > 0$.
+          It's easy to see that $N_\e^*(x) \intersection S = \emptyset$.
+          Therefore $S' \subseteq [0,1]$.
+          Now, suppose $x \in [0,1)$.
+          Let $\e > 0$.
+          Since $x, x +\e, 1 \in \R$, and $x < \min(1, x +\e)$,
+          $\lis q \in \Q$ such that $x < q < \min(1, x +\e)$ 
+          \footnote{From: Assignment 1, Problem (5a)}.
+          Since $q \in \Q, q < 1, q > x \geq 0$,
+          so $q \in S$.
+          Therefore $q \in ((x-\e, x+\e) \setminus \set{x}) \intersection S
+          =N_\e^*(x) \intersection S$.
+          Therefore $[0,1) \subseteq S'$.
+          Now, suppose $x = 1$.
+          Similarly, $\lis p \in \Q$ 
+          such that $\max(0, 1-\e) < p < 1$.
+          So $\set{1} \subseteq S'$.
+          Therefore $[0,1] = [0,1) \union \set{1} \subseteq S'$.
+          Therefore $S' = [0,1]$.
+          \qed
+
+          $\bd(S) = [0,1]$. Proof: 
+          Since $\overline S = S \union S' = S'$,
+          so $S' = \overline S = S \union \bd(S)$,
+          so $\bd(S) \subseteq S' = [0,1]$.
+          Now, let $\e > 0$.
+          Suppose $x \in [0,1]$.
+          Since $(x-\e, x+\e)$ is uncountable, 
+          so $N_\e(x) \not\subseteq \Q$ which is countable.
+          Since $S \subseteq \Q$,
+          so $N_\e(x) \not \subseteq S$.  
+          Therefore $N_\e(x) \intersection S \neq N_\e(x)$.
+          Therefore $N_\e(x) \intersection (\R \setminus S) \neq \emptyset$.
+          Now, since $x \in [0,1] = S'$,
+          so $N_\e^*(x) \intersection S \neq \emptyset$.
+          Since $N_\e^*(x) \subseteq N_\e(x)$,
+          so $N_\e(x) \intersection S \neq \emptyset$.
+          Therefore $[0,1] \subseteq \bd(S)$.
+          Therefore $\bd(S) = [0,1]$.
+          \qed
+          
+          % \begin{multicols}{2}
+            Isolated points: 
+            $S \setminus S' = (\Q \intersection (0,1)) \setminus [0,1] = \emptyset$. 
+    
+            $S$ is not open, as $S \neq \emptyset = \interior(S)$. 
+    
+            $S$ is not closed, as $S \neq [0,1] = S'$.
+            \footnote{Property of closeness.}
+    
+            $S$ is not compact, as $S$ is not closed: (Heine-Borel)
+          % \end{multicols}
+
+        % \newpage % Temp
+        \subsection{$\set{x \in \mathbb{Q} | x = \frac{k}{2^n} 
+          \text{ where } n,k \in \mathbb{N} \union \set{0} \text{ and } 0 \leq k \leq 2^n}$.}
+          Let $S$ be the above set. It's easy to see that $S \neq \emptyset$.
+
+          \begin{lemma}
+            $S \subsetneq [0,1]$
+            ,or equivalently $S \neq [0,1] \land S \subseteq [0,1]$.
+          \end{lemma}
+          Proof:
+          Let $x \in S$.
+          Since $x = k/2^n$ and $0\leq k\leq 2^n$, 
+          so $0\leq x \leq 1$.
+          Therefore $S \subseteq [0,1]$.
+          Since $[0,1]$ is uncountable,
+          and $S \subseteq \Q$ is countable,
+          so $S \neq [0,1]$.
+          Therefore $S \subsetneq [0,1]$.
+          \qed
+
+          $\interior(S) = \emptyset$. 
+          Proof is word-for-word identical to the interior proof in (5a).
+          \qed
+
+          $S' = [0,1]$. Proof: 
+          If $x < 0$ or $x > 1$, 
+          let $\e = \frac{\min(\abs{x-1}, \abs{x-0})}{2} > 0$.
+          It's easy to see that $N_\e^*(x) \intersection S = \emptyset$.
+          Therefore $S' \subseteq [0,1]$.
+          Now, suppose $x \in [0,1)$.
+          Let $\e > 0$.
+          Choose $n \in \Nz$
+          such that $0 < \frac{1}{2^n} < \e$
+          \footnote{A corollary of the Archimedean Property},
+          where 
+          $\bigunion_{k = 0}^{2^n - 1} [\frac{k}{2^n}, \frac{k+1}{2^n}) = [0,1)$,
+          and each $[\frac{k}{2^n}, \frac{k+1}{2^n})$ is disjoint from each other.
+          Since $x \in [0,1)$,
+          find the unique $j$ 
+          such that $x \in [\frac{j}{2^n}, \frac{j+1}{2^n})$,
+          where $j \in \Nz, 0 \leq j \leq 2^n-1$.
+          Therefore $\frac{j+1}{2^n} \in S$.
+          Now, $\abs{\frac{j+1}{2^n} - x}
+          = \frac{j+1}{2^n} - x 
+          \leq \frac{j+1}{2^n} - \frac{j}{2^n}
+          = \frac{1}{2^n}
+          < \e$,
+          where $\frac{j+1}{2^n} \neq x$.
+          Therefore $[0,1) \subseteq S'$.
+          % Now, suppose $x = 1$.
+          Similarly we can prove $(0,1] \subseteq S'$.
+          Therefore $[0,1] = [0,1) \union (0,1] \subseteq S' \union S' = S'$.
+          % Therefore $[0,1] = [0,1) \union \set{1} \subseteq S' \union S' = S'$.
+          Therefore $S' = [0,1]$.
+          \qed
+
+          $\bd(S) = [0,1]$.
+          Proof is word-for-word identical to the boundary proof in (5a)
+          \qed
+          
+          % \begin{multicols}{2}
+            Isolated points: 
+            $S \setminus S' = \emptyset$, as $S \subseteq [0,1] = S'$. 
+
+            $S$ is not open, as $S \neq \emptyset = \interior(S)$. 
+
+            $S$ is not closed, as $S \neq [0,1] = S'$.
+
+            $S$ is not compact, as $S$ is not closed: (Heine-Borel)
+          % \end{multicols}
+        \end{multicols}
+
+    % P6
+    \section{Construct a sequence $a_n$ so that the set of subsequential limits $S$ is the integers $\Z$.}
+    Let
+    \begin{align*}
+      a_n = (&0,\\
+        &0,1,\\
+        &0,1,-1,\\
+        &0,1,-1,2,\\
+        &0,1,-1,2,-2 \\
+        % &0,1,-1,2,-2,3\\
+        &\hdots)
+    \end{align*}
+    where every ``column''
+    % \footnote{columns can be defined as equivalence classes of $\set{n}$ (indexes of $a_n$)
+    %    using Triangle Numbers.}
+    \footnote{Columns can be defined explicitly using Triangle Numbers.}
+      % The implict definiction from the construction of $a_n$ is good enough in this case.}
+    is a subsequence of $a_{n_k} = c, \lall n_k$ where $c \in \Z$. 
+    Therefore $\Z \subseteq \sub(a_n)$.
+    % If $a_{n_k}$ contains infinite elements from $1$ ``column'' of $a_n$,
+    % and finite elements from other ``columns'',
+    % then it's limit is the same as any element in that $1$ infinite ``column''.
+    If $a_{n_k}$ contains infinite elements from $> 1$ ``columns'' of $a_n$,
+    then $a_{n_k}$ won't be cauchy (set $\e = 1/2$), therefore not convergent.
+    Therefore there are no other elements in $\sub(a_n)$ besides $\Z$.
+    Therefore $\sub(a_n) = \Z$.
+    
+    % Explicitly: 
+    % \begin{align*}
+    %   a_{n} = (-1)^{n - 1 + \floor{\frac{\sqrt{8n-7} - 3}{4}}}
+    %   \ceil{
+    %     \frac{n-1}{2} - 
+    %     \frac{\floor{\frac{\sqrt{8n-7} + 1}{2}}\floor{\frac{\sqrt{8n-7} - 1}{2}}}{4}
+    %   }
+    % \end{align*}
+    % probably repersents the above sequence. I can't prove this.
+
+    % P7
+    % \newpage
+    \section{Suppose $S$ is \textbf{closed}  set of real numbers with no isolated points. 
+      Show that $S$ is uncountable. }
+      Suppose $S \neq \emptyset$
+        \footnote{If $S = \emptyset$, then $S$ is closed with no isolated points and finite, 
+        therefore countable.} 
+      is closed with no isolated points.
+      % We prove $S$ is uncountable.
+
+      \begin{lemma}
+        $S = S'$
+      \end{lemma}
+      Proof:
+      Since $S$ is closed, we know $S = \overline S = S \union S' \lif S' \subseteq S$.
+      Since $S$ has no isolated points, we know $S \setminus S' = \emptyset \lif S \subseteq S'$.
+      Therefore $S = S'$.
+      \qed
+
+      \begin{lemma}
+        $S$ is not finite.
+      \end{lemma}
+      Proof: 
+      Choose some $\e_1 > 0$.
+      Since $x_1 \in S'$,
+      $\lis x_2 \in S$ such that $0 < \abs{x_1-x_2} < \e_1$.
+      Now let $\e_2 = \frac{\abs{x_1 - x_2}}{4} > 0$.
+      Since $x_2 \in S'$, $\lis x_3 \in S$ such that $0 < \abs{x_2-x_3} < \e_2$.
+      We repeate to construct $\set{x_n} \subseteq S$
+      and $\set{\e_n}\subseteq\R$ for $n \in \N$,
+      where $\e_n = \frac{\abs{x_{n-1} - x_{n}}}{n^2}$
+      and $x_n$ is chosen such that $\abs{x_{n-1} - x_{n}} < \e_{n-1}$.
+
+      \begin{theorem}
+        $S$ is uncountable.
+      \end{theorem}
+      Proof:
+      \footnote{I got the idea for this proof from Baby Rudin, Theorem 2.43.}
+      Suppose $S$ is denumerable.
+      Then let $\set{s_n}$ be some denumeration of $S$ where $n \in \N$.
+      So $\set{s_n} = S = S'$.
+      Now, we define $\set{K_n}, n\in\N$ recursively:
+      Let $\e_1 > 0$.
+      Let $K_1 = N_{\e_1}(s_1)$ where
+      $s_1 \in K_1 \intersection S \neq \emptyset$.
+      Now, for $n \geq 2$: % for $K_n$ for $n \geq 2$:
+      Since $S = S'$ and $K_{n-1} \intersection S \neq \emptyset$,
+      $\lis \e_n \in \R , \e_n < \e_{n-1}$
+      and $x \in K_{n-1} \intersection S'$ 
+      \footnote{$x$ doesn't necessarily equal to $s_n$. 
+        If $s_n \not\in K_{n-1}$,
+        then choose some other element as $S \intersection K_{n-1} \neq \emptyset$.}
+      \footnote{In other words, 
+        we can choose $x$ to making $K_n$ smaller regardless of where $s_n$ is.}
+      % \footnote{If $s_{n-1} \not\in K_{n-1}$, then $s_k \neq s_{n-1}$.}
+      such that 
+      $K_n = N_{\e_n}(x)$ 
+      has the properties: 
+      $\overline{K_n} \subseteq K_{n-1}$,
+      \footnote{$x \in K_{n-1} \intersection S'$, $K_{n-1}$ is an open interval, 
+      and $\e_n$ can be arbitrarily small.}
+      and
+      $s_{n-1} \not\in \overline{K_n}$ .
+      \footnote{$s_{n-1}$ is an accumulation point. 
+      Choose some point near $s_{n-1}$, 
+      then choose $\e_n$ to be much smaller than the difference of the two.}
+      \footnote{If $s_{n-1} \not\in K_{n-1}$ then this case is trival.}
+      Since $x \in K_n \intersection S$, 
+      $K_n \intersection S \neq \emptyset$,
+      Since $\lall n, \overline{K_n}$ is some bounded and closed interval, 
+      $\overline{K_n}$ is compact.
+
+      
+      % Let $x_1 = s_1$.
+      % Now, for $K_n$ for $n \geq 2$:
+      % Let $x_n \in S'$ be some point in $K_{n-1}$,
+      % \[
+      %   \e_n = \frac{\min(\abs{x_n - x_{n-1}}, 
+      %   \abs{x_n - x_{n-1} - \e_{n-1}}, 
+      %   \abs{x_n - x_{n-1} + \e_{n-1}})}{2}
+      %   ,
+      %   K_n = 
+      %     N_{\e_n}^*(x_n) 
+      % \]
+      % Since $x_n \in S'$, 
+      % $K_n \intersection S \neq \emptyset$.
+      % From the construction of $\e_n$,
+      % $\overline{K_n} \subseteq (x_{n-1} - \e_{n-1}, x_{n-1})$
+      % or 
+      % $\overline{K_n} \subseteq (x_{n-1}, x_{n-1} + \e_{n-1})$,
+      % we know $\overline{K_n} \subseteq K_{n-1}$.
+      % $s_{n-1} \not\in \overline{K_n}$.
+
+      Now, we define $\set{T_n}$ such that 
+      $T_n = \overline{K_n} \intersection \set{s_n}$ where $n \in \N$. 
+      Since $\overline{K_n}$ is compact 
+      and $\set{s_n} = S$ is closed,
+      $T_n$ is compact.
+      Since $K_n \subseteq \overline{K_n}$
+      and $K_n \intersection S \neq \emptyset$,
+      we know $T_n \neq \emptyset$.
+      Since $\overline{K_n} \supseteq K_n \supseteq \overline{K_{n+1}}$,
+      we know $T_n \supseteq T_{n+1}$.
+      Since $s_n \not\in \overline{K_{+1}}$,
+      we know $s_{n} \not\in T_{n+1}$.
+      Since $\lall s_n \in \set{s_n}, s_n \not\in T_{n+1}$,
+      $\bigintersection_{n=1}^{\infty} T_n = \emptyset$.
+      This violates Cantor's Intersection Theorem.
+      Therefore $S$ is not denumerable.
+      % \footnote{$S$ is not finite as $S' = S \neq \emptyset$.
+        % So $S$ has an accumulation point, therefore infinite.}
+      Therefore $S$ is uncountable.
+      \qed
+
+    \section*{Citations}
+    Principles of Mathematical Analysis by Walter Rudin \\ 
+    ISBN 0-07-085613-3
+
+    Proofread by Devin Kwok (UCID: 10016484).
+
+
+    % \newpage
+    % \section*{Temp Page}
+    % Include something like this?
+    % \begin{lemma}
+    %   $S$ is not finite.
+    % \end{lemma}
+    % Proof: 
+    % Choose some $\e_1 > 0$.
+    % Since $x_1 \in S'$,
+    % $\lis x_2 \in S$ such that $0 < \abs{x_1-x_2} < \e_1$.
+    % Now let $\e_2 = \frac{\abs{x_1 - x_2}}{4} > 0$.
+    % Since $x_2 \in S'$, $\lis x_3 \in S$ such that $0 < \abs{x_2-x_3} < \e_2$.
+    % We repeate to construct $\set{x_n} \subseteq S$
+    % and $\set{\e_n}\subseteq\R$ for $n \in \N$,
+    % where $\e_n = \frac{\abs{x_{n-1} - x_{n}}}{n^2}$
+    % and $x_n$ is chosen such that $\abs{x_{n-1} - x_{n}} < \e_{n-1}$. 
+
+    % $x_n$ are distinct, $x_n \in S$ . Therefore $S$ is infinite.
+
+\end{document}

@@ -1,0 +1,235 @@
+% This file is too big
+\section{Determine whether or not the following functions are injective, surjective or bijective.
+    NOTE: The natural numbers $\N$ exclude 0.}
+    \begin{multicols}{2}
+        \subsection{$f: \R \to \R , f(x) = x^2 + 1$}
+            Not injective. Proof: \\ 
+                $-1, 1, 2 \in \R, f(1) = 2 = f(-1)$, but $1 \neq -1$.
+
+            Not surjective. Proof: \\ 
+                Suppose $\exists x \in R$ such that $f(x) = 0$ where $0 \in \R$.
+                Then $0 = x^2 + 1$, so $x = \sqrt{-1}$.
+                Therefore $x$ is not real.
+                Contradiction.
+
+            Not bijective.
+
+        \subsection{$f: \R \to [ 0, \infty), f(x) = (x-1)^2$}
+            Not injective. Proof by example: \\ 
+                $0, 2 \in \R, f(0) = 1 = f(2)$, but $0 \neq 2$.
+
+            Surjective. Proof: \\ 
+                Suppose $y \in [0, \infty)$.
+                Let $x = \sqrt{y} + 1 \in \R$ where $y \geq 0$.
+                Because $y$ is non-negative, 
+                    $y 
+                    = \abs{y} 
+                    = \sqrt{y}^2
+                    = (\sqrt{y} + 1 - 1)^2
+                    = (x - 1)^2 
+                    = f(x)$.
+
+            Not bijective.
+            
+    \end{multicols}
+
+    \subsection{$f: [ -\frac{1}{20}, \frac{1}{20}] \to [-1, 1], f(x) = \sin(5x)$}
+        Injective. Proof: \\ 
+        Suppose $f(a), f(b) \in \R, f(a) = f(b)$.
+        Then,
+        \begin{align*}
+            \sin(5a) &= \sin(5b) \\ 
+            5a + 2n\pi &= 5b + 2m\pi \text{ where } n, m \in \Z \\ 
+            a - b &= \frac{2\pi}{5} (m - n)
+        \end{align*}
+        It's easy to see that the range of 
+        $(a - b)$ is $[ -\frac{1}{10}, \frac{1}{10}]$,
+        as the domain of $a, b$ are both $[ -\frac{1}{20}, \frac{1}{20}]$.
+        Now, if $(m - n)$, which is an integer, is $\geq 1$,
+        then $(a - b) \geq 2\pi/5 > \frac{1}{10}$, 
+        which would be a contradiction.
+        Therefore $(m - n) \leq 0$.
+        Now, if $(m - n) \leq -1$,
+        then $(a - b) \leq -2\pi/5 < -\frac{1}{10}$, 
+        which would again be a contradiction.
+        Therefore $(m - n) \geq 0$.
+        Therefore $(m - n) = 0$.
+        Therefore $(a - b) = 0$.
+        Therefore $a = b$.
+
+        Not surjective. Proof: \\ 
+        Suppose $\exists x \in [ -\frac{1}{20}, \frac{1}{20}]$, 
+        such that $ f(x) = 1$.
+        Then $\arcsin(1) = 5x$.
+        So $x = \frac{\pi + 4n\pi}{10}$ where $n \in \Z$.
+        Because $x \in [ -\frac{1}{20}, \frac{1}{20}]$,
+        \begin{align*}
+            - \frac{1}{20} &\leq x \leq \frac{1}{20} \\ 
+            - \frac{1}{20} &\leq \frac{\pi + 4n\pi}{10} \leq \frac{1}{20} \\ 
+            - \frac{1}{2} &\leq \pi + 4n\pi \leq \frac{1}{2} \\ 
+            (- \frac{1}{2} - \pi)/(4\pi) &\leq n \leq (\frac{1}{2} - \pi)/(4\pi) \\ 
+            -0.2898... &\leq n \leq -0.2102... 
+        \end{align*} 
+        Clearly $n$ is not an integer. 
+        Therefore contradiction. 
+        Therefore there exists no such $x$.
+
+        Not bijective.
+
+    \newpage
+    \subsection{$f: \R \to \R , f(x) = x^5 + 3x^3 + 2x + 1$  (use some calculus here if you need to)}
+        Lemma: \\ 
+            $\frac{d}{dx}(f(x)) = \frac{d}{dx}(x^5 + 3x^3 + 2x + 1) = 5x^4 + 9x^2 + 2$.
+            It's easy to see that $5x^4 + 9x^2 + 2$ is always positive.
+            Therefore $f(x)$ is strictly increasing.
+
+        Injective. Proof with calculus: \\
+            Suppose $f(a), f(b) \in \R, f(a) = f(b)$.
+            Because $f$ is strictly increasing,
+            if $a < b$ then $f(a) < f(b)$.
+            Which would be a contradiction.
+            Therefore $a \geq b$.
+            Similarly we can prove that $b \geq a$.
+            So it's easy to see that $a = b$.
+
+            % Incomplete attempt with algebra
+            % Suppose $f(a), f(b) \in \R, f(a) = f(b)$.
+            % Then: 
+            % \begin{align*}
+            %     a^5 + 3a^3 + 2a + 1 &= b^5 + 3b^3 + 2b + 1 \\ 
+            %     (a^5 + 3a^3 + 2a) - (b^5 + 3b^3 + 2b) &= 0 \\ 
+            %     a(a^4 + 3a^2 + 2) - b(b^4 + 3b^2 + 2) &= 0 \\ 
+            %     (a - b)((a^4 + 3a^2 + 2) + (b^4 + 3b^2 + 2))
+            %         - a(b^4 + 3b^2 + 2)
+            %         + b(a^4 + 3a^2 + 2)
+            %         &= 0 \\ 
+            %     (a - b)((a^4 + 3a^2 + 2) + (b^4 + 3b^2 + 2))
+            %         &= a(b^4 + 3b^2 + 2) - b(a^4 + 3a^2 + 2) \\ 
+            %         &= ab^4 + 3ab^2 + 2a - ba^4 - 3ba^2 - 2b \\ 
+            %         &= (b - a) (3ab - 2) - ba^4 + ab^4 \\ 
+            %         &= (b - a) (3ab - 2) + (ab)(-a^3 + b^3) \\ 
+            %     (a - b)((a^4 + 3a^2 + 2) + (b^4 + 3b^2 + 2) + (3ab - 2))
+            %         &= (ab)(-a^3 + b^3) \\ 
+            %         &= (b - a)(ab)(a^2 + a b + b^2) \\ 
+            %     (a - b)((a^4 + 3a^2 + 2) + (b^4 + 3b^2 + 2) + (3ab - 2) + (ab)(a^2 + a b + b^2))
+            %         &= 0
+            % \end{align*}
+
+        Corollary: \\ % epsilon-delta proof?
+        Since $f'(x) = 5x^4 + 9x^2 + 2$ which is defined for all $x \in \R$,
+        $f$ is continuous.
+
+        Surjective. Proof: \\ 
+        It's easy to see that $\limxtoinfty{f(x)}$ approaches $\infty$, 
+        as $\limxtoinfty{x^5}$ approaches $\infty$.
+        And it's easy to see that $\limxtoninfty{f(x)}$ approaches $-\infty$, 
+        as $\limxtoninfty{x^5}$ approaches $-\infty$.
+        Becasue $f$ continuous and the domain of $f$ is $(-\infty, \infty)$.
+        Therefore the range of $f$ is $(-\infty, \infty)$.
+
+        Bijective. 
+
+    \subsection{$f: \Z \to \Z , f(n) = n^2 - n$}
+        Not injective. Proof: \\ 
+            $1,0 \in \Z, f(1)= 0 = f(0)$, but $1 \neq 0$.
+
+        Not surjective. Proof: \\ 
+            Suppose $\exists n \in \Z$ such that $f(n) = 1$ where $1 \in\Z$.
+            Then $n^2 - n - 1 = 0$. 
+            Using the quadratic formula, 
+            the solutions to $n$ are $\frac{1 \pm \sqrt{5}}{2}$,
+            which are obviously not integers.
+
+        Not bijective.
+
+    \subsection{$f: \N \to \N \cup \set{0}, f(n) = n^2 - n$}
+        Injective. Proof: \\ 
+            Suppose $f(a), f(b) \in \N, f(a) = f(b)$.
+            Then:
+            \begin{align*}
+                a^2 - a &= b^2 - b \\ 
+                a(a - 1) - b(b - 1) &= 0 \\ 
+                [a(a - 1) - b(b-1) + a(b-1) - b(a - 1) ]
+                    - a(b - 1)
+                    + b(a - 1)
+                    &= 0 \\
+                (a - b)((a - 1) + (b - 1))
+                    - a(b - 1)
+                    + b(a - 1)
+                    &= 0 \\ 
+                (a - b)((a - 1) + (b - 1)) &= a(b - 1) - b(a - 1) \\ 
+                &= ab - a - ba + b \\ 
+                &= - a + b \\ 
+                &= -(a - b) \\ 
+                (a - b)((a - 1) + (b - 1)) + (a - b) &= 0 \\ 
+                (a - b)(a + b - 1) &= 0  
+            \end{align*}
+            This means $(a - b)$ or $(a + b - 1)$ is equal to zero.
+            Since $a, b\in\N$, $a \geq 1, b \geq 1, a + b \geq 2, (a + b - 1) \geq 1, (a + b - 1) \neq 0$. 
+            Therefore, $(a - b) = 0$ or $a = b$. 
+
+        Not surjective. Proof: \\ 
+            Suppose $\exists n \in \N$ such that $f(n) = 1$ where $1 \in\N$.
+            Then $n^2 - n - 1 = 0$. 
+            Using the quadratic formula, 
+            the solutions to $n$ are $\frac{1 \pm \sqrt{5}}{2}$.
+            Which are obviously not natural numbers.
+
+        Not bijective.
+
+    \newpage
+    \subsection{$f: \Z \to \Z , f(n) = n^3 - n$}
+        Not injective. Proof: \\ 
+            $1,0 \in \Z, f(1)= 0 = f(0)$, but $1 \neq 0$.
+
+        Not surjective. Proof: \\ 
+            Suppose $\exists n \in \Z$ such that $f(n) = 1$ where $1 \in\Z$.
+            Then $1 = n (n^2 - 1)$.
+            It's easy to see that $n$ and $(n^2 - 1)$ are both integers.
+            And we know the only integer divisors of $1$ are $1$ and $-1$.
+            Case 1: $n^2 - 1 = -1$, in which case, $n = 0$.
+            This leads to a contradiction as $1 = 0 (0^2 - 1)$.
+            Case 2: $n^2 - 1 = 1$, in which case, $n = \sqrt{2}$.
+            This also leads to a contradiction as $\sqrt{2} \not\in \Z$.
+            Therefore there does not exist $n \in \Z$ such that $f(n) = 1$.
+
+        Not bijective.
+
+    \subsection{$f: \N \to \N \cup \set{0}, f(n) = n^3 - n$}
+        Injective. Proof: \\ 
+            Suppose $f(a), f(b) \in \N, f(a) = f(b)$.
+            Then:
+            \begin{align*}
+                a^3 - a &= b^3 - b \\ 
+                a(a^2 - 1) - b(b^2 - 1) &= 0 \\ 
+                [a(a^2 - 1) - b(b^2-1) + a(b^2-1) - b(a^2 - 1) ]
+                    - a(b^2 - 1)
+                    + b(a^2 - 1)
+                    &= 0 \\
+                (a - b)((a^2 - 1) + (b^2 - 1))
+                    - a(b^2 - 1)
+                    + b(a^2 - 1)
+                    &= 0 \\ 
+                (a - b)((a - 1) + (b - 1)) &= a(b^2 - 1) - b(a^2 - 1) \\ 
+                    &= ab^2 - a - ba^2 +b \\ 
+                    &= (b - a)(ab + 1) \\ 
+                (a - b)((a - 1) + (b - 1) + (ab + 1)) &= 0 \\ 
+                (a - b)(a + b + ab - 1) &= 0 \\ 
+            \end{align*}
+            This means $(a - b)$ or $(a + b + ab - 1)$ is equal to zero.
+            It's easy to see that $(a + b + ab - 1) \geq 2$ with similar reasoning as (1f), 
+            Therefore, $(a - b) = 0$ or $a = b$. 
+
+        Not surjective. Proof by contradiction: \\ 
+            Suppose $\exists n \in \N$ such that $f(n) = 1$ where $1 \in\N$.
+            Then $n^3 - n = 1$, or $1 = n (n^2 - 1)$. 
+            It's easy to see that $n$ and $(n^2 - 1)$ are both integers.
+            And we know the only integer divisors of $1$ are $1$ and $-1$.
+            But, if $n = -1$, $n \not \in \N$.
+            This is a contradiction.
+            Therefore $n = 1$.
+            So $1 (1^2 - 1) = 0 = 1$.
+            This also leads to a contradiction.
+            Therefore there does not exist $n \in \N$ such that $f(n) = 1$.
+
+        Not bijective.

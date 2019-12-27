@@ -1,0 +1,236 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+\usepackage{amsmath}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{22.54448pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan
+     \\UCID: 30063828}
+
+\usepackage{amssymb}
+\newcommand{\0}{\varnothing}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand\abs[1]{\left|#1\right|}
+%\usepackage{mathtools}
+\newcommand{\lntinf}{\lim_{n \to \infty}}
+
+\newcommand{\1}{\{ 1 \}}
+\newcommand{\2}{\{ (1,1) \}}
+\newcommand{\OTO}{one-to-one}
+\newcommand{\gof}{g \circ f}
+\newcommand{\ZXZ}{\Z ^+ \times \Z^+}
+
+%Title page
+\title{MATH 273 Assignment 4}
+\author{Instructor: Thi Ngoc Dinh
+    \\UCID: 30063828}
+\date{Fall 2018}
+
+\newcommand{\e}{\epsilon}
+\newcommand{\an}{a_n}
+\newcommand{\bn}{b_n}
+
+\begin{document}
+    \maketitle
+
+    \section{Prove the  following using the definition of limit.}
+        \subsection{If $\lntinf (a_n) = 2$ and $\lntinf (b_n) = 3$ then $\lntinf (a_n + b_n ) = 5$.}
+            Let $\lntinf (\an) = 2, \lntinf (\bn) = 3$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 2, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 2} < \frac{\e}{2}$.
+            Because $\lntinf (\bn) = 3, \exists N_2 \in \R$ so that $\forall n > N_2, \abs{\bn - 3} < \frac{\e}{2}$.
+            Let $N = \text{max}(N_1, N_2), n > N$.
+            Now:
+            \begin{align*}
+            \abs{(\an + \bn) -5} &= \abs{(\an - 2) + (\bn - 3)} \\
+            &\leq \abs{\an - 2} + \abs{\bn - 3} \text{ (because of triangular inequlity)}\\
+            &< \frac{\e}{2} + \frac{\e}{2} \text{ (because $\abs{\an - 2} < \frac{\e}{2}$ and $\abs{\bn - 3} < \frac{\e}{2}$)}\\
+            &= \e
+            \end{align*}
+            Therefore $\lntinf (\an + \bn) =5$.
+
+        \subsection{If $\lntinf (a_n) = 2$ and $\lntinf (b_n) = 3$ then $\lntinf (a_n b_n) = 6$.}
+            Let $\lntinf (\an) = 2, \lntinf (\bn) = 3$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 2, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 2} < \frac{\e}{8}$.
+            Because $\lntinf (\bn) = 3, \exists N_2 \in \R$ so that $\forall n > N_2, \abs{\bn - 3} < 1$,
+            and $\exists N_3 \in \R$ so that $\forall n > N_3, \abs{\bn - 3} < \frac{\e}{4}$.
+            Because $\abs{\bn - 3} < 1$, 
+            $$-1 < (\bn - 3) < 1$$
+            $$\text{or } 2 < \bn < 4.$$
+            Let $N = \text{max}(N_1, N_2, N_3), n > N$.
+            Now: 
+            \begin{align*}
+                \abs{\an\bn - 6} &= \abs{\an\bn - 2\bn +2\bn -6}\\
+                &= \abs{\bn(\an -2) + 2(\bn -3)}\\
+                &\le\abs{\bn}\abs{\an -2} + \abs{2}\abs{\bn-3} \text{ (because of triangular inequlity)}\\
+                &< \bn\frac{\e}{8} + 2\frac{\e}{4} \text{ (because $\bn > 2$ and $\abs{\an - 2} < \frac{\e}{8}$ and $\abs{\bn - 3} < \frac{\e}{4}$)}\\
+                &<4\frac{\e}{8} + 2\frac{\e}{4} \text{ (because $\bn < 4$)}\\
+                &=\frac{\e}{2} + \frac{\e}{2}\\
+                &=\e
+            \end{align*}
+            Therefore $\lntinf (\an\bn) = 6$.
+
+        \newpage
+        \subsection{If $\lntinf (a_n) = 2$ and $\lntinf (b_n) = 3$ then $\lntinf \frac{\an}{\bn} = \frac{2}{3}$.}
+            Let $\lntinf (\an) = 2, \lntinf (\bn) = 3$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 2, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 2} < \e$.
+            Because $\lntinf (\bn) = 3, \exists N_2 \in \R$ so that $\forall n > N_2, \abs{\bn - 3} < \e$,
+            and $\exists N_3 \in \R$ so that $\forall n > N_3, \abs{\bn - 3} < 1$.
+            Because $\abs{\bn - 3} < 1$, 
+            $$-1 < (\bn - 3) < 1$$
+            $$\text{or } 2 < \bn < 4.$$
+            Let $N = \text{max}(N_1, N_2, N_3), n > N$.
+            Now: 
+            \begin{align*}
+                \abs{\frac{\an}{\bn} -\frac{2}{3}} &= \abs{\frac{3\an - 2\bn}{3\bn}}\\
+                &= \abs{\frac{3\an -6+6- 2\bn}{3\bn}}\\
+                &= \abs{\frac{3(\an -2) + 2(3-\bn)}{3\bn}}\\
+                &\le \abs{\frac{3(\an - 2)}{3\bn}} + \abs{\frac{2(3-\bn)}{3\bn}} \text{ (because of triangular inequlity)}\\
+                &= \frac{\abs{\an - 2}}{\abs{\bn}} + \frac{\abs{2(\bn - 3)}}{\abs{3\bn}}\\
+                &< \frac{\abs{\an - 2}}{2} + \frac{2\abs{(\bn - 3)}}{3\times 2} \text{ (because $\bn > 2$)}\\
+                &< \frac{\e}{2} + \frac{2\e}{3\times 2} \text{ (because $\abs{\an - 2} < \e$ and $\abs{\bn - 3} < \e$)}\\
+                &= \frac{\e}{2} + \frac{\e}{3}\\
+                &= \frac{5\e}{6}\\
+                &< \e
+            \end{align*}
+            Therefore $\lntinf (\frac{\an}{\bn}) = \frac{2}{3}$.
+
+    \newpage
+    \section{Prove the following using the definition of limit.}
+        \subsection{If $\lntinf (\an) = 2$ then $\lntinf (a_n^3 ) = 8$.}
+            Let $\lntinf (\an) = 2$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 2, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 2} < \frac{\e}{100}$,
+            and $\exists N_2 \in \R$ so that $\forall n > N_2, \abs{\an - 2} < 1$.
+            Because $\abs{\an - 2} < 1$.
+            $$-1 < (\an - 2) < 1$$
+            $$\text{or } 1 < \an < 3.$$
+            Let $N = \text{max}(N_1, N_2), n > N$.
+            Now:
+            \begin{align*}
+                \abs{\an ^ 3 - 8} &= \abs{(\an -2)(\an^2 + 2\an + 4)}\\
+                &=  \abs{(\an -2)}\times \abs{(\an^2 + 2\an + 4)}\\
+                &< \frac{\e}{100} \abs{(\an^2 + 2\an + 4)} \text{ (because $\abs{\an -2} < \frac{\e}{100}$)}\\
+                &= \frac{\e}{100} ((\an - 2)^2 +6\an)\\
+                &< \frac{\e}{100} (1^2 +6\times3) \text{ (because $\an < 3$ and $\an - 2 < 1$)}\\
+                &= \frac{18\e}{100}\\
+                &< \e
+            \end{align*}
+            Therefore $\lntinf (\an^3) = 8$.
+
+        \subsection{If $\lntinf (\an) = 4$ then $\lntinf (\sqrt{\an}) = 2$.}
+            Let $\lntinf (\an) = 4$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 2, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 4} < \e$,
+            and $\exists N_2 \in \R$ so that $\forall n > N_2, \abs{\an - 4} < 3$.
+            Because $\abs{\an - 4} < 3$.
+            $$-3 < (\an - 4) < 3$$
+            $$\text{or } 1 < \an < 7.$$
+            Let $N = \text{max}(N_1, N_2), n > N$.
+            Now:
+            \begin{align*}
+                \abs{\sqrt{\an} -2} &= \abs{\frac{(\sqrt{\an} -2)(\sqrt{\an} +2)}{\sqrt{\an} +2}}\\
+                &=\frac{\abs{\an - 4}}{\abs{\sqrt{\an}+2}}\\
+                &< \frac{\abs{\an - 4}}{\abs{1+2}} \text{ (because $\an > 1$ so $\sqrt{\an} > 1$)}\\
+                &< \frac{\e}{3} \text{ (because $\abs{\an - 4} < \e$)}\\
+                &< \e
+            \end{align*}
+            Therefore $\lntinf (\sqrt{\an}) = 2$
+
+        \newpage
+        \subsection{If $\lntinf (\an) = 1$ then $\lntinf (a_n^{1/3}) = 1$.}
+            Let $\lntinf (\an) = 1$. Let $n \in \Z, \e \in \R, \e > 0$.
+            Because $\lntinf (\an) = 1, \exists N_1 \in \R$ so that $\forall n > N_1, \abs{\an - 1} < \e$,
+            and $\exists N_2 \in \R$ so that $\forall n > N_2, \abs{\an - 1} < 1$.
+            Because $\abs{\an - 1} < 1$.
+            $$-1 < (\an - 1) < 1$$
+            $$\text{or } 0 < \an < 2.$$
+            Let $N = \text{max}(N_1, N_2), n > N$.
+            Now:
+            \begin{align*}
+                \abs{\an^{1/3} -1} &= \abs{\frac{(\an^{1/3}-1)(\an^{2/3}+\an^{1/3} + 1)}{(\an^{2/3}+\an^{1/3} + 1)}}\\
+                &= \abs{\frac{(\an-1)}{(\an^{2/3}+\an^{1/3} + 1)}}\\
+                &< \frac{\abs{\an-1}}{\abs{0+0+1}} \text{ (because $\an >0$, so $\an^{1/3} > 0$ and $ \an^{2/3}>0$)}\\
+                &= \abs{\an-1}\\
+                &< \e \text{ (because $\abs{\an-1} < \e$)}
+            \end{align*}
+            Therefore $\lntinf (\an^{1/3}) = 1$
+
+
+    \newpage
+    \section{Prove the following using the definition of limit.}
+        \subsection{Let $s$ be a positive real number. Prove by induction on $n$ that $(1+s)^n > 1 + ns$ for all integers $n \geq 2$.}
+            Let $s \in \R, s > 0$, and $n \in \Z, n \ge 2$.
+            Proof of $(1+s)^n > 1 + ns$ through induction on $n$:
+            Base case: $n = 2$.
+            Then,
+            \begin{align*}
+                (1+s)^n &= (1+s)^2 \\
+                &= s^2 + 2s +1\\
+                &> 2s + 1 \text{ (because $s > 0$, so $s^2 >0$)}\\
+                &= 1 + ns
+            \end{align*}
+            Therefore $(1+s)^n > 1 + ns$ for $n = 2$.
+            Inductive step: Assume $(1+s)^n > 1 + ns$ (IH).
+            Proof that $(1+s)^{(n+1)} > 1 + (n+1)s$:
+            \begin{align*}
+                (1+s)^{(n+1)} &= (1+s)(1+s)^n\\
+                &> (1+s)(1+ns) \text{ (from (IH))}\\
+                &= ns^2 + ns + s + 1\\
+                &> ns + s + 1 \text{ (because $n > 0$ and $s > 0$, so $ns^2 >0$)}\\
+                &= 1 + (n+1)s
+            \end{align*}
+            Therefore $(1+s)^{(n+1)} > 1 + (n+1)s$ if $(1+s)^n > 1 + ns$.
+            Therefore $(1+s)^n > 1 + ns$ for $n >= 2$.
+
+        \subsection{Let $a$ be a real number so that $a > 1$. Prove that $\lntinf (a^n) = \infty$.}
+            Let $a \in \R, a > 1$, and $M \in \R, M > 0, N = \log_aM$, and $n \in Z, n > N$.
+            Then:
+            \begin{align*}
+                a^n &>a^N \text{ (because $n > N$, and $a > 1$)}\\
+                &= a^{\log_a{M}}\\
+                &= M
+            \end{align*}
+            Therefore $\lntinf (a^n) = \infty$ for $a > 1$.
+
+        \newpage
+        \subsection{Let $a$ be a real number so that $\abs{a} < 1$. Prove that $\lntinf (a^n) = 0$.}
+            Let $a \in \R, \abs{a} < 1$,and $\e \in \R, e > 0$.
+            Case 1: $a > 0$. Let $N = \log_a\e, n \in \Z, n > N$.
+            Then:
+            \begin{align*}
+                \abs{a^n - 0} &= a^n\\
+                &< a^N \text{ (because $n > N$, and $a < 1$)}\\
+                &= a^{\log_a{\e}}\\
+                &= \e
+            \end{align*}
+            Therefore $\lntinf (a^n) = 0$ for $0 < a < 1$.
+            Case 2: $a = 0$. Let $N = 1, n \in \Z, n > N$.
+            Then:
+            \begin{align*}
+                \abs{a^n - 0} &= 0^n\\
+                &= 0 \text{ (because $n > N = 1$, so $n \ne 0$)}\\
+                &< \e
+            \end{align*}
+            Therefore $\lntinf (a^n) = 0$ for $a = 0$.
+            Case 3: $a < 0$. Let $s = -a$, and $N = \log_c\e, n \in \Z, n > N$.
+            Then:
+            \begin{align*}
+                \abs{a^n - 0} &= \abs{a^n}\\
+                &= \abs{a}^n \text{ (because $n \in \Z$)}\\
+                &= c^n\\
+                &< c^N \text{ (because $n > N$, and $0 < c < 1$)}\\
+                &= c^{\log_c{\e}}\\
+                &= \e
+            \end{align*}
+            Therefore $\lntinf (a^n) = 0$ for $-1 < a < 0$.
+            Therefore $\lntinf (a^n) = 0$ for $\abs{a} < 1$.
+
+\end{document}

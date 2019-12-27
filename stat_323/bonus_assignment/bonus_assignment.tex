@@ -1,0 +1,92 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+%Size of section header
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+%quattrocento font
+\usepackage[sfdefault]{quattrocento}
+
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+%For figures
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{23.01503pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan\\ 
+     UCID: 30063828}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+%Evaluate for calc
+\newcommand*\eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+%Absolute Value
+\newcommand\abs[1]{\left|#1\right|}
+
+%Title page
+\title{STAT 323 Bonus Assignment}
+\author{Instructor: Claudia Marie Mahler
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Summer 2019}
+
+\newcommand{\mx}{\overline{x}}
+\newcommand{\my}{\overline{y}}
+\newcommand{\mz}{\overline{z}}
+\newcommand{\mX}{\overline{X}}
+
+%For displaying R code
+\usepackage{listings}
+
+%For imported R plots
+\usepackage{tikz}
+
+\usepackage{amssymb}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\E}{\text{E}}
+\newcommand{\RE}{\text{RE}}
+\newcommand{\B}{\text{B}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\pv}{\text{p-value}}
+
+\begin{document}
+    \maketitle
+
+    \input{problems/1.tex}
+    
+    \newpage
+    %Figures
+    \begin{figure}[h]
+        \centering
+        \input{r/tikzDevice/1h.tex}
+        \caption{}
+        \label{fig:1h}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \input{r/tikzDevice/2g.tex}
+        \caption{}
+        \label{fig:2g}
+    \end{figure}
+
+    \newpage
+    \input{problems/2.tex}
+
+    \newpage
+    \input{problems/3.tex}
+
+\end{document}

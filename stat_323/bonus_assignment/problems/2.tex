@@ -1,0 +1,42 @@
+\section{Is academic salary related to the number of years since the highest degree earned? A
+    random sample of 52 tenure-track professors was taken. Each professor’s academic
+    yearly salary (in dollars) was recorded, as well as the time (in years) since their highest
+    degree had been earned (this data is called “Salary” and “Years” respectively in the
+    “Bonus Assignment Data” R file).}
+    \begin{multicols}{2}
+        \subsection{What is the value of the coefficient of determination? Interpret its meaning in this
+            context.}
+            $r^2 \approx 0.4554$
+
+        \subsection{Write down the least-squares estimate of the model predicting yearly salary from years
+            since highest degree earned.}
+            $s \approx 390.6y + 17500$
+
+        \subsection{Interpret the slope of this regression equation.}
+            For every 1 year increase the amount of time since highest degree earned, 
+            there will be a 390.6 dollar increase in salary.
+
+        \subsection{Interpret the y-intercept of this regression equation. Does the y-intercept have a
+            “practical” (meaningful) interpretation?}
+            It means the starting salary from highest degree earned is 17500 dollars.\\
+            Yes
+
+        \subsection{Predict the yearly salary for a tenure-track professor for whom there has been 29
+            years since his/her highest degree was earned.}
+            $s \approx 390.6451y + 17502.2574$\\
+            $= 390.6451(29) + 17502.2574$
+            $\approx 28830$
+
+        \subsection{A tenure-track professor for whom there has been 29 years since his/her highest
+            degree was earned is actually earning $\$22,450$ yearly. Compute this professor’s
+            residual.}
+            $\epsilon = s - \hat s \approx 22450 - (390.6451(29) + 17502.2574)$
+            $\approx -6381$
+            
+        \subsection{Examine the normality plot. What condition/assumption does the normality plot check for?
+            Does it appear to be met in this case?}
+            See figure \ref{fig:2g} on page \pageref{fig:2g}.\\
+            The normality plot checks if the data approximates a normal distro.
+            In this case, it does, as the dots are close enough to the line.
+            And the histogram is close enough to a bell curve.
+    \end{multicols}

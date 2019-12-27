@@ -1,0 +1,48 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+% \documentclass[10pt, letterpaper, titlepage]{report}
+
+% % Packages
+\input{../../packages.tex}
+\input{../../commands.tex}
+\input{../../setup.tex}
+
+% \usepackage{hyperref} % Doesn't like math in section titles
+% \newcommand{\smath}[2]{\texorpdfstring{#1}{#2}} % Use this to not break hyperref
+
+% \setcounter{secnumdepth}{-1} % Sets sectioning level for numbering 
+% % -1 part     1 section     3 subsubsection  5 subparagraph
+% %  0 chapter  2 subsection  4 paragraph
+
+% % Debug
+% % For \hbox too wide errors.
+% \overfullrule=.01cm
+
+% Header
+\geometry{margin = 1in}
+\pagestyle{fancy}
+\headheight = 23.01503pt
+\lhead{}
+\rhead{Yifeng Pan
+     \\Draft. Not for Submission. UCID: 30063828}
+
+% Title page
+\title{Math 355 Assignment 3}
+\author{Instructor: Dr Ryan Hamilton
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Fall 2019}
+
+\begin{document}
+    \maketitle
+
+    \input{problems/1.tex}
+    % \newpage
+    \input{problems/2.tex}
+    \input{problems/3.tex}
+    \input{problems/4.tex}
+    \input{problems/5.tex}
+    \input{problems/6.tex}
+    \input{problems/7.tex}
+    \input{problems/8.tex}
+
+\end{document}

@@ -1,0 +1,14 @@
+\section{Use the inverse function theorem to verify 
+    that $f(x) = \arcsin(x)$ is differentiable on $(-1,1)$ 
+    and that $arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$ for $x \in (-1,1)$.}
+
+    We know $g: (-\frac{\pi}{2},\frac{\pi}{2}) \to (-1,1), g(x) = \sin(x)$ is diff.,
+    and $g'(x) = \cos(x)$ is strictly positive for $(-\frac{\pi}{2},\frac{\pi}{2})$.
+    Therefore, by the Inverse Function Theorem:
+    \begin{enumerate}
+        \item $g^{-1}: (-1,1) \to (-\frac{\pi}{2},\frac{\pi}{2})$ exists. 
+            Let $f(x) = g^{-1}(x) = \arcsin(x)$.
+        \item $g^{-1}$ is differentiable.
+        \item $(g^{-1})'(\sin(x)) = \frac{1}{\cos(x)}$.
+    \end{enumerate}
+    Therefore $(g^{-1})'(x) = \frac{1}{\cos(\arcsin(x))} = \frac{1}{\sqrt{1-x^2}}$.

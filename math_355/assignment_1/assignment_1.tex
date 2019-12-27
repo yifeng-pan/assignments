@@ -1,0 +1,189 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+%% Packages
+
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{listings} % For displaying code
+\usepackage{url} % \url{}
+\usepackage{lplfitch} % Fitch-style proofs
+
+
+%% Debug
+% For \hbox too wide errors.
+% \overfullrule=.01cm
+
+
+%% Commands
+
+% Augmented Matrix
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Evaluate for calc
+\newcommand*\eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+% Absolute Value
+\newcommand\abs[1]{\left|#1\right|}
+
+% Floor function
+\newcommand\floor[1]{\lfloor #1 \rfloor}
+
+% Sets
+\newcommand\set[1]{\{ #1 \}}
+
+% Vector
+\newcommand\vectorvalue[1]{\langle #1 \rangle}
+
+% Limits
+\newcommand\limntoinfty[1]{\lim_{n \to \infty}(#1)}
+\newcommand\limntoninfty[1]{\lim_{n \to -\infty}(#1)}
+\newcommand\limxtoinfty[1]{\lim_{x \to \infty}(#1)}
+\newcommand\limxtoninfty[1]{\lim_{x \to -\infty}(#1)}
+
+% Set notations
+\usepackage{amssymb}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% For metavariables
+%\usepackage[cal=boondoxo]{mathalfa}
+\newcommand{\meta}[1]{\mathcal{#1}}
+
+% Put box around answer
+\newcommand{\ans}[1]{\fbox{#1}}
+
+%% Fonts
+
+% Quattrocento font
+\usepackage[sfdefault]{quattrocento}
+
+% Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+% Paragraph setup
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+% Size of section header
+\usepackage{sectsty}
+\sectionfont{\fontsize{11}{13}\selectfont}
+
+% Size of section header
+\usepackage{sectsty}
+\subsectionfont{\fontsize{10}{12}\selectfont}
+
+% Size of section header
+\usepackage{sectsty}
+\subsubsectionfont{\fontsize{10}{12}\selectfont}
+
+
+%% 
+
+% Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{23.01503pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan
+     \\ UCID: 30063828}
+
+% Title page
+\title{MATH 355 Assignment 1}
+\author{Instructor: Dr Ryan Hamilton
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Fall 2019}
+
+\begin{document}
+    \maketitle
+    
+    \input{problems/1.tex}
+
+    \newpage
+    \input{problems/2.tex}
+
+    %\newpage
+    \input{problems/3.tex}
+
+    \newpage
+    \input{problems/4.tex}
+
+    \newpage
+    \input{problems/5.tex}
+
+    % \newpage
+    \input{problems/6.tex}
+
+    % \newpage % This page will not be in the final submission.
+    % \lstinputlisting[language=Haskell
+    %     , basicstyle=\scriptsize]{6.hs}
+
+    %\newpage
+    \section*{Note}
+    \label{proof:IF}
+    Rationals numbers can be defined as equivalence classes of ordered pairs of integers 
+    $(p,q)$ such that $q \neq 0$, 
+    where the equivalence relation is defined so that 
+    $(p_1,q_1) \sim (p_2,q_2)$ IFF $p_1q_2 = p_2q_1$.
+    \footnote{From \url{https://en.wikipedia.org/wiki/Rational_number}.}
+
+    Definition: \\ 
+    Let $(p,q) \in \Q$. Let the \textbf{irreducible fraction} of $(p,q)$ be defined as 
+    $(a,b) \in Q$ such that $(a,b) \sim (p,q), b > 0,$ and $\forall (i,j) \in \Q$:
+    if $(a,b) \sim (i,j)$ then $\abs{a} \leq \abs{i}$
+    (or equivalently: if $(a,b) \sim (i,j)$ then $b \leq \abs{j}$).
+    
+
+    Proof that every element of $\Q$ has an irreducible fraction: \\ 
+    Let $(p,q) \in \Q$. 
+    Let $n = gcd(p,q)$ as $q \neq 0$.
+    If $q > 0$, then let $a = p/n, b = q/n$.
+    If $q < 0$, then let $a = -p/n, b = -q/n$.
+    It's obvious that $a$ and $b$ are both integers and $gcd(a,b) = 1$,
+    and $b > 0$ in both cases.
+    Now, $p (q / n) = (p / n) q$ and $p (- q / n) = (- p / n) q$.
+    Therefore $(a,b) \sim (p,q)$ in both cases.
+
+    Now suppose $(i,j) \in \Q$ such that $(a,b) \sim (i,j)$.
+    So $aj = bi$.
+    If $gcd(i,j) = 1$, then $gcd(i,a) = \abs{i}$ 
+    (this follows from the fact that $aj$ and $bi$ has the same prime factorization).
+    As $gcd(a,b) = 1$ by construction, so $gcd(i,a) = \abs{a}$.
+    Therefore $\abs{a} = \abs{i}$.
+    If $gcd(i,j) = n > 1$, 
+    then let $c = i/n, d = j/n$
+    where $gcd(c,d) = 1$.
+    So $and = bnc$, $ad = bc$.
+    From here we can prove that $\abs{a} = \abs{c}$
+    similarly from before.
+    \footnote{$gcd(a,b) = gcd(c,d) = 1$.}
+    Therefore
+    $\abs{a} = \abs{c} = \abs{i/n} < \abs{i}$.
+    Therefore $\abs{a} \leq \abs{i}$ in both cases.
+
+    Proof that the irreducible fraction is unique for each equivalence class: \\ 
+    Suppose $(a,b), (c,d)$ are irreducible fractions of any equivalence class of $\Q$.
+    So $(a,b) \sim (c,d)$.
+    Therefore $b \leq \abs{d}$.
+    Similarly we can prove that $d \leq \abs{b}$.
+    And because $b,d$ are both positive, 
+    $b = d$.
+    Now, we know $ad = cb$.
+    Therefore $a = c$.
+    Therefore the irreducible fraction is unique.
+    
+    % \newpage
+    \input{problems/7.tex}
+
+    \section*{Citations}
+    Proofread by Devin Kwok (UCID: 10016484).
+
+\end{document}

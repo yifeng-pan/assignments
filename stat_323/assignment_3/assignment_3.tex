@@ -1,0 +1,326 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+%Size of section header
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+%quattrocento font
+\usepackage[sfdefault]{quattrocento}
+
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{23.01503pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan
+     \\UCID: 30063828}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+%Evaluate for calc
+\newcommand*\eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+%Absolute Value
+\newcommand\abs[1]{\left|#1\right|}
+
+%Title page
+\title{STAT 323 Assignment 3}
+\author{Instructor: Claudia Marie Mahler
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Summer 2019}
+
+\newcommand{\mx}{\overline{x}}
+\newcommand{\my}{\overline{y}}
+\newcommand{\mz}{\overline{z}}
+\newcommand{\mX}{\overline{X}}
+
+%For displaying R code
+\usepackage{listings}
+
+\usepackage{amssymb}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\E}{\text{E}}
+\newcommand{\RE}{\text{RE}}
+\newcommand{\B}{\text{B}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\pv}{\text{p-value}}
+
+\begin{document}
+    \maketitle
+    %P1
+    \section{Let $X_1 , X_2 , \hdots , X_n$ be a random sample of size $n$ from a Poisson distribution with mean $\lambda$.
+        Consider $\hat\lambda_1 = \frac{X_1 + X_2}{2}$ and $\hat \lambda_2 = \mX$. Find $RE(\hat\lambda_1, \hat\lambda_2)$
+        for $n = 25$ and interpret the meaning of the $RE$ in the context of this question.}
+        \(
+            \B(\hat\lambda_1) = \E(\hat\lambda_1) -\lambda = \E(\frac{X_1 + X_2}{2}) - \lambda
+            = \frac{\E(X_1) + \E(X_2)}{2} - \lambda = 2\lambda /2 - \lambda = 0
+        \)\\
+        \(
+            \B(\hat\lambda_2) = \E(\hat\lambda_2) -\lambda = \E(\mX) - \lambda = \lambda - \lambda = 0
+        \)\\
+        So they are both unbised.\\
+        \(
+            \Var(\hat\lambda_1) = \Var(\frac{X_1 + X_2}{2}) = \Var(X_1 + X_2) / 4
+            = \frac{\Var{X_1} + \Var{X_2} + \Cov(X_1, X_2)}{4}
+            = \frac{\lambda + \lambda + 0}{4}
+            = \frac{\lambda}{2}
+        \)\\
+        \(
+            \Var(\hat\lambda_2) = \Var(\mX) = \Var(\sum_{i = 1}^n X_i) / n^2
+            = n\lambda / n^2 = \lambda / n
+        \)\\
+        \(
+            \RE(\hat\lambda_1, \hat\lambda_2) = \Var(\hat\lambda_1) / \Var(\hat\lambda_1) 
+            = \frac{n\lambda}{2\lambda} = n / 2
+        \)\\
+        For $n = 25$, $\RE(\hat\lambda_1, \hat\lambda_2) = 25/2$. This means $\hat\lambda_2$ is 
+        a much better estimator then $\hat\lambda_1$, by a factor of $25/2$ times.
+
+    %P2
+    \section[]{The Rayleigh density function is given by
+        \[
+            f(y) = 
+            \begin{cases}
+                (\frac{2y}{\theta})e^{\frac{-y^2}{\theta}} &\text{for } y > 0 \\
+                0 &\text{elsewhere}
+            \end{cases}
+        \]
+        The quantity $Y^2$ has an exponential distribution with mean $\theta$. If $Y_1,Y_2,\hdots,Y_n$ denotes a
+        random sample from a Rayleigh distribution, show that $W_n = \frac{1}{n}\sum_{i=1}^n Y_i^2$ is a consistent
+        estimator for $\theta$.}
+        Proof that $\lim_{n \to \infty}P(\abs{W_n - \theta} \leq \epsilon) = 1, \forall \epsilon \in \R^+$:\\
+        Let $Z = Y^2$ be the exponential distribution with mean $\theta$.
+        \begin{align*}
+            P(\abs{W_n - \theta} \leq \epsilon)
+            &= P(-\epsilon \leq W_n - \theta \leq \epsilon)
+            = P(\theta-\epsilon \leq W_n \leq \theta+\epsilon)\\
+            &= P(\theta-\epsilon \leq \frac{1}{n}\sum_{i=1}^n Y_i^2 \leq \theta+\epsilon)
+            = P(\theta-\epsilon \leq \mz \leq \theta+\epsilon)\\
+            &= P(\frac{\theta-\epsilon - \mu_{\mz}}{\sigma_{\mz}} 
+            \leq \frac{\mz - \mu_{\mz}}{\sigma_{\mz}} 
+            \leq \frac{\theta+\epsilon - \mu_{\mz}}{\sigma_{\mz}})
+            \text{ Using CLT, because $n \to \infty$.}\\
+            &= P(\frac{\theta-\epsilon - \theta}{\theta /\sqrt{n}} 
+            \leq \frac{\mz - \mu_{\mz}}{\sigma_{\mz}} 
+            \leq \frac{\theta+\epsilon - \theta}{\theta /\sqrt{n}})\\
+            &= P(\frac{-\epsilon \sqrt{n}}{\theta} 
+            \leq \frac{\mz - \mu_{\mz}}{\sigma_{\mz}} 
+            \leq \frac{\epsilon \sqrt{n}}{\theta})\\
+            &= pnorm(\frac{\epsilon \sqrt{n}}{\theta}) - pnorm(\frac{-\epsilon \sqrt{n}}{\theta}) 
+        \end{align*}
+        It's easy to see that 
+        $\lim_{n \to \infty}(pnorm(\frac{\epsilon \sqrt{n}}{\theta}) - pnorm(\frac{-\epsilon \sqrt{n}}{\theta})) = 1$.\\
+        As $\epsilon$ and $\theta$ are fixed finite positive values, and $\sqrt{n}$ is tends to $\infty$.\\
+        Therefore $W_n$ is a consistent estimator of $\theta$.
+
+    \newpage
+    %P3
+    \section[]{Let $X_1 , X_2 , \hdots , X_n$ denote a random sample of size $n$ from a Pareto distribution.
+        $X_{(1)} = \min(X_1 , X_2 , \hdots , X_n)$ has the cumulative distribution function given by:
+        \[
+            F_{(1)}(x) = 
+            \begin{cases}
+                1 - (\frac{\beta}{x})^{an} &\text{for } x > \beta \\
+                0 &\text{for } x \leq \beta
+            \end{cases}
+        \]
+        Show that $X_{(1)}$ is a consistent estimator of $\beta$ (hint: use the method described in Exercise $9.26$).}
+        Proof that $\lim_{n \to \infty}P(\abs{X_{(1)} - \beta} \leq \epsilon) = 1, \forall \epsilon \in \R^+$:
+        \begin{align*}
+            P(\abs{X_{(1)} - \beta} \leq \epsilon)
+            = P(-\epsilon \leq X_{(1)} - \beta \leq \epsilon)
+            &= P(\beta-\epsilon \leq X_{(1)}  \leq \beta+\epsilon)\\
+            &= F(\beta + \epsilon) - F(\beta - \epsilon)\\
+            &= (1 - (\frac{\beta}{\beta + \epsilon})^{an}) - F(\beta - \epsilon)\\
+            &= (1 - (\frac{\beta}{\beta + \epsilon})^{an}) - 0
+        \end{align*}
+        \begin{align*}
+            \lim_{n \to \infty}P(\abs{X_{(1)} - \beta} \leq \epsilon)
+            &= \lim_{n \to \infty}(1 - (\frac{\beta}{\beta + \epsilon})^{an})\\
+            &= 1 - \lim_{n \to \infty}(\frac{\beta}{\beta + \epsilon})^{an}\\
+            &= 1 - 0 \text{ assuming $a$ is positive, and we know $\epsilon$ is positive.}\\
+            &= 1
+        \end{align*}
+        Therefore $X_{(1)}$ is a consistent estimator of $\beta$.
+
+    %P4
+    \section[]{Consider the density function
+        \[
+            f(x) = 
+            \begin{cases}
+                e^{\beta - x} &\text{for } x > \beta\\
+                0 &\text{elsewhere}
+            \end{cases}
+        \]
+        Determine the method of moments estimator for $\beta$.}
+        First theoretical moment: \(
+            \E(X) = \int_\beta^\infty{xe^{\beta-x}}dx
+            = \beta+1
+        \)\\
+        First sample moment: $\mx$.\\
+        \fbox{$\hat\beta_{mm} = \mx - 1$}.
+
+    \newpage
+    %P5
+    \section[]{A certain type of electronic component has a lifetime $Y$ (in hours) with probability density function given by
+        \[
+            f(y\mid \theta) =
+            \begin{cases}
+                (\frac{1}{\theta^2})ye^{\frac{-y}{\theta}} &\text{for } y > 0\\
+                0 &\text{elsewhere}
+            \end{cases}
+        \]
+        That is, $Y$ has a gamma distribution with parameters $\alpha = 2$ and $\theta$. Let $\hat\theta$ denote the
+        MLE of $\theta$. Find the MLE of $\theta$ based on three such componets (tested independently) with lifetimes
+        of $120$, $130$, and $128$ hours of lifetime.}
+        \begin{align*}
+            L(\theta) 
+            &= \prod_{i=1}^n (\frac{1}{\theta^2})y_ie^{\frac{-y_i}{\theta}}\\
+            \ln(L(\theta)) 
+            &= \ln(\prod_{i=1}^n (\frac{1}{\theta^2})y_ie^{\frac{-y_i}{\theta}})
+            = \sum_{i=1}^n \ln((\frac{1}{\theta^2})y_ie^{\frac{-y_i}{\theta}})\\
+            &= \sum_{i=1}^n \ln(\frac{1}{\theta^2}) + \ln(y_ie^{\frac{-y_i}{\theta}})
+            = n\ln(\frac{1}{\theta^2}) + \sum_{i=1}^n \ln(y_ie^{\frac{-y_i}{\theta}})\\
+            &= n\ln(\frac{1}{\theta^2}) + \sum_{i=1}^n \ln(y_i) + \frac{-y_i}{\theta} \ln(e)
+            = n\ln(\frac{1}{\theta^2}) + \sum_{i=1}^n \ln(y_i) + \frac{-y_i}{\theta}\\
+            &= n\ln(\frac{1}{\theta^2}) + (\sum_{i=1}^n \ln(y_i) + \sum_{i=1}^n \frac{-y_i}{\theta})\\
+            &= n\ln(\frac{1}{\theta^2}) + (\sum_{i=1}^n \ln(y_i) + \frac{-1}{\theta}\sum_{i=1}^n (y_i))
+            = n\ln(\frac{1}{\theta^2}) + \frac{-n\my}{\theta} + \sum_{i=1}^n \ln(y_i)\\
+            \frac{\partial}{\partial\theta}(\ln(L(\theta)))
+            &=\frac{\partial}{\partial\theta}(n\ln(\frac{1}{\theta^2}) + \frac{-n\my}{\theta} + \sum_{i=1}^n \ln(y_i))\\
+            &=\frac{\partial}{\partial\theta}(n\ln(\frac{1}{\theta^2}))
+            +\frac{\partial}{\partial\theta}(\frac{-n\my}{\theta})
+            +\frac{\partial}{\partial\theta}(\sum_{i=1}^n \ln(y_i))
+            = \frac{-2n}{\theta} + \frac{n\my}{\theta^2}+0
+        \end{align*}
+        \begin{multicols}{2}
+            Solve for $\theta$ in $\frac{-2n}{\theta} + \frac{n\my}{\theta^2} = 0$:
+            \begin{align*}
+                \frac{2n}{\theta} &= \frac{n\my}{\theta^2}\\
+                \theta^2 2n &= n\my \theta\\
+                \theta &= \my / 2\\
+            \end{align*}
+            Second derivative test:
+            \begin{align*}
+                \frac{\partial^2}{\partial\theta^2}(\ln(L(\my / 2)))
+                &= \eval{\frac{\partial}{\partial\theta}(\frac{-2n}{\theta} + \frac{n\my}{\theta^2})}{}{\my /2}\\
+                = \eval{\frac{2n}{\theta^2} - \frac{2n\my}{\theta^3}}{}{\my /2}
+                &= \frac{2^3n}{\my^2} - \frac{2^4n\my}{\my^3}\\
+                = -\frac{2^3 n}{\my^2} 
+                &< 0 &\\ 
+                &\text{therefore $\hat\theta_{ML}$ is a maximum.}
+            \end{align*}
+        \end{multicols}
+        $\hat\theta_{ML} = \my /2 $. $\my = \text{mean}(120, 130, 128) = 126$. Therefore \fbox{$\hat\theta_{ML} = 126/2 = 63$}.
+
+    \newpage
+    %P6
+    \section[]{Let $Y_1,Y_2,\hdots,Y_n$ denote a random sample from the probability density function
+        \[
+            f(y\mid \theta) =
+            \begin{cases}
+                (\theta + 1)y^\theta &\text{for } 0<y<1, \theta > -1\\
+                0 &\text{elsewhere}
+            \end{cases}
+        \]
+        Find the MLE of $\theta$.}
+        \begin{align*}
+            L(\theta) 
+            &= \prod_{i=1}^n (\theta + 1)y_i^\theta\\
+            \ln(L(\theta)) 
+            &= \ln(\prod_{i=1}^n(\theta + 1)y_i^\theta)
+            = \sum_{i=1}^n \ln((\theta + 1)y_i^\theta)
+            = \sum_{i=1}^n \ln(\theta + 1) + \sum_{i=1}^n \ln(y_i^\theta)\\
+            &= n\ln(\theta + 1) + \theta \sum_{i=1}^n \ln(y_i)\\
+            \frac{\partial}{\partial\theta}(\ln(L(\theta))) 
+            &= \frac{\partial}{\partial\theta}(n\ln(\theta + 1) + \theta \sum_{i=1}^n \ln(y_i))
+            = \frac{n}{\theta+1} + \sum_{i=1}^n \ln(y_i)
+        \end{align*}
+        
+        Solve for $\theta$ in $\frac{n}{\theta+1} + \sum_{i=1}^n \ln(y_i) = 0$:
+        \begin{align*}
+            -\frac{n}{\theta+1} &= \sum_{i=1}^n \ln(y_i)\\
+            -\frac{n}{\sum_{i=1}^n \ln(y_i)} - 1&= \theta\\
+        \end{align*}
+
+        Second derivative test:
+        \begin{align*}
+            \frac{\partial^2}{\partial\theta^2}(\ln(L(-\frac{n}{\sum_{i=1}^n \ln(y_i)} - 1)))
+            &= \eval{\frac{\partial}{\partial\theta}(\frac{n}{\theta+1} + \sum_{i=1}^n \ln(y_i))}
+            {}{-\frac{n}{\sum_{i=1}^n \ln(y_i)} - 1}\\
+            &= \eval{\frac{-n}{(\theta+1)^2}}
+            {}{-\frac{n}{\sum_{i=1}^n \ln(y_i)} - 1}\\
+            &= \frac{-n}{(-\sum_{i=1}^n \ln(y_i) - 1 + 1)^2} < 0 \\
+            &\text{therefore $\hat\theta_{ML}$ is a maximum.}
+        \end{align*}
+
+        Therefore: 
+        \fbox{
+            $\hat\theta_{ML} = -(\frac{n}{\sum_{i=1}^n \ln(y_i)} + 1)$
+        }.
+        Note: $\ln(y)$ is always negative.
+
+    \newpage
+    %P7
+    \section{The hourly wages in a particular industry are normally distributed with a mean of $\$13.20$
+        and a standard deviation of $\$2.50$. A company in this industry employs $40$ workers, 
+        paying them an average of $\$12.20$ per hour. Can this company be accused of paying 
+        substandard wages? Use an $\alpha = 0.01$ level hypothesis test to test this claim.}
+        Yes they can, accusations don’t require proof. \\
+        Is there statistical evidence to back up the accusation?:\\
+        $n = 40, df = 39, \mu = 13.2, \sigma = 2.5, \mx = 12.2, \alpha = 0.01$\\
+        $z = \frac{\mx - \mu}{\sigma / \sqrt{n}} = \frac{12.2-13.2}{2.5 / \sqrt{40}}
+        = - \sqrt{40} / 2.5$\\
+        $H_0: \mu \geq 13.3, H_a: \mu < 13.3$.\\
+        Therefore $\pv =  pnorm(-sqrt(42) / 2.5) \approx 0.48\% < \alpha = 1\%$.\\
+        Therefore the null hypothesis is rejected. And there is evidence to suggest that
+        the company is paying wages below the industry mean.
+
+    %P8
+    \section{A study by Children’s Hospital in Boston indicates that about $67\%$ of American adults 
+        and about $15\%$ of American children and adolescents are overweight. Thirteen children 
+        in a random sample of $100$ were found to be overweight. Based on this sample, is there 
+        sufficient evidence to indicate that the percentage reported by Children’s Hospital is too 
+        high? Carry out an $\alpha=0.05$ level hypothesis test.}
+        $H_0: p \geq 0.15, H_a: p < 0.15, p = 0.15, \mx = 13/100, n = 100, \alpha = 0.05$\\
+        $\pv =  pbinom(13, size = 100, prob = 0.15) \approx 34.74\% > \alpha = 5\%$\\
+        Not sufficient evidence for alternative hypothesis.
+
+    %P9
+    \section{A single observation is randomly selected from an exponentially distributed population. 
+    The value of the observation is used to test the hypothesis that the mean of the 
+    population is $2$ against the alternative hypothesis that the mean is $5$. The null hypothesis 
+    is not rejected if and only if the observed value is less than $3$. Find the probabilities of 
+    committing Type I and Type II error and interpret these probabilities.}
+    Type 1: $P(R \ H_0 | H_0) = \alpha$.\\
+    $\alpha = P(\mx \geq 3 | \mu = 2) = 1 - pexp(3, 1/2) \approx 22.31\%$.\\
+    Type 2: $P(R \ H_a | H_a) = \beta$.\\
+    $\beta  = P(\mx < 3 | \mu = 5) = pexp(3, 1/5) \approx 45.12\%$.
+
+
+    %P10
+    \section{An Ipsos-Reid poll in $2005$ revealed that the mean amount of time internet-using 
+    Canadians spend online for personal reasons (that is, not work-related) was $12.7$ (hours) per 
+    week. A recent random sample of $n=85$ internet-using Canadians was taken. Each 
+    person was asked the following question: “In a typical week, approximately how many 
+    hours are you using the internet for personal reasons?” The data can be found in the file 
+    {\color{red} InternetUse.R} on D2L. Does this sample suggest that, on average, Canadians spend 
+    more time online now compared to $2005$? Conduct a hypothesis test using $\alpha=0.05$.}
+    $n = 85, \mx \approx 17.75, s \approx 16.32, \mu = 12.7, \alpha = 0.05$\\
+    $H_0: \mu \leq 12.7$\\
+    $H_a: \mu > 12.7$\\ 
+    $1 - \alpha$ confidence interval is $(\mx - qt(\alpha, n - 1) * s / \sqrt{n}, \infty)
+    \approx (14.80916, \infty)$.\\
+    Because $(14.80916, \infty)$ does not contain $12.7$, the null hyposis is rejected.
+
+\end{document}

@@ -1,0 +1,263 @@
+\section{}
+    \subsection{Find an explict injection $f: \Q \to \Z$}
+        Let $q \in \Q$.
+        Let $a \in \Z, b \in \N$ such that $(a,b) \in \Q$ is the irreducible fraction of $q$.
+            \footnote{I've been instructed to clarify the definition of "irreducible fraction", 
+            I've provided an attempt on page~\pageref{proof:IF}.}
+        Let $m = \max(\abs{a},b)$.
+        Let $n = 10$.
+        Let $d = \floor{\log_{n}(m)} + 1$ 
+        (where $\floor{x}$ means floor of $x$).
+        \[
+            f(q) = 
+            \begin{cases}
+                n^{2d} + n^d a + b & \text{ if $a \geq 0$} \\ 
+                -(n^{2d} + n^d \abs{a} + b) & \text{ if $a < 0$}
+            \end{cases}
+        \]
+        It's easy to see that $f(q) \in\Z$, 
+        as $n, a, b, d \in \Z, d \geq 1$.
+        
+        Let $f^{-1}: \{f(x) | x \in \Q \} \to \Q$.
+        Let $z \in \set{f(x) | x \in \Q}$.
+        Let $n = 10$.
+        Let $d' = \floor{\log_n \abs{z}} / 2$.
+        Let $z' = \abs{z} \mod n^{2d'}$.
+        $$
+            \text{Let } a' = 
+            \begin{cases}
+                \floor{z' n^{-d'}} &\text{ if $z \geq 0$} \\ 
+                -\floor{z' n^{-d'}} &\text{ if $z < 0$}
+            \end{cases}
+        $$
+        Let $b' = z' \mod n^{d'}$.
+        \[
+            f^{-1}(z) = (a',b')
+        \]
+        Where $(a',b') \in \Q$.
+        Because there is a function from the image of $f$ to the domain of $f$,
+        $f$ is injective.
+
+        Proof that $f^{-1}(f(q)) = q, \forall q \in \Q$: \\ 
+        The following is for the non-negative case, the negative case can be proven similarly. \\ 
+        $f^{-1}(f(q)) = f^{-1}(n^{2d} + n^d a + b)$.
+        In this case $d' = \floor{\log_n \abs{n^{2d} + n^d a + b}} / 2 = 2d / 2 = d$.
+        \footnote{$a < n^d, b < n^d$ by construction, as $d = \floor{\log_n(\max(\abs{a}, b))} + 1$.}
+        And $z' = (n^{2d} + n^d a + b) \mod n^{2d} = n^d a + b$.
+        Then $a' = \floor{(n^d a + b) n^{-d'}} = \floor{a + b n^{-d'}} = a$.
+        And $b' = (n^d a + b) \mod n^{d'} = b$.
+        So $f^{-1}(f(q)) = f^{-1}(n^{2d} + n^d a + b) = (a', b') = (a, b)$,
+        which by construction of $a,b$ is in the same equivelence class as $q$.
+
+        In fact, $n$ can be any integer $\geq 2$.
+        \begin{multicols}{2}
+            For example: For $n = 10$: \\ 
+                $f(-137/100003) = -1000137100003$. \\ 
+                $f^{-1}(-1000137100003) = -137/100003$.
+    
+            For $n = 2$: \\ 
+                $f(-137/100003) = -17197926051$. \\ 
+                $f^{-1}(-17197926051) = -137/100003$.
+    
+            % For $n = 100003$: \\ 
+            %     $f(137/100003) = 100012001910093101317$ \\ 
+            %     $f^{-1}(100012001910093101317) = 137/100003$.
+    
+            % For $n = 56748$: \\
+            %     $f(-6257 / 241) = -3575407981$. \\ 
+            %     $f^{-1}(-3575407981) = -6257 / 241$.
+        \end{multicols}
+
+    \newpage
+    \subsection{Find an explict injection $g: \Q \times \Q \to \Z$}
+        Let $q_1, q_2 \in \Q$.
+        Let $a_1, a_2 \in \Z$ and $b_1, b_2 \in \N$ such that 
+        $(a_1, b_1), (a_2,b_2) \in \Q$ are the irreducible fractions of 
+        $q_1$ and $q_2$ respectively.
+        Let $a_1' = \abs{a_1}$.
+        Let $a_2' = \abs{a_2}$.
+        For $i \in \set{1,2}$, let
+        \[
+            s_i = 
+            \begin{cases}
+                0 & \text{ if $a_i \geq 0$} \\ 
+                1 & \text{ if $a_i < 0$} \\ 
+            \end{cases}
+        \]
+        Let 
+        \[
+            g(q_1, q_2) =
+                (2^{a_1'}) (3^{a_2'}) (5^{b_1}) (7^{b_2}) (11^{s_1}) (13^{s_2})
+        \]
+        It's easy to see that $g(q) \in\Z$.
+
+        Proof that $g$ is injective: \\ 
+        Suppose $g(q_1,q_2) = g(\bar q_1, \bar q_2)$.
+        This means: 
+        \begin{align*}
+            &(2^{a_1'}) (3^{a_2'}) (5^{b_1}) (7^{b_2}) (11^{s_1}) (13^{s_2})\\
+            = &(2^{\bar a_1'}) (3^{\bar a_2'}) (5^{\bar b_1}) (7^{\bar b_2}) (11^{\bar s_1}) (13^{\bar s_2})
+        \end{align*}
+        Due to the unique-prime-factorization theorem, $a_1' = \bar a_1', a_2' = \bar a_2'$ and so on.
+        From the construction of $a_i'$ and $s_i$ in $g$ we know: 
+        \[
+            a_i = 
+            \begin{cases}
+                a_i' & \text{ if $s_i = 0$} \\ 
+                -a_i' & \text{ if $s_i = 1$} \\ 
+            \end{cases}
+        \]
+        Because $a_1' = \bar a_1'$ and $s_1 = \bar s_1$,
+        so $a_1 = \bar a_1$.
+        And similarly $a_2 = \bar a_2$.
+        Therefore: 
+        \[
+            [q_1,q_2]
+            = [(a_1, b_1), (a_2, b_2)]
+            = [(\bar a_1, \bar b_1), (\bar a_2, \bar b_2)]
+            = [\bar q_1, \bar q_2]
+        \]
+
+        
+        % Let $g^{-1}: \{g(x) | x \in \Q \} \to \Q$. \\ 
+        % Let $z,\in \Z, a_1, a_2, b_1, b_2 \in \N, s_1, s_2 \in \set{0,1}$, such that
+        % $z = (2^{a_1}) (3^{a_2}) (5^{b_1}) (7^{b_2}) (11^{s_1}) (13^{s_2})$. 
+        % We can say this, as the image of $g$ 
+        % can only contain numbers with the first $6$ primes as prime factors,
+        % And the domain for the exponents matches accordingly to the construction of $g$ as well.
+        % Now for $i \in \set{0,1}$, let 
+        % \[
+        %     a_i' = 
+        %     \begin{cases}
+        %         a_i & \text{ if $s_i = 0$} \\ 
+        %         -a_i & \text{ if $s_i = 1$} \\ 
+        %     \end{cases}
+        % \]
+        % Let
+        % \[
+        %     g^{-1}(z) = \vectorvalue{(a_1', b_1), (a_2', b_2)}
+        % \]
+    
+    % \newpage
+    \subsection{Find an explict injection $h: \Z \times \Z \times \Z \to \Z \times \Z$}
+        The idea of this function is similar to (6a): 
+        "Allocate memory" with a leading digit, then concatenate some number using some base ($n$).
+        It this case, an additional digit is allocated per number, to indicate the signs.
+        And the third input is used to generate $n$ (the key),
+        and the output is the coded message and the key. 
+
+        Let $z_1, z_2, z_3 \in \Z$.
+        For $j \in \set{1,2,3}$, 
+        let $z'_j = \abs{z_j}$.
+        Let \[
+            s_j = 
+            \begin{cases}
+                0 & \text{ if $z_j \geq 0$} \\ 
+                n^{d - 1} & \text{ if $z_j < 0$} \\ 
+            \end{cases}
+        \]
+        Where $m = \max(z'_1, z'_2, z'_3)$
+        , $n = z'_3 + 2$
+        , $d = \floor{\log_{n}(m)} + 2$.
+        \\
+        Let $i = n^d$.
+        Let 
+        \[
+            h(z_1, z_2, z_3) =
+                [
+                    i^3 + i^2 (z'_1 + s_1) + i^1 (z'_2 + s_2) + i^0 (z'_3 + s_3)
+                    , n
+                ]
+        \]
+        Where $h(z_1, z_2, z_3) \in \Z \times \Z$.
+
+        Let $h^{-1}: \{h(a,b,c) | a,b,c \in \Z \} \to \Z \times \Z \times \Z$.
+        Let $(z, n) \in \set{h(a,b,c) | a,b,c \in \Z}$, 
+        where $n \geq 2$.
+        Let $d = \floor{\log_n(z)} / 3$.
+        Let $i \in \set{1,2,3}$,
+        \[
+            t_i = 
+            \begin{cases}
+                z & \text{ if $i = 3$} \\ 
+                \floor{n^{-d} t_{i+1}} & \text{ otherwise} \\ 
+            \end{cases}
+        \]
+        $a_i = t_i \mod n^{d - 1}$,
+        and $s_i = t_i \mod n^{d}$.
+        Let
+        \[
+            a_i' = 
+            \begin{cases}
+                a_i & \text{ if $a_i = s_i$} \\ 
+                -a_i & \text{ otherwise} \\ 
+            \end{cases}
+        \]
+        Let 
+        \[
+            h^{-1}(z,n) = (a_1', a_2', a_3')
+        \]
+
+        \newpage
+        Proof that $h^{-1}(h(z_1,z_2,z_3)) = (z_1,z_2,z_3), \forall z_1,z_2,z_3 \in \Z$:\\ 
+        $h^{-1}(h(z_1,z_2,z_3)) = h^{-1}(
+            i^3 + i^2 (z'_1 + s_1) + i^1 (z'_2 + s_2) + i^0 (z'_3 + s_3)
+            , n)
+            $.
+        In this case, $d' = \floor{\log_n(i^3 + i^2 (z'_1 + s_1) + i^1 (z'_2 + s_2) + i^0 (z'_3 + s_3))} / 3
+            = 3d / 3 = d$.
+        \footnote{$\forall j \in \set{1,2,3}, (z'_j + s_j) < i = n^d$ by construction in $h$.}
+        Now, substituting these values into the functions in $h^{-1}$ we get:
+        \[
+            \begin{cases}
+                t_3 = i^3 + i^2 (z'_1 + s_1) + i^1 (z'_2 + s_2) + i^0 (z'_3 + s_3) \\ 
+                t_2 = i^2 + i^1 (z'_1 + s_1) + i^0 (z'_2 + s_2)  \\ 
+                t_1 = i^1 + i^0 (z'_1 + s_1) \\ 
+            \end{cases}
+            \begin{cases}
+                s_3' = i^0 (z'_3 + s_3) \\ 
+                s_2' = z'_2 + s_2 \\ 
+                s_1' = z'_1 + s_1 \\ 
+            \end{cases}
+            \begin{cases}
+                a_3 = z'_3 \\ 
+                a_2 = z'_2 \\ 
+                a_1 = z'_1 \\ 
+            \end{cases}
+        \]
+        From the construction of $z_j'$ and $s_j$ in $h$ we know: 
+        \[
+            z_{k} = 
+            \begin{cases}
+                z_{k}' & \text{ if $s_k = 0$ }\\ 
+                -z_{k}' & \text{ if $s_k = 1$} \\ 
+            \end{cases}
+        \]
+        Where $k = \set{1,2,3}$.
+        And we know from $h^{-1}$ that:
+        \[
+            a_k' = 
+            \begin{cases}
+                a_k & \text{ if $a_k = s_k'$} \\ 
+                -a_k & \text{ otherwise} \\ 
+            \end{cases}
+        \]
+        Because $a_k = z_k'$ and $(a_k = s_k') \liff (z'_k = z'_k + s_k) \liff (s_k = 0)$,
+        \footnote{And "otherwise" IFF $s_k = 1$, as theres only two cases.}
+        so $z_k = a'_k$.
+        Therefore \(
+            h^{-1}(h(z_1,z_2,z_3)) 
+            = h^{-1}(
+                i^3 + i^2 (z'_1 + s_1) + i^1 (z'_2 + s_2) + i^0 (z'_3 + s_3)
+                , n)
+            = (a'_1, a'_2, a'_3)
+            = (z_1,z_2,z_3)
+        \)
+        
+        In fact, in this case, $n$ can be any function of $(z_1,z_2,z_3)$ where the output is an integer $\geq 2$.
+        
+        For example: For $n =  ((137 \times z_3) \mod 100003) + 2$: 
+        \footnote{Using a Haskell script I wrote: \url{https://pastebin.com/nTEV7QvR}}
+        \\ 
+        $h(-631278, 432132, -1238790432) = (7110947828490755065940635335756984273816, 2094)$. \\ 
+        $h^{-1}(7110947828490755065940635335756984273816, 2094) = (-631278, 432132, -1238790432)$.

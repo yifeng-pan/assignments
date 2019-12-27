@@ -1,0 +1,118 @@
+\section{Suppose that $f,g$ are bounded and integrable functions on $[a,b]$.}
+    \subsection{Show that $f^2$ is integrable on $[a,b]$.}
+        (6a) is a corollary of (6b).
+
+    \subsection{Show that $fg$ is integrable on $[a,b]$.}
+        Draft 1:
+
+        Let $\e > 0$.
+
+        We split the interval $[a,b]$ into $4$ parts, $[a,b]= A \union B \union C \union D$, where
+        \begin{align*}
+            A&=\set{x | x \in [a,b], f(x) \geq 0, g(x) \geq 0}\\
+            B&=\set{x | x \in [a,b], f(x) \geq 0, g(x) < 0}\\
+            C&=\set{x | x \in [a,b], f(x) < 0, g(x) \geq 0}\\
+            D&=\set{x | x \in [a,b], f(x) < 0, g(x) < 0}
+        \end{align*}
+
+        Case $A$:
+
+        Let $F = \int_A f, G = \int_A g$,
+        where $F$ and $G$ are both non-negative from construction of $A$.
+        \\
+        Let $\delta = \min\set{\frac{\e}{2(F+G+1)}, \frac{\sqrt{\e}}{2}}$.
+        We know $\lis$ partition $P$ on $A$
+        \footnote{
+            $A$ might not be an interval, 
+            but the definition of partition can be extended in this case
+            as $A \subseteq [a,b]$.
+            I can't prove this.
+        }
+        so that 
+        $U(f,P) - L(f,P) < \delta$, and
+        $U(g,P) - L(g,P) < \delta$.
+        So, 
+        \begin{align*}
+            U(fg,P) 
+            &= \sup\set{f(x)g(x) | x \in [x_{i-1}, x_i]}\\
+            &= \sup\set{f(x) | x \in [x_{i-1}, x_i]}
+                \sup\set{g(x) | x \in [x_{i-1}, x_i]}\\
+            &= U(f,P)U(g,P)
+        \end{align*}
+        \begin{align*}
+            L(fg,P) 
+            &= \inf\set{f(x)g(x) | x \in [x_{i-1}, x_i]}\\
+            &=\inf\set{f(x) | x \in [x_{i-1}, x_i]}
+                \inf\set{g(x) | x \in [x_{i-1}, x_i]}\\
+            &= L(f,P)L(g,P)
+        \end{align*}
+        \begin{align*}
+            U(fg,P) 
+            &= U(f,P)U(g,P) \\
+            &< (L(f,P) + \delta) (L(g,P) + \delta) \\
+            &= L(f,P)L(g,P) + (L(f,P)+L(g,P))\delta + \delta^2 \\
+            &= L(fg,P) + (L(f,P)+L(g,P))\delta + \delta^2
+        \end{align*}
+        \begin{align*}
+            U(fg,P) - L(fg,P)
+            &< (L(f,P)+L(g,P))\delta + \delta^2\\
+            &\leq (F + G)\delta + \delta^2\\
+            &\leq (F + G)\frac{\e}{2(F+G+1)} + \frac{\sqrt{\e}^2}{2^2}\\
+            &< \frac{\e}{2} + \frac{\e}{4} < \e
+        \end{align*}
+
+
+
+        Case $B$:
+
+        Let $F = \int_B f, G = \int_B g$,
+        where $F \geq 0$ and $G < 0$ from construction of $B$.
+        \\
+        Let $\delta = \min\set{\frac{\e}{2\abs{G}}, \frac{\sqrt{\e}}{2}}$.
+        We know $\lis$ partition $P$ on $B$ so that 
+        $U(f,P) - L(f,P) < \delta$, and
+        $U(g,P) - L(g,P) < \delta$.
+        So,
+        \begin{align*}
+            0 \geq U(fg,P) 
+            &= \sup\set{f(x)g(x) | x \in [x_{i-1}, x_i]}\\
+            &= \inf\set{f(x) | x \in [x_{i-1}, x_i]}
+                \sup\set{g(x) | x \in [x_{i-1}, x_i]}\\
+            &= L(f,P)U(g,P)
+        \end{align*}
+        \begin{align*}
+            0 \geq L(fg,P) 
+            &= \inf\set{f(x)g(x) | x \in [x_{i-1}, x_i]}\\
+            &=\sup\set{f(x) | x \in [x_{i-1}, x_i]}
+                \inf\set{g(x) | x \in [x_{i-1}, x_i]}\\
+            &= U(f,P)L(g,P)
+        \end{align*}
+        \begin{align*}
+            0 \geq U(fg,P) 
+            &= L(f,P)U(g,P) \\
+            &< (U(f,P) - \delta) U(g,P) \\
+            &< (U(f,P) - \delta) L(g,P) \\
+            &= U(f,P)L(g,P) - \delta L(g,P) \\
+            &= L(fg,P) - \delta L(g,P) 
+        \end{align*}
+        \begin{align*}
+            U(fg,P) - L(fg,P)
+            &< -\delta L(g,P) \\
+            &= \delta \abs{L(g,P)} \\
+            &< \delta \abs{U(g,P) - \delta} \\
+            &\leq \delta \abs{G - \delta} \\
+            &= \abs{G\delta - \delta^2} \\
+            % &\leq \abs{G\delta} + \abs{\delta^2} \\
+            &\leq \abs{G\delta} + \delta^2 \\
+            &< \abs{G\frac{\e}{2\abs{G}}} + \frac{\sqrt{\e}^2}{2^2}\\
+            &< \e
+        \end{align*}
+
+        Case $C,D$ are simular.
+
+    \subsection{Show that $\max(f,g)(x) := \max\set{f(x),g(x)}$
+        and $\min(f,g)(x) := \min\set{f(x),g(x)}$
+        are both integrable on $[a,b]$.}
+
+        TODO. 
+        Simular to (6b), split $[a,b]$ into two sets.

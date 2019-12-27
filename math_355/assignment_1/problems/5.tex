@@ -1,0 +1,22 @@
+\section{}
+    \subsection{Suppose $x < y$ are real numbers. Show that there are infinitely many distinct
+        rational numbers $q$ such that $x < q < y$.}
+        Let $n \in N$ such that $1/n < (y - x) / 3$ where $(y - x) / 3 \in \R$
+        (corollary of the Archimedean Property).
+        So $(yn - xn) > 3$.
+        Therefore there are atleast two consecutive integers $i, i+1$ between $yn$ and $xn$.
+        So we have $x < i/n < (i+1) / n < y$, where $i/n, (i+1)/n \in \Q$.
+        Now, let $A = \set{\frac{i}{n} + \frac{1}{n + k} | k \in \N}$.
+        It's easy to see that every element of $A$ is between $i/n$ and $(i + 1)/n$.
+        Therefore $A$ is an infinite set of rationals between $x$ and $y$.
+
+    \subsection{Suppose $x < y$ are real numbers. Show that there are infinitely many distinct
+        irrational numbers $w$ such that $x < w < y$. Are there uncountably many?}
+        Let $x, y \in \R$, such that $x < y$.
+        Let $R' \subseteq \R$ be a set containing all reals between $x$ and $y$.
+        Let $Q' \subseteq \Q$ be a set containing all rationals between $x$ and $y$.
+        We know that $R'$ is uncountably infinite.
+        And we know that $Q'$ is countable.
+        Let $S = R' \setminus Q'$ be a set containing all of the irrationals between $x$ and $y$.
+        Given that a uncountably infinite set minus a countable set is still uncoutably infinite,
+        there are an uncountably infinite number of irrationals between $x$ and $y$.

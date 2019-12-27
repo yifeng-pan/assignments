@@ -1,0 +1,338 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+%Size of section header
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+%quattrocento font
+\usepackage[sfdefault]{quattrocento}
+
+\usepackage[nosfdefault]{comicneue}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+%Fitch-style proofs
+\usepackage{lplfitch}
+\setlength{\fitchprfwidth}{5.6cm}
+\setlength{\fitchctxwidth}{6.1cm}
+\newcommand*\lx[1]{{\bf X:} #1}
+
+%DEBUG
+%Getting \hbox too wide errors.
+%check https://en.wikibooks.org/wiki/LaTeX/Errors_and_Warnings
+%\overfullrule=.01cm
+%Problem with the lplfitch package
+%It doesnt like nested proofs
+
+% For all metavariables
+\usepackage[cal=boondoxo]{mathalfa}
+\newcommand*{\meta}[1]{\ensuremath{\mathcal{#1}}}
+
+%Header
+\usepackage[margin=0.75in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{22.54448pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{UCID: 30063828}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+%Title page
+\title{PHIL 377 Assignment 3}
+\author{Instructor: Gillman Glyn Payette
+    \\UCID: 30063828}
+\date{Summer 2019}
+
+\begin{document}
+    \maketitle
+    
+    %P1
+    \section{For each item below, provide a Fitch-style proof of the claim.}
+        \subsection{$\vdash \lall x A(x)\liff \lall x(A(x)\lor A(x))$}
+            \begin{center}
+                \fitchctx{
+                    \subproof{
+                        \pline[1. ]{\lall x A(x)}
+                    }{
+                        \pline[2. ]{A(c)}[\lalle{1}] \\
+                        \pline[3. ]{A(c) \lor A(c)}[\lori{2}] \\
+                        \pline[4. ]{\lall x (A(x) \lor A(x))}[\lalli{3}]
+                    }
+        
+                    \subproof{
+                        \pline[5. ]{\lall x (A(x) \lor A(x))}
+                    }{
+                        \pline[6. ]{A(c) \lor A(c)}[\lalle{5}] \\
+                        \subproof{
+                            \pline[7. ]{A(c)}
+                        }{
+                            \pline[8. ]{A(c) \land A(c)}[\landi{7}, 7]\\
+                            \pline[9. ]{A(c)}[\lande{8}]
+                        }
+                        \pline[10. ]{A(c)}[\lore{6}{7--9}{7--9}]\\
+                        \pline[11. ]{\lall x A(x)}[\lalli{10}]
+                    }
+                    \pline[12. ]{\lall x A(x) \liff \lall x (A(x) \lor A(x))}[\liffi{1--4}{5--11}]
+                }
+            \end{center}
+    
+        \subsection{$\vdash \lall x\lall y (x=y \lif (G(x,y)\liff G(y,x)))$}
+            \begin{center}
+                \fitchctx{
+                    \subproof{
+                        \pline[1. ]{i = j}
+                    }{
+                        \subproof{
+                            \pline[2. ]{G(i,j)}
+                        }{
+                            \pline[3. ]{G(i,i)}[\eqe{1}{2}]\\
+                            \pline[4. ]{G(j,i)}[\eqe{1}{3}]
+                        }
+                        \subproof{
+                            \pline[5. ]{G(j,i)}
+                        }{
+                            \pline[6. ]{G(j,j)}[\eqe{1}{5}]\\
+                            \pline[7. ]{G(i,j)}[\eqe{1}{6}]
+                        }
+                        \pline[8. ]{G(i,j) \liff G(j,i)}[\liffi{2--4}{5--7}]
+                    }
+                    \pline[9. ]{i = j \lif (G(i,j) \liff G(j,i))}[\lifi{1--8}]\\
+                    \pline[10. ]{\lall y(i = y \lif (G(i,y) \liff G(y,i)))}[\lalli{9}]\\
+                    \pline[11. ]{\lall x \lall y(x = y \lif (G(x,y) \liff G(y,x)))}[\lalli{10}]
+                }
+            \end{center}
+        
+        \begin{multicols}{2}
+            \subsection{$\lall x (F(x)\lor G(x))$\\
+                $\vdash \lis x \neg F(x)\lif \lis x G(x)$}
+                \fitchprf{
+                    \pline[1. ]{\lall x (F(x)\lor G(x))}
+                }{
+                    \subproof{
+                        \pline[2. ]{\lis x \lnot F(x)}
+                    }{
+                        \subproof{
+                            \pline[3. ]{\lnot F(c)}
+                        }{
+                            \pline[4. ]{F(c) \lor G(c)}[\lalle{1}]\\
+                            \subproof{
+                                \pline[5. ]{F(c)}
+                            }{
+                                \pline[6. ]{\lfalse}[\lnote{3,5}]\\
+                                \pline[7. ]{G(c)}[\lx{6}]
+                            }
+                            \subproof{
+                                \pline[8. ]{G(c)}
+                            }{
+                                \pline[9. ]{G(c) \land G(c)}[\landi{8}, 8]\\
+                                \pline[10. ]{G(c)}[\lande{9}]
+                            }
+                            \pline[11. ]{G(c)}[\lore{4}{5--7}{8--10}]\\
+                            \pline[12. ]{\lis x G(x)}[\lexii{11}]
+                        }
+                        \pline[13. ]{\lis x G(x)}[\lexie{3}{4--12}]
+                    }
+                    \pline[14. ]{\lis x \lnot F(x) \lif \lis x G(x)}[\lifi{2--13}]
+                }
+                
+            \subsection{$\lall z[G(z)\lif \lall y (K(y)\lif H(z,y))], $\\
+                $(K(i)\land G(j))\land i=j$\\
+                $\vdash H(i,i)$}
+                \fitchprf{
+                    \pline[1. ]{\lall z[G(z)\lif \lall y (K(y)\lif H(z,y))]}\\
+                    \pline[2. ]{(K(i)\land G(j))\land i=j}
+                }{
+                    \pline[3. ]{G(j)\lif \lall y (K(y)\lif H(j,y))}[\lalle{1}]\\
+                    \pline[4. ]{K(i) \land G(j)}[\lande{2}]\\
+                    \pline[5. ]{G(j)}[\lande{4}]\\
+                    \pline[6. ]{\lall y (K(y)\lif H(j,y))}[\life{3}{5}]\\
+                    \pline[7. ]{K(i)\lif H(j,i)}[\lalle{6}]\\
+                    \pline[8. ]{K(i)}[\lande{4}]\\
+                    \pline[9. ]{H(j,i)}[\life{7}{8}]\\
+                    \pline[10. ]{i = j}[\lande{2}]\\
+                    \pline[11. ]{H(i,i)}{\eqe{9}{10}}
+                }
+        \end{multicols}
+
+    \newpage
+    %P2
+    \section[]{For each of the following claims, 
+        \begin{itemize}
+            \item[i)] If it is true, provide a Fitch-style proof of the claim,
+            \item[ii)] If it is not true, provide an interpretation that is a counterexample to the claim.
+        \end{itemize}
+    }
+        \begin{multicols}{2}
+            \subsection{$\lis x F(x,a), $\\
+                $\lall y (y=a\lif y=b)$\\
+                $\vdash \lis y F(y,y)$}
+                False. Proof by example:\\
+                Let the domain comprise of the letters $a, b$ and $c$.\\
+                Suppose $F(c,a)$ and $a = b$ are true.\\
+                Then $\lis x F(x,a)$ is true.\\
+                And $\lall y (y=a\lif y=b)$ is also true.\\
+                However $\lis y F(y,y)$ is false.\\
+                Therefore $\lis x F(x,a)$ and $\lall y (y=a\lif y=b)$ 
+                \\cannot prove $\lis y F(y,y)$.
+    
+            \subsection{$L(a)\liff \lall x L(x)$\\
+                $\dashv\vdash \lis x L(x)$}
+                False. Proof by example:\\
+                Let the domain comprise of the letters $a$ and $b$.\\
+                Suppose $L(a)$ and $\lnot L(b)$ are true.\\
+                Then $\lis x L(x)$ is true.\\
+                But, $L(a)\liff \lall x L(x)$ is false,\\
+                because $L(a)$ is true while $\lall x L(x)$ is false.\\
+                Therefore $\lis x L(x)$ cannot prove $L(a)\liff \lall x L(x)$.\\
+                Therefore they are not provably equivalent.
+    
+            \subsection{$\lall x (F(x)\lif \lis y(G(y,x) \land \neg G(x,y))),$\\
+                $\lis x F(x)$\\
+                $\vdash \lis x\lis y \neg x=y$}
+                \begin{center}
+                    True.\\
+                    \fitchprf{
+                        \pline[1. ]{\lall x (F(x)\lif \lis y(G(y,x) \land \neg G(x,y)))}\\
+                        \pline[2. ]{\lis x F(x)}
+                    }{
+                        \subproof{
+                            \pline[3. ]{F(c)}
+                        }{
+                            \pline[4. ]{F(c)\lif \lis y(G(y,c) \land \neg G(c,y))}[\lalle{1}]\\
+                            \pline[5. ]{\lis y(G(y,c) \land \neg G(c,y))}[\life{4}{3}]\\
+                            \subproof{
+                                \pline[6. ]{G(d,c) \land \neg G(c,d)}
+                            }{
+                                \subproof{
+                                    \pline[7. ]{c = d}
+                                }{
+                                    \pline[8. ]{G(d,c)}[\lande{6}]\\
+                                    \pline[9. ]{G(c,c)}[\eqe{7}{8}]\\
+                                    \pline[10. ]{\lnot G(c,d)}[\lande{6}]\\
+                                    \pline[11. ]{\lnot G(c,c)}[\eqe{7}{10}]\\
+                                    \pline[12. ]{\lfalse}[\lnote{9}, {11}]
+                                }
+                                \pline[13. ]{\lnot c=d}[\lnoti{7--12}]\\
+                                \pline[14. ]{\lis y \lnot c = y}[\lexii{13}]\\
+                                \pline[15. ]{\lis x \lis y \lnot x = y}[\lexii{14}]
+                            }
+                            \pline[16. ]{\lis x \lis y \lnot x = y}[\lexie{5}{6--15}]
+                        }
+                        \pline[17. ]{\lis x \lis y \lnot x = y}[\lexie{5}{3--16}]
+                    }
+                \end{center}
+    
+            \subsection{$\lall x F(x,a)\liff \neg \lall x \neg G(x,b),$\\
+                $\lis x(F(x,a)\land \neg G(x,b))$\\
+                $\vdash \bot$}
+                False. Proof by example:\\
+                Let the domain comprise of the letters $i, j, a$ and $b$.\\
+                Suppose $F(i,a), \lnot F(j, a)$ and $\lnot G(i, b)$ are true. \\
+                Then $\lall x F(x,a)\liff \neg \lall x \neg G(x,b)$ is vacuously true, \\
+                as both $\lall x F(x,a)$ and $\neg \lall x \neg G(x,b)$ are false.\\
+                Now, $\lis x(F(x,a)\land \neg G(x,b))$ is also true.\\
+                Therefore $\lall x F(x,a)\liff \neg \lall x \neg G(x,b)$ and \\
+                    $\lis x(F(x,a)\land \neg G(x,b))$ cannot prove a contradiction.
+    
+            \subsection{$\lall y (H(y)\land (J(y,y)\land M(y)))$\\
+                $\vdash \lis x J(x,b)\land \lall x M(x)$}
+                True.\\
+                \fitchprf{
+                    \pline[1. ]{\lall y [H(y) \land (J(y,y) \land M(y))]}
+                }{
+                    \pline[2. ]{H(b) \land (J(b,b) \land M(b))}[\lalle{1}]\\
+                    \pline[3. ]{J(b,b) \land M(b)}[\lande{2}]\\
+                    \pline[4. ]{J(b,b)}[\lande{3}]\\
+                    \pline[5. ]{\lis x J(x,b)}[\lexii{4}]\\
+                    \pline[6. ]{M(b)}[\lande{3}]\\
+                    \pline[7. ]{\lall x M(x)}[\lalli{6}]\\
+                    \pline[8. ]{\lis x J(x,b)\land \lall x M(x)}[\landi{5}, 7]
+                }
+        \end{multicols}
+
+    \newpage
+    %P3
+    \section[]{Find an example of an invalid argument where only 
+        $\lall$I  is used improperly because the name that is quantified away still remains in the formula, i.e., 
+        \begin{center}
+            \fitchctx{
+                \pline[m. ]{\meta{A (\ldots a \ldots a \ldots)}} \\
+                \pline[n. ]{\lall x\meta{A (\ldots x \ldots a \ldots)}} [\lalli{m}]
+            }
+        \end{center}
+    }
+        Invalid argument in the form of a invalid Fitch-style proof.
+        \begin{center}
+            \fitchprf{
+                \pline[1. ]{\lall x F(x, x)}
+            }{
+                \pline[2. ]{F(a, a)}[\lalle 1]\\
+                \pline[3. ]{\lall x F(x, a)}[\lalli 2 {\color{red}(bad)}]
+            }
+        \end{center}
+        Therefore $\lall x F(x, x) \vdash \lall x F(x, a)$.\\
+        However this is an invalid argument. Proper proof by example:\\
+        Let the domain comprise of the letters $a$ and $b$.\\
+        Suppose $F(a, a), F(b, b)$ and $\lnot F(b, a)$ are true.\\
+        Then $\lall x F(x, x)$ is true.\\
+        However $\lall x F(x, a)$ is false.\\
+        Therefore $\lall x F(x, x)$ cannot prove $\lall x F(x, a)$.\\
+        Therefore it's possible for the premises to be true and the conclusion to be false.\\
+        Therefore it's an invalid argument.
+
+    %P4
+    \section{Bonus: Provide an informal proof of the following claim:
+        \[\lall x\lall y (R(x,y)\lif R(y,x)), \lall x\lall y\lall z((R(x,y)\land R(y,z))\lif R(x,z)), 
+        \lall x \lis y R(x,y)\vDash \lall x R(x,x) \]}
+
+        \subsection*{\comicneue\textbf{Mathematical proof where $R$ is a relation over the set $S$:}}
+        {\comicneue
+            $\lall x\lall y (R(x,y)\lif R(y,x))$ 
+            means $\lall x, y \in S$: if $xRy$ then $yRx$. 
+            Therefore $R$ is symmetric.\\
+            $\lall x\lall y\lall z((R(x,y)\land R(y,z))\lif R(x,z))$
+            means $\lall x, y, z \in S$: if $xRy$ and $yRz$ then $xRz$.
+            Therefore $R$ is transitive.\\ 
+            And lastly, we know $\lall x \lis y R(x,y)$,
+            this means $\lall x \in S, \lis y \in S$, such that $xRy$.\\
+            Now let $a$ be an arbitrary element of $S$. 
+            Then we know $\exists b$ such that $aRb$.\\
+            Because $aRb$ and $R$ is symmetric: $bRa$.\\
+            Because $aRb$ and $bRa$ and $R$ is transitive: $aRa$.\\
+            Therefore $\lall a \in S$: $aRa$. 
+            \\Therefore $R$ is reflexive, or $\lall x R(x,x)$.
+        }
+
+        %The way this is done is very bad.
+        %So many warnings
+        \subsection*{\comicneue\textbf{Fitch-style Proof: }}
+            \begin{center}
+                \comicneue
+                \fitchprf{
+                    \pline[1. ]{\lall x\lall y (R(x,y)\lif R(y,x))}\\
+                    \pline[2. ]{\lall x\lall y\lall z((R(x,y)\land R(y,z))\lif R(x,z))}\\
+                    \pline[3. ]{\lall x \lis y R(x,y)}
+                }{
+                    \pline[4. ]{\lall y (R(a,y)\lif R(y,a))}[\textbf{\comicneue $\lall$ Elim: }1]\\
+                    \pline[5. ]{R(a,b)\lif R(b,a)}[\textbf{\comicneue $\lall$ Elim: }4]\\
+                    \pline[6. ]{\lall y\lall z((R(a,y)\land R(y,z))\lif R(a,z))}[\textbf{\comicneue $\lall$ Elim: }2]\\
+                    \pline[7. ]{\lall z((R(a,b)\land R(b,z))\lif R(a,z))}[\textbf{\comicneue $\lall$ Elim: }6]\\
+                    \pline[8. ]{(R(a,b)\land R(b,a))\lif R(a,a)}[\textbf{\comicneue $\lall$ Elim: }7]\\
+                    \pline[9. ]{\lis y R(a,y)}[\textbf{\comicneue $\lall$ Elim: }3]\\
+                    \subproof{
+                        \pline[10. ]{R(a,b)}
+                    }{
+                        \pline[11. ]{R(b,a)}[\textbf{\comicneue $\lif$ Elim: }5, 10]\\
+                        \pline[12. ]{R(a,b) \land R(b,a)}[\textbf{\comicneue $\land$ Intro: }10, 11]\\
+                        \pline[13. ]{R(a,a)}[\textbf{\comicneue $\lif$ Elim: }8, 12]
+                    }
+                    \pline[14. ]{R(a,a)}[\textbf{\comicneue $\lis$ Elim: }9, 10--13]\\
+                    \pline[15. ]{\lall x R(x,x)}[\textbf{\comicneue $\lall$ Intro: }14]
+                }
+            \end{center}
+\end{document}

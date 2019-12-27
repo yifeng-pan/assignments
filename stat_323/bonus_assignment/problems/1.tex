@@ -1,0 +1,60 @@
+\section{A math professor is interested in the relationship between students’ performance on the
+    first midterm in his class and their performance on the second midterm in his class. He
+    gathers the midterm 1 and midterm 2 data for his $n = 112$ students (this data is called
+    “Midterm1” and “Midterm2” respectively in the “Bonus Assignment Data” R file). Note that
+    the scores for both midterm 1 and midterm 2 are out of $100$ points.}
+    \begin{multicols}{2}
+        \subsection{Creat a scatterplot of the data. Describe the general relationship (trend) 
+            of the midterm 1 and midterm 2 scores.}
+            %See figure \ref{fig:1a} on page \pageref{fig:1a}.
+            \begin{center}  
+                \input{r/tikzDevice/1a.tex}
+            \end{center}
+
+        \subsection{What is the correlation between midterm 1 grades and midterm 2 grades? Interpret
+            this correlation.}
+            $r \approx 0.5048535$
+
+        \subsection{State the least-squares estimate of the model predicting midterm 2 scores from
+            midterm 1 scores.}
+            $m_2 \approx 0.6619698m_1 + 26.0843211$
+
+        \subsection{Interpret the slope of this regression equation in the context of the data.}
+            For every 1 point increase on a student's score on midterm 1, 
+            there will be a 0.6620 point increase on the student's score on midterm 2.
+
+        \subsection{Predict the midterm 2 score of a student who scored 60 on midterm 1.}
+            $m_2 \approx 0.6619698m_1 + 26.0843211$\\
+            $= 0.6619698(60) + 26.0843211 \approx 65.80$
+
+        \subsection{Predict the midterm 2 score of a student who scored 92 on midterm 1.}
+            $m_2 \approx 0.6619698m_1 + 26.0843211$\\
+            $= 0.6619698(92) + 26.0843211 \approx 86.99$
+
+        \subsection{Suppose a student scored a 80 on\\
+            midterm 1. Calculate the residual for this student if
+            they also scored an 80 on midterm 2.}
+            $\epsilon = m_2 - \hat m_2 \approx 80 - (0.6619698m_1 + 26.0843211)$\\
+            $= 80 - (0.6619698(80) + 26.0843211) \approx 0.9581$
+
+        \subsection{Assuming the normality condition is met, what would you expect the normal
+            probability plot of the residuals to look like? Describe it in words or draw a picture.}
+            See figure \ref{fig:1h} on page \pageref{fig:1h}.\\
+            The historgram is close to normal. 
+            On the normal probabily plot, the dots are close to the lines.
+
+        \subsection{Conduct a hypothesis test to determine if midterm 2 scores can be expressed as a linear
+            function of midterm 1 scores. Please state all steps of the hypothesis testing process
+            (hypotheses, test statistic, p-value, conclusion). Use $\alpha = 0.05$.}
+            $H_0: \beta_1 = 0, H_a: \beta_1 \neq 0$\\
+            $t = \frac{\beta_1 - \beta_{1_0}}{SE_{\beta_1}} 
+            \approx \frac{0.662 - 0}{0.107917} \approx 6.134$\\
+            $\pv = 2 * (1 - pt(t, 110)) \approx 1.377 * 10^{-8} < 0.05 = \alpha$\\
+            Therefore there is a linear dependency of the score on midterm 1
+            on midterm 2.
+
+        \subsection{Construct a $95\%$ confidence interval for the slope. Does this confidence interval suggest
+            that the slope is significantly different from zero?}
+            Confidence interval: (0.4481033, 0.8758362). \\
+            Yes, it does not contain 0.
+    \end{multicols}

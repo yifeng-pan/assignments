@@ -1,0 +1,79 @@
+% Proofs 
+\theoremstyle{definition} % no italic
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+% Augmented Matrix
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Evaluate for calc
+\newcommand*\eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+% Absolute Value
+\newcommand*\abs[1]{\left|#1\right|}
+
+% Floor and Ceiling function
+\newcommand*\floor[1]{\left\lfloor #1 \right\rfloor}
+\newcommand*\ceil[1]{\left\lceil #1 \right\rceil}
+
+% Vector
+\newcommand*\vectorvalue[1]{\langle #1 \rangle}
+\newcommand*\magnitude[1]{\lVert #1 \rVert}
+
+\makeatletter % Dot Product
+\newcommand*\dotp{\mathpalette\dotp@{.5}}
+\newcommand*\dotp@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother % https://tex.stackexchange.com/questions/235118/making-a-thicker-cdot-for-dot-product-that-is-thinner-than-bullet
+
+% Sets
+\newcommand*\set[1]{\{ #1 \}}
+\let\intersection\cap
+\let\union\cup
+\let\bigintersection\bigcap
+\let\bigunion\bigcup
+\let\defaultemptyset\emptyset
+\let\emptyset\varnothing % Nice empty sets 
+
+% Set notations
+\newcommand{\N}{\mathbb{N}} % Natural
+\newcommand{\Z}{\mathbb{Z}} % Integer
+\newcommand{\Q}{\mathbb{Q}} % Rational
+\newcommand{\R}{\mathbb{R}} % Real
+\newcommand{\C}{\mathbb{C}} % Complex
+\newcommand{\Nz}{\N \union \set{0}} % Natural including 0
+
+% Lazy
+\let\e\epsilon
+\newcommand*{\lhopital}{L'H\^opital}
+
+% Logic
+\newcommand{\llra}{\longleftrightarrow}
+
+% Congruence modulo
+\newcommand{\cmod}[2]{\equiv #1 \ (\mathrm{mod}\ #2)}
+
+% For metavariables
+%\usepackage[cal=boondoxo]{mathalfa}
+\newcommand{\meta}[1]{\mathcal{#1}}
+
+% Functions
+\newcommand*{\sub}{\textrm{sub}} % limits of all subsequences
+\newcommand*{\interior}{\textrm{int}}
+\newcommand*{\bd}{\textrm{bd}} % Boundary
+
+\newcommand*{\curl}{\textrm{curl}} % Surface Integral
+\newcommand*{\divergence}{\textrm{div}} 
+
+% Stats
+\newcommand*{\E}{\textrm{E}}
+\newcommand*{\Var}{\textrm{Var}}
+\newcommand*{\Cov}{\textrm{Cov}}
+
+% Finance
+\newcommand*{\PA}{\textrm{PA}}

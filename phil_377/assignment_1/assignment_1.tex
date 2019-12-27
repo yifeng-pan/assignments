@@ -1,0 +1,384 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{UCID: 30063828}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+%Fancy letters
+\usepackage{mathrsfs}
+\newcommand{\A}{\mathscr{A}}
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\C}{\mathscr{C}}
+
+%If and only If
+\newcommand{\lra}{\leftrightarrow}
+
+%Title page
+\title{PHIL 377 Assignment 1}
+\author{Instructor: Gillman Glyn Payette
+    \\UCID: 30063828}
+\date{Summer 2019}
+
+\begin{document}
+    \maketitle
+    \section{Which of the following sentences is appropriate for logical analysis using our methods?
+        In each case explain why or why not.}
+        \subsection{Will the next president be a republican?}
+                Not a valid sentence, it's a question. Doesn't have a truth value.
+
+        \subsection{The president is a republican!}
+                Is a valid sentence, as it's either true or false.
+        
+        \subsection{Make the next president a republican!}
+                Not a valid sentence, it's a proclamation. Doesn't have a truth value.
+
+        \subsection{Beware of the president.}
+                Not a valid sentence, it's a proclamation. Doesn't have a truth value.
+
+    \section{Organize the following arguments into premise-conclusion form.}
+        \subsection{Having cancer is good, for whatever is required by something that is good is itself
+            a good. Being cured of cancer is good, and being cured of cancer requires having
+            cancer.}
+            Whatever is required by something that is good is itself a good. \\
+            Being cured of cancer is good. \\
+            Being cured of cancer requires having cancer. \\
+            $\therefore$ Having cancer is good.
+
+        \subsection{ Let’s assume Justice Betty is the Judge for the case, then after a long trial Peter
+            will not be given a suspended sentence. I can tell you why I think that. First, the
+            trial will be long unless the Crown prosecutor is brief, but he isn’t. Furthermore,
+            if Fred is the defense attorney, as good as he is, Peter will be found guilty. But
+            Fred is the defense attorney. Justice Betty doesn’t give out suspended sentences.
+            So, finally, if Peter is found guilty, he will be sentenced.}
+            If Fred is the defense attorney, then Peter will be found guilty.\\
+            Fred is the defense attorney.\\
+            $\therefore$ Peter will be found guilty.\\
+            If Peter is found guilty, then Peter will be sentenced.\\
+            $\therefore$ Peter will be sentenced.\\
+            The trial will be long unless the Crown prosecutor is brief.\\
+            The Crown prosecutor is not brief.\\
+            $\therefore$ The trial will be long.\\
+            Justice Betty is the Judge for the case.\\
+            Justice Betty doesn't give out suspended sentences.\\
+            $\therefore$ Peter will not be given a suspended sentence.\\
+            $\therefore$ Peter will not be given a suspended sentence, and the trial will be long.
+    
+
+    \newpage
+    \section{Each of the following questions has to be with the logical concepts concepts discussed
+        in class.}
+        \subsection{Give a valid argument with a true conclusion and all false premises.}
+            Nuclear weapons contains the souls of dead physicists.\\
+            Dead physicist ghosts contains a great amount of potential energy.\\
+            $\therefore$ Nuclear weapons contains a great amount of potential energy.
+        \subsection{Given an invalid argument with a true conclusion.}
+            If `true' means `necessarily true'.\\
+            Then there's no such thing. The only way for an argument to be invalid is for all the premises to be true, 
+            and the conclusion to be false. If the conclusion is necessarily true, then the argument is necessarily valid. 
+            Might not be sound, but still valid.\\
+            If `true' means `contigently true'.\\
+            Then the following argument would be invalid:\\
+            $1 = 1$.\\
+            $\therefore 1 + 1 = 2$.\\
+            Even though common sense tells us that the conclusion is necessary true, it is only contigently true. \\
+            In binary, $1 + 1 = 10$.\\
+            In modular arithmetic mod 2, $1 + 1 = 0$.\\
+            Even still, if in the future, the mathematics community decides to adopt a new numeral system.
+            Where the symbol `2' repensents the concept of `three', then the conclusion would again be false.\\
+            Therefore any nessary truth or falsehood is a contigency if you are allowed change the established/assumed definitions,
+            and all arguments would be invalid.
+        \subsection{Give a valid argument with a false conclusion and at least one true premise.}
+            Magnets exhibits electromagnetic force.\\
+            Electromagnetic force causes attraction.\\
+            Magnets are mined from the Earth.\\
+            Earth has gravity.\\
+            Gravity causes attriction.\\
+            $\therefore$ Electromagnetic force are a manifestation of gravity.
+        \subsection{Given a non-mathematical example of a necessary truth.}
+            Rabbi Shlomo Bergblattstein is a jew.
+        \subsection{Give a mathematical example of a necessary falsehood.}
+            $\exists a, b \in \mathbb{R}$, such that $ab \neq ba$.
+
+    \newpage
+    \section{Explain why, generally, we cannot use logic alone to show that a valid argument is
+        sound. Give an example of an argument where logic alone can be used to show that
+        the argument is sound.}
+        For an argument to be sound, the premises have to be true. 
+        For an argument to be valid, we assume the premises to be true and prove that the conclusion is true.
+        Deductive reasoning cannot tell us if an axiom/premise is true or not.
+        Therefore cannot tell us if the argument is sound or not.\\
+        Example of an argument where logic alone can be used to show that the argument is sound:\\
+        Let $T$ be a true statement.\\
+        $T$\\
+        $\therefore T$\\
+        This is a trivial argument but it is a valid and sound one.\\
+        As $T$ is defined to be true.
+        
+    \section{Explain why in each case the sentence doesn’t exhibit truth functional structure, or
+        say why it does.}
+        \subsection{It’s possible that everyone in North America owns a smart phone.}
+            Yes it does. The sentence mean `The probablity that everyone in North America owns a smart phone is not zero'.\\
+            Which is either true or false.
+            The negation of that sentence is `The probablity that everyone in North America owns a smart phone is zero' 
+            or `It's impossible that everyone in North America owns a smart phone'.
+        \subsection{The coin must come up heads.}
+            The sentence means `The coin necessarily comes up heads' 
+            or `The probablity that the coin comes up with heads is one'.
+            Which does have a truth value, and is of truth functional structure.
+        \subsection{The defendant relented only after much testimony was discredited.}
+            Yes, this sentence is of the form `Event $A$ happened after event $B$'.
+            So it either happened that way or it didn't happen that way. It has a truth value and
+            is an atomic sentence.
+        \subsection{Jeff loves it that Nenshi is mayor, but not that Kenny is Premier.}
+            Yes, the two atomic sentences are `Jeff loves it that Nenshi is mayor' and 
+            `Jeff does not love it that Kenny is Premier'. These sentence are joined with an `and'/`but', therefore it's still of truth functional structure.
+
+    \newpage
+    \section[]{At the world track and field games some people are musing about the performances of
+        the German, Danish, and French teams. Consider the following dictionary:
+        \begin{center}
+            $F$ The French team will win a gold medal.\\
+            $G$ The German team will win a gold medal.\\
+            $D$ The Danish team will win a gold medal.\\
+            $S$ The star German Runner is disqualified.\\
+            $R$ It rains during most of the games.
+        \end{center}
+        Provide formulas that formalize each of the following statements:}
+        \subsection{Exactly one of the teams will win a gold medal.}
+            Formula:
+            \[
+                ([(F \land \lnot G) \land \lnot D] 
+                \lor [(\lnot F \land \lnot G) \land D]) 
+                \lor [(\lnot F \land G) \land \lnot D]
+            \]
+
+        \subsection{At least two of the teams will win a gold medal.}
+            Formula:
+            \[
+                (([(\lnot F \land G) \land D] 
+                \lor [(F \land \lnot G) \land D]) 
+                \lor [(F \land G) \land \lnot D])
+                \lor [(F \land G) \land D]
+            \]
+        
+        \subsection{If the star German runner is disqualified, the Germans will win gold only if neither
+            of the other teams win gold.}
+            Formula:
+            \[
+                (S \land G) \to (\lnot F \land \lnot D)
+            \]
+
+        \subsection{ The Danes will win gold unless it rains for most of the games, in which case they
+            won’t, but the other two teams will win gold.}
+            Formula:
+            \[
+                (\lnot R \land D) \lor (R \land ( \lnot D \land (F \land G)))
+            \]
+
+    \newpage    
+    \section{Provide dictionaries for the following arguments, and then provide formulas that formalize
+         the arguments\\
+         —in standard form—using those dictionaries.}
+        \subsection{Having cancer is good, for whatever is required by something that is good is itself
+            a good. Being cured of cancer is good, and being cured of cancer requires having
+            cancer. (2 points)}
+            `$A$' is `Having cancer is good.'\\
+            `$B$' is `Being cured of cancer is good.'\\
+            `$C$' is `Being cured of cancer.'\\
+            `$D$' is `Having cancer.'\\
+            `$E$' is `Whatever is required by something that is good is itself a good.'
+            \begin{align*}
+                &C \to D \\
+                &B \\
+                &E \\
+                &((C \to D) \land (B \land E)) \to A \\
+                &\therefore A
+            \end{align*}
+
+        \subsection{Let’s assume Justice Betty is the Judge for the case, then after a long trial Peter
+            will not be given a suspended sentence. I can tell you why I think that. First, the
+            trial will be long unless the Crown prosecutor is brief, but he isn’t. Furthermore,
+            if Fred is the defense attorney, as good as he is, Peter will be found guilty. But
+            Fred is the defense attorney. Justice Betty doesn’t give out suspended sentences.
+            So, finally, if Peter is found guilty, he will be sentenced. (3 points)}
+            `$A$' is `The trial will be long.'\\
+            `$B$' is `The Crown prosecutor is brief.'\\
+            `$C$' is `Peter will be be given a suspended sentence.'\\
+            `$D$' is `Justice Betty is the Judge for this case.'\\
+            `$E$' is `Justice Betty doesn't give out suspended sentences.'\\
+            `$G$' is `Fred is the defense attorney.'\\
+            `$H$' is `Peter will be found guilty.'\\
+            `$I$' is `Peter will be sentenced.'
+            \begin{align*}
+                &G \to H\\
+                &G\\
+                &\therefore H\\
+                &H \to I\\
+                &\therefore I\\
+                &A \lor B\\
+                &\lnot B\\
+                &\therefore A\\
+                &D \land E\\
+                &(D \land E) \to \lnot C\\
+                &\therefore \lnot C\\
+                &\therefore A \land \lnot C
+            \end{align*}
+
+        \newpage
+        \subsection{Look, if neither Jenny nor Fred play the lawyer, then Morris, the director, will not
+            be upset. Moreover, if Morris isn’t upset, the play will be successful. Thus, the
+            play will get good reviews. Remember, both Jenny and Fred won’t play the part
+            of the lawyer, and plays get good reviews when and only when they are successful.
+            (2 points)}
+            `$A$' is `Jenny play the lawyer.'\\
+            `$B$' is `Fred play the lawyer'\\
+            `$C$' is `Morris will be upset.'\\
+            `$D$' is `The play will be successful.'\\
+            `$E$' is `The play will get good reviews.'
+            \begin{align*}
+                &\lnot (A \land B)\\
+                &(A \lor B) \to \lnot C\\
+                &\lnot C \to D\\
+                &\therefore (A \lor B) \to D\\
+                &E \to D\\
+                &\therefore E
+            \end{align*}
+            This is an invalid argument because the question is an invalid argument.
+
+    \section{Which of the following expressions is a formula of our formal language? Indicate those
+        that are, and an explanation for those that are not.}
+        \begin{multicols}{2}
+            \subsection{$B \land Z$}
+                Formula.
+            \subsection{$\land H$}
+                Not formula. `and $H$'. What `and $H$'?
+            \subsection{$\lnot O$}
+                Formula.
+            \subsection{$M \lnot N$}
+                Not formula. Missing $\land, \lor, \to$, etc.
+            \subsection{$J \to  (K \to  (A \lor  N ))$}
+                Formula. It's convention to ommit the outter most brakets.
+            \subsection{$\A \lor  B$}
+                Not formula. $\A$ is a metavariable.
+            \subsection{$(I \lor  (T \land  E))$}
+                Formula.
+            \subsection{$(A \land  B \land  \lnot C)$}
+                Not formula.
+                Every possible way to bracket this yeilds the same logical formula.
+                However it is not convention to ommit brackets for concatenated `and' statements, 
+                Therefore not a formula.
+            \subsection{$(F \lra  K) \to  \{ M \lor  K \}$}
+                Not formula.
+                Wrong brackets. Convention is to use only $[]$ or $()$.
+            \subsection{$((G \lor  E) \to  (\lnot H \land  (K \lor  B))$}
+                Not formula. Mismatched brackets, compile error.
+        \end{multicols}
+
+    \newpage
+    \section{For each of the following formulas indicate which has the form $\lnot \A \to \B$. If it is of
+        that form provide the substitutions for the metavariables $\A ,\B$.}
+        \begin{multicols}{2}
+            \subsection{$A \to  B$}
+                Let $\A = \lnot A, \B = B$.
+            \subsection{$\lnot A \to  B$}
+                Let $\A = A, \B = B$.
+            \subsection{$\lnot A \to  \lnot B$}
+                Let $\A = A, \B = \lnot B$.
+            \subsection{$\lnot \lnot A \to  B$}
+                Let $\A = \lnot A, \B = B$.
+            \subsection{$\lnot (A \to  B)$}
+                $\lnot (A \to  B)$\\
+                $\therefore \lnot (\lnot (A \land \lnot B))$\\
+                $\therefore (A \land \lnot B)$\\
+                $\therefore \lnot(A \land \lnot B) \to (\text{False})$\\
+                Let $\A = A \land \lnot B, \B = B \land \lnot B = \text{False}$.
+            \subsection{$\lnot \lnot A \to  \lnot B$}
+                Let $\A = \lnot A, \B = \lnot B$.
+            \subsection{$\lnot (\lnot A \to  B)$}
+                    $\lnot (\lnot A \to  B)$\\
+                    $\therefore \lnot (\lnot (\lnot A \land \lnot B))$\\
+                    $\therefore (\lnot A \land \lnot B)$\\
+                    $\therefore \lnot(\lnot A \land \lnot B) \to (\text{False})$\\
+                Let $\A = \lnot A \land \lnot B, \B = B \land \lnot B = \text{False}$.
+            \subsection{$\lnot \lnot (A \to  B) \to  (C \to  D)$}
+                Let $\A = \lnot (A \to  B), \B = C \to  D$.
+            \subsection{$\lnot (A \lor  \lnot B) \to  \lnot (C \land  \lnot D)$}
+                Let $\A = A \lor  \lnot B, \B = \lnot (C \land  \lnot D)$.
+            \subsection{$\lnot (A \lra  B) \to  (\lnot C \to  D)$}
+                Let $\A = A \lra  B, \B = \lnot C \to  D$.
+        \end{multicols}
+        \noindent
+        Note: Every formula $\C$, can be written in the form of $\lnot \A \to \B$,
+        by setting $\A = \C, \B = \text{False}$.\\
+        Note 2: After I've completed the question, 
+        I was informed by a peer that the question should be interpreted in the context of 
+        the main logical operator instead of logical equivalence. So I've completed the question again 
+        under the new assumption. However I've left in my original answer in aswell, due to the ambiguity of the question.
+    
+    \section*{9 \ \ (Again) In context of the primary connector.}
+        \begin{multicols}{2}
+            \subsection*{a \ \ $A \to  B$}
+                No.
+            \subsection*{b \ \ $\lnot A \to  B$}
+                Yes. Let $\A = A, \B = B$.
+            \subsection*{c \ \ $\lnot A \to  \lnot B$}
+                Yes. Let $\A = A, \B = \lnot B$.
+            \subsection*{d \ \ $\lnot \lnot A \to  B$}
+                Yes. Let $\A = \lnot A, \B = B$.
+            \subsection*{e \ \ $\lnot (A \to  B)$}
+                No.
+            \subsection*{f \ \ $\lnot \lnot A \to  \lnot B$}
+                Yes. Let $\A = \lnot A, \B = \lnot B$.
+            \subsection*{g \ \ $\lnot (\lnot A \to  B)$}
+                No.
+            \subsection*{h \ \ $\lnot \lnot (A \to  B) \to  (C \to  D)$}
+                Yes. Let $\A = \lnot (A \to  B), \B = C \to  D$.
+            \subsection*{i \ \ $\lnot (A \lor  \lnot B) \to  \lnot (C \land  \lnot D)$}
+                Yes. Let $\A = A \lor  \lnot B, \B = \lnot (C \land  \lnot D)$.
+            \subsection*{j \ \ $\lnot (A \lra  B) \to  (\lnot C \to  D)$}
+                Yes. Let $\A = A \lra  B, \B = \lnot C \to  D$.
+        \end{multicols}
+
+    \newpage
+    \section{Consider the following truth value assignment:
+        \[
+            v(A) = T, v(B) = F,\\
+            v(C) = T, v(D) = T
+        \]
+        For each of the following $\A$ compute $v(\A)$.}
+        \begin{multicols}{2}
+            \subsection{$(A \land C) \to  (B \lor  D)$}
+                True.
+            \subsection{$(\lnot A \lor  D) \to  B$}
+                False.
+            \subsection{$\lnot A \to  \lnot (B \land  D)$}
+                True.
+            \subsection{$\lnot \lnot A \to  B$}
+                False.
+            \subsection{$\lnot (A \to  (B \to  (D \land \lnot C)))$}
+                False
+            \subsection{$\lnot \lnot A \to  \lnot B$}
+                True.
+            \subsection{$\lnot (\lnot (A \lor  (A \land  D)) \to  B)$}
+                False.
+            \subsection{$\lnot \lnot (A \to  B) \to  (C \to  D)$}
+                True.
+            \subsection{$\lnot (A \lor  \lnot B) \to  \lnot (C \land  \lnot D)$}
+                True.
+            \subsection{$\lnot (A \lra  B) \to  (\lnot C \to  D)$}
+                True.
+        \end{multicols}
+
+
+\end{document}

@@ -1,0 +1,146 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+
+\usepackage{amsmath}
+
+%Header
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{22.54448pt}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Yifeng Pan
+     \\UCID: 30063828}
+
+\usepackage{amssymb}
+\newcommand{\0}{\varnothing}
+
+%Change lable to letter from number
+\renewcommand{\thesubsection}{\alph{subsection}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathcal{F}}
+
+\newcommand{\1}{\{ 1 \}}
+\newcommand{\2}{\{ (1,1) \}}
+\newcommand{\OTO}{one-to-one}
+\newcommand{\gof}{g \circ f}
+\newcommand{\ZXZ}{\Z ^+ \times \Z^+}
+
+%Title page
+\title{MATH 273 Assignment 3}
+\author{Instructor: Thi Ngoc Dinh
+    \\UCID: 30063828}
+\date{Fall 2018}
+
+\begin{document}
+    \maketitle
+
+    \section{Let $S = \{1,2,3,4,5,6,7,8,9\}$ and $T = \{1,2,3,4\}$. Please explain how you get the answers.}
+        \subsection{How many sebsets $A$ of $S$ are there so that $A \cap T = \0$?}
+            There are $2^5$ subsets $A$ of $S$ so that $A \cap T = \0$.
+            To construct subset $A$ of $S$, first, not choose $\{1,2,3,4\}$, 
+            because if any of those elements were chosen, $A \cap T \neq \0$. 
+            We may or may not include each of the next $5$ elements \{5,6,7,8,9\},
+            giving us $2 \times 2 \times 2 \times 2 \times 2$ choices, or $2^5$.
+            $1 \times 2^5 = 2^5$.
+
+        \subsection{How many sebsets $A$ of $S$ are there so that $A \setminus T = \0$?}
+            There are $2^4$ subsets $A$ of $S$ so that $A \setminus T = \0$.
+            To construct subset $A$ of $S$, first, not choose $\{5,6,7,8,9\}$,
+            because if any of those elements were chosen, $A \setminus T \neq \0$.
+            We may or may not include each of the first $4$ elements $\{1,2,3,4\}$, 
+            giving us $2 \times 2 \times 2 \times 2$ choices, or $2^4$.
+            $1 \times 2^4 = 2^4$.
+
+        \subsection{How many sebsets $A$ of $S$ are there so that $A \cap T \neq \0$ and $A \setminus T \neq \0$?}
+            There are $(2^4 - 1) \times (2^5-1)$ subsets $A$ of $S$ so that $A \setminus T \neq \0$ and $A \cap T \neq \0$.
+            We break down the counting so that $A = B \cup C$,
+            where $B \subseteq \{1,2,3,4\}$, and $C \subseteq \{5,6,7,8,9\}$.
+            $B \cap T \neq \0$ for all $B$, except when $B = \0$.
+            So there are $2^4 - 1$ choices for $B$.
+            $C \setminus T \neq \0$ for all $C$, except when $C = \0$.
+            So there are $2^5 - 1$ choices for $C$.
+            To construct $A$, first, pick $B$, of which there are $2^4 -1$ options.
+            Then pick $C$, of which there are $2^5-1$ options. 
+            $A = B \cup C$.
+            Therefore there are $(2^4 - 1) \times (2^5-1)$ to construct $A$.
+
+    \newpage
+    \section{Let $n,k$ be positive integers.}
+        \subsection{Prove by a combinatorial proof that $\sum_{i=0}^{n} \binom{n}{i} = 2^n$.}
+            Combinatorial problem: How many subsets does the set $S$ with $n$ elements have?
+            Counting method 1:
+            For any given subset of $S$:
+            \\It may or may not include the 1st element of $S$. ($2$ choices)
+            \\It may or may not include the 2nd element of $S$. ($2$ choices)
+            \\It may or may not include the 3rd element of $S$. ($2$ choices)
+            \\$\hdots$
+            \\It may or may not include the $n$th element of $S$. ($2$ choices)
+            \\Therefore there are $2^n$ ways to constuct a subset of $S$.
+            \\Counting method 2:
+            \\There are $\binom{n}{0}$ subsets of $S$ with $0$ elements.
+            \\There are $\binom{n}{1}$ subsets of $S$ with $1$ elements.
+            \\There are $\binom{n}{2}$ subsets of $S$ with $2$ elements.
+            \\$\hdots$
+            \\There are $\binom{n}{n}$ subsets of $S$ with $n$ elements.
+            \\Therefore there are $\sum_{i=0}^{n} \binom{n}{i}$ subsets of $S$.
+            Thus by combinatorial proof: $\sum_{i=0}^{n} \binom{n}{i} = 2^n$
+
+        \subsection{Prove that $\sum_{i=0}^{n} \binom{n}{i} = 2^n$ by using the Binomial Theorem.}
+            Binomial Theorem: $\sum_{k=0}^{n} \binom{n}{k}x^{n-k} y^k = (x+y)^n$.
+            Let $x = y = 1$.
+            Then $\sum_{i=0}^{n} \binom{n}{i} = \sum_{k=0}^{n} \binom{n}{k}1^{n-k} 1^k = \sum_{k=0}^{n} \binom{n}{k}x^{n-k} y^k = (x+y)^n = (1+1)^n = 2^n$.
+            So $\sum_{i=0}^{n} \binom{n}{i} = 2^n$.
+
+        \subsection{Prove by induction on $n$ that $\sum_{i=k}^{n} \binom{i}{k} = \binom{n+1}{k+1}$ for all integers $n \geq k$.}
+            Let $n,k \in \Z$ such that $n \geq k$.
+            Base case: $n = k$
+            $\sum_{i=k}^{n} \binom{i}{k} = \sum_{i=n}^{n} \binom{i}{n} = \binom{n}{n} = 1 = \binom{n+1}{n+1} = \binom{n+1}{k+1}$
+            Inductive Step:
+            Suppose $\sum_{i=k}^{n} \binom{i}{k} = \binom{n+1}{k+1}$. (IH)
+            We are trying to prove $\sum_{i=k}^{n+1} \binom{i}{k} = \binom{n+2}{k+1}$.
+            \begin{align*}
+                \sum_{i=k}^{n+1} \binom{i}{k} &= \sum_{i=k}^{n} \binom{i}{k} + \binom{n+1}{k}\\
+                &= \binom{n+1}{k+1} + \binom{n+1}{k} \text{from (IH)}\\
+                &= \dfrac{(n+1)!}{(k+1)!(n-k)!}+ \dfrac{(n+1)!}{(k)!(n-k+1)!}\\
+                &= \dfrac{(n+1)!(n-k+1)}{(k+1)!(n-k)!(n-k+1)}+ \dfrac{(n+1)!(k+1)}{(k)!(n-k+1)!(k+1)}\\
+                &= \dfrac{(n+1)!(n-k+1)+ (n+1)!(k+1)}{(n-k+1)!(k+1)!}\\
+                &= \dfrac{(n+1)!((n-k+1)+(k+1))}{(n-k+1)!(k+1)!} = \dfrac{(n+1)!(n+2)}{(n-k+1)!(k+1)!}\\
+                &= \dfrac{(n+2)!}{(n-k+1)!(k+1)!} = \binom{n+2}{k+1}\\
+            \end{align*}
+            Therefore  $\sum_{i=k}^{n} \binom{i}{k} = \binom{n+1}{k+1}$ for all integers $n \geq k$.
+
+    \newpage
+    \section{Let $A = \{1,2,3,4,5,6,7,8,9\}$. Please explain how you get the answers.}
+        \subsection{How many functions $f:A \to A$ are there so that $f \circ f(1) = 2$?}
+            There are $9^7 \times 8$ functions $f: A\to A$ so that $f\circ f(1) =2$.
+            $f$ is of the form $\{(1, a), (2,b),(3,c) \hdots (9,i)\}$.
+            First pick $a$. If $f\circ f(1) = 2 \neq 1$ then $a \neq 1$. There are 8 choices for $a$.
+            Then pick the term $(a, 2)$. There is 1 choice in this step.
+            There are 9 choices for the remaining 7 terms, giving $9^7$ choices.
+            Therefore there are $9^7 \times 1 \times 8$ ways to construct $f$ so that $f\circ f(1) = 2$.
+
+        \subsection{How many functions $f:A \to A$ are there so that $f \circ f(1) = 2$ and $f$ is onto?}
+            There are $7\times 7!$ functions $f: A\to A$ so that $f\circ f(1) =2$ and $f$ is onto.
+            $f$ is of the form $\{(1, a), (2,b),(3,c) \hdots (9,i)\}$.
+            First we pick $a$. If $f\circ f(1)=2 \neq 1$ then $a \neq 1$. If $f\circ f(1) = 2$ and $f$ is onto, then $a \neq 2$,
+            because $(1,2)$ and $(2,2)$ can't coexist. This gives us 7 choices for $a$.
+            We need the term $(a,2)$. We have 1 choice in this step.
+            For the remaining terms, we can pick any permutation of $\{1,2,3,4,5,6,7,8,9\} \setminus \{a, 2\}$,
+            because $f$ is onto. This gives us $7!$ ways to pick the remaining terms.
+            Therefore there are $7\times 1\times 7!$ ways to construct $f$ as so that $f\circ f(1) =2$ and $f$ is onto.
+
+        \subsection{How many functions $f:A \to A$ are there so that $f \circ f(1) = 2$ or $f$ is onto?}
+            There are $(9^7\times 8)+(9!)-(7\times 7!)$ functions $f: A\to A$ so that $f\circ f(1) = 2$ or $f$ is onto.
+            The (number of functions that are onto or $f\circ f(1) = 2$)
+            is equal to the (number of functions that are onto)
+            plus the (number of functions that are $f\circ f(1) = 2$)
+            minus the (number of functions that are both onto and $f\circ f(1) = 2$).
+            From 3.(a): There are $9^7 \times 8$ functions $f: A\to A$ so that $f\circ f(1) =2$.
+            From 3.(b): There are $7\times 7!$ functions $f: A\to A$ so that $f\circ f(1) =2$ and $f$ is onto.
+            The number of functions $f: A\to A$ that are onto is just the number of permutations of $A$.
+            Which is equal to $9!$.
+            So there are $(9^7\times 8)+(9!)-(7\times 7!)$ functions $f: A\to A$ so that $f\circ f(1) = 2$ or $f$ is onto.
+        
+\end{document}

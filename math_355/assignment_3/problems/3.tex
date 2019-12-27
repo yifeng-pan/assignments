@@ -1,0 +1,99 @@
+\section{Suppose $f:[0,\infty) \to \R$ is continuous, monotone and bounded.
+    Show that $f$ is uniformly continuous. (Hint: We know that $f([0,\infty))$ is an interval.)
+}
+    TODO
+
+    % % Attempt 3
+
+    Since $f$ is monotone and bounded, $f(n) = L$ as $n \to \infty$.
+
+    Let $a = \min\set{f(0), L}, b = \max\set{f(0), L}$.
+
+    From the Intermediate Value Theorem, 
+    we know $\lall t \in (a,b), \lis c \in [0,\infty)$ 
+    such that $f(c) = t$.
+
+    We define $g: (a,b) \to [0,\infty)$.
+    The range of $g \subseteq [0, \infty)$.
+    % $g$ is monotone as $f$ is monotone. % Need more
+    So $\lall y \in (a,b), f \circ g (y) = y$.
+
+    Let $\e > 0$.
+
+    Let $h: (a, b - \e) \to (0, \infty), h(y) = \abs{g(y) - g(y + \e)}$.
+    $h$ is strictly positive. % Justify
+
+    % Let $h_c(x,y): \set{(a,b) \times (a,b) | 0 < \abs{x-y} <c} \to (0, \infty), 
+    %     h(x,y) = \abs{g(x) - g(y)}$.
+    % $h$ is strictly positive. % Justify
+
+    Let $\delta$ be the absolute minimum of the range of $h$.
+
+    % Proof of contrapositive.
+
+    % Let $\abs{f(x) - f(y)} \geq \e$.
+
+
+    Let $x,y \in [0, \infty), \abs{x - y} < \delta$.
+
+    So $\lall z \in (a, b - \e),\abs{x-y} < \abs{g(z) - g(z + \e)}$.
+
+    % Proof by contradiction.
+
+    % Suppose $\abs{f(x) - f(y)} > \e$.
+
+    % Now,
+    % \begin{align*}
+    %     \abs{f(x) - f(y)}
+    % \end{align*}
+
+
+    % % Attempt 2
+    % To Prove: $f^{-1}$ Exists.
+
+    % Since $f$ is bounded, let $I = f([0,\infty])$ be an finite interval.
+    % Let $a = \inf(I), b = \sup(I)$.
+    % Let $f^{-1}: I \to [0, \infty)$.
+
+    % Let $\e > 0$.
+    % Define a finite sequence $\set{\e_n}$ such that
+    % \begin{enumerate}
+    %     \item $0 < \abs{\e_1 - a} < \e$.
+    %     \item $0 < \abs{\e_n - b} < \e$.
+    %     \item $\lall i \in \N, 1 < i <= n, \e_i = \e_{i-1} + \e$.
+    % \end{enumerate}
+
+
+    % % Scrap
+    % Let $n = \floor{\frac{b - a}{\e'}} - 1$.
+    % Define the set $S$ where 
+    % $x\in S$
+    % $\liff$ 
+    % $\lis i \in \N, i <= n$
+    % such that $x = a + i \e'$.
+
+    % Define the set $\set{\e'_n}$ such that
+    % \(
+    %     \e'_i = a + i \e'
+    % \)
+
+
+    % % Attempt 1
+    % Since $f$ is bounded, 
+    % $\lis M > 0$ such that $\abs{f(x)} < M, \lall x$.
+
+    % % Since $f$ is bounded and continuous,
+    % % let $I$ be the range of $f$, by IVT.
+
+    % Let $\e > 0$.
+    % Choose $\delta = \frac{\e}{M} TODO$.
+    % % Let $a,b,c \in [0,\infty), a \leq b \leq c$. 
+    % Let $x,y \in [0,\infty) $, Let $a = \min\set{x,y}, c = \max\set{x,y}$.
+    % Suppose $\abs{x-y} = c - a < \delta$.
+
+    % \begin{align*}
+    %     \abs{f(x) - f(y)}
+    %     &= f(c) - f(a) \text{ ($f$ is monotone)} \\
+    %     &< \\
+    %     &TODO< \e
+    % \end{align*}

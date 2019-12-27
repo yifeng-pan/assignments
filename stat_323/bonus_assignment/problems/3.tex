@@ -1,0 +1,58 @@
+\section{R has a built-in dataset called {\color{red} trees} that contains observations for 
+    $n = 31$ black cherry
+    trees. The first column, “Girth,” contains the girth of the trees (in inches); the second
+    column, “Height,” contains the height of the trees (in feet); the third column, “Volume,”
+    contains the volume of timber (in cubic feet).}
+    \begin{multicols}{2}
+        \subsection{State the least-squares estimate of the model predicting diameter from height.}
+            (Note: Diameter is mislabeled as girth in the dataset.)\\
+            $d$ and $h$ are in inches: $d \approx 0.02131h-6.188$
+
+        \subsection{Predict the diameters of trees of the following heights: 
+            $60$ feet, $73$ feet, and $85$ feet.}
+            In inches.\\
+            Height of 60 feet: \\
+            $d \approx 0.02131226 (60 * 12)-6.18839451$
+            $\approx 9.156$\\
+            Height of 73 feet: \\
+            $d \approx 0.02131226 (73 * 12)-6.18839451$
+            $\approx 12.48$\\
+            Height of 85 feet: \\
+            $d \approx 0.02131226 (85 * 12)-6.18839451$
+            $\approx 15.55$
+
+        \subsection{Interpret the meaning of the slope in the context of the data.}
+            For every 1 inch increase the height, 
+            there will be a 0.02131 inch increase in diameter.
+
+        \subsection{Suppose you wanted to conduct a hypothesis test for a positive linear relationship
+            between height and diameter. State the appropriate hypotheses and test statistic.}
+            $H_0: \beta_1 \leq 0, H_a: \beta_1 > 0$\\
+            $t = \frac{\beta_1 - \beta_{1_0}}{SE_{\beta_1}}
+            \approx \frac{0.02131226 - 0}{ 0.006513191} \approx 3.272$
+
+        \subsection{State the probability expression of the p-value as well as the p-value itself. What
+            conclusion would we reach with respect to our hypotheses in part d. using $\alpha = 0.05$?}
+            $\pv = P(T_{df} > 3.272\hdots) = 1 - pt(t, df) 
+            \approx 0.1379\% < 5\% = \alpha$\\
+            Therefore there is a linear dependency of height on diameter.
+
+        \subsection{If you wanted to report a $95\%$ interval for the diameter of a single tree that was $80$
+            feet tall, would you report a confidence interval or prediction interval? Why?}
+            Prediction interval, as it predicts the dependent variable 
+            from a given independent variable\\
+            Prediction interval: (13.08276, 15.45999 ) in inches.
+
+        \subsection{What proportion of $\sigma^2$ in diameter is explained by its linear relationship with
+            height?}
+            $r^2 \approx 0.2697$
+
+        \subsection{Examine the residual plot. What condition/assumption does the residual plot check for?
+            Does it appear to be met in this case?}
+            %See figure \ref{fig:3h} on page \pageref{fig:3h}.
+            It checks for consistancy in variance. 
+            In this case, yes, the points are in a random pattern.
+            \begin{center}
+                \input{r/tikzDevice/3h.tex}
+            \end{center}
+    \end{multicols}

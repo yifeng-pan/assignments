@@ -1,0 +1,28 @@
+\section{Show that the infinite product 
+    \[\prod_{i=1}^{\infty}\{0,1\}
+        \]
+    is uncountable (you can think of this set as infinite strings of 0s and 1s).}
+    Let $S$ be equal to the above set.
+    Suppose $S$ is countable. It is clearly not finite, therefore it's denumerable.
+    Therefore we can list the elements of $S$ as $\set{s_1 , s_2, s_3 \hdots}$.
+    Let $i, j \in \N, b_j^i \in \set{0,1}$.
+    Where:
+    \begin{align*}
+        s_1 &= (b_1^1, b_2^1, b_3^1, \hdots) \\ 
+        s_2 &= (b_1^2, b_2^2, b_3^2, \hdots) \\ 
+        s_3 &= (b_1^3, b_2^3, b_3^3, \hdots) \\ 
+        &\ \ \vdots
+    \end{align*}
+    Let $n \in \N$.
+    Let $b'_n \in \set{0,1}$.
+    Let $s' = (b'_1, b'_2, b'_3, \hdots)$ such that 
+    $b'_n = 
+    \begin{cases}
+        1 \text{ if } b_n^n = 0 \\ 
+        0 \text{ if } b_n^n = 1 \\ 
+    \end{cases}
+    $.
+    For $n \in \N$, $s' \neq s_n$ as $s'$ differs from $s_n$ in the $n$th index/digit.
+    Therefore $s' \in S$ but $s' \not\in \set{s_1 , s_2, s_3 \hdots}$.
+    This is a contradiction.
+    Therefore $S$ is uncountable.

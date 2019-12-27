@@ -1,0 +1,58 @@
+\section{Suppose $S \subseteq \R$.}
+    \subsection{Show that if $S \neq \R$ and $S \neq \emptyset$, then $\bd(S) \neq \emptyset$.}
+        We prove the contrapositive: 
+        If $\bd(S) = \emptyset$, then $S = \R$ or $S = \emptyset$.
+        Suppose $\bd(S) = \emptyset$.
+        If $S = \emptyset$, we are done.
+        Let $S \neq \emptyset$. We prove $S = \R$.
+        Since $\bd(S) = \emptyset$, $S = \interior(S)$.
+        Since $S \neq \emptyset$, let $x_1 \in S$.
+        Since $x_1$ is an interior point of $S$,
+        $\lis \e_1$ such that $(x_1 - \e_1, x_1 + \e_1) \subseteq S$.
+        Let $x_2 = x_1 + \e_1$.
+        If $x_2 \not\in S$, then $x_2$ would be a boundary point of $S$,
+        which would be a contradiction.
+        Therefore $x_2 \in S$.
+        We repeat to construct the sequence $\set{x_n}$, and $\set{\e_n}$,
+        such that $x_{n+1} > x_n$, 
+        and if $x_n < y < x_{n+1}$, then $y \in N_{\e_n}(x_n) \subseteq S$.
+        Therefore, $\lall n, [x_1, x_n) \subseteq S$.
+        As $n \to \infty$, 
+        if $\set{x_n}$ is convergent to $L$, then $L$ is a boundary point of $S$,
+        which is a contradiction.
+        Therefore $\set{x_n}$ is divergent to infinity, as it's increasing.
+        Therefore $[x_1, \infty) \subseteq S$.
+        Simularly, we construct the sequence in the negative direction to prove
+        $(-\infty, x_1] \subseteq S$.
+        Therefore $S = \R$.
+
+    \subsection{Show that $\bd(S) = \overline{S} \intersection \overline{\R \setminus S}$.}
+        We know $\bd(S) = \bd(\R \setminus S)$, 
+        As they have the same definition.
+
+        % \begin{lemma}
+        %     $\bd(S) \subseteq  \overline{S} \intersection \overline{\R \setminus S}$
+        % \end{lemma}
+            % Proof:
+            Suppose $x \in \bd(S)$.
+            Since $\bd{S} \subseteq \overline S$,
+            $x\in \overline S$.
+            Since $x \in \bd(S) = \bd(\R \setminus S)$,
+            $x \in \overline{\R \setminus S}$.
+            Therefore $x \in \overline{S} \intersection \overline{\R \setminus S}$.
+            % \qed
+
+        % \begin{lemma}
+        %     $\overline{S} \intersection \overline{\R \setminus S} \subseteq \bd(S)$
+        % \end{lemma}
+            % Proof:
+            Suppose 
+            $x \in \overline{S} \intersection \overline{\R \setminus S}
+                = (S \union \bd(S)) \intersection ((\R \setminus S \union \bd(\R \setminus S))$.
+            Therefore $x \not\in S \lif x \in \bd(S)$
+            and $x \in S \lif x \not\in \R \setminus S \lif x \in \bd(\R \setminus S) = \bd(S)$.
+            Therefore $x \in \bd(S)$ is both cases.
+            % \qed
+
+        Therefore
+        $\bd(S) = \overline{S} \intersection \overline{\R \setminus S}$.

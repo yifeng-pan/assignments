@@ -1,0 +1,59 @@
+\section{Suppose $f:I \to \R$ where $I$ is an open interval containing $a$.
+    Suppose further that $f$ is $n$ times differentiable at $a$ 
+    and let $p_n$ be the $n$th Taylor polynomial for $f$ at $a$.
+    Apply \lhopital's rule $n-1$ times to show that
+    \[
+        \bm{\lim_{x\to a}\frac{f(x) - p_n(x)}{(x-a)^n} = 0}
+    \]
+}
+    % % Attempt 3, turns out i was using the wrong def for \lhopital, and question has typo (?).
+    Let $g(x) = (f(x) - p_n(x))$.
+    Let $h(x) = (x-a)^n$.
+    As $\lall k, 1 < k \leq n, h^{(k)}(x)$ is non-zero for all deleted nhds of $a$,
+    we can apply \lhopital's rule $n$ times.
+    So $g^{(n)} = f^{(n)}(x) - p_n^{(n)}(x)$,
+    and $h^{(n)} = n!$.
+
+    \begin{align*}
+        \lim_{x\to a}\frac{f(x) - p_n(x)}{(x-a)^n}
+        &= \lim_{x\to a}\frac{f^{(n)}(x) - p_n^{(n)}(x)}{n!} \\
+        &= \lim_{x\to a}\frac{f^{(n)}(a) - p_n^{(n)}(a)}{n!} 
+            \text{ (TODO, are $f^{(n)}, p^{(n)}_n$ are continuous?)} \\
+        &= \lim_{x\to a}\frac{0}{n!} \\
+        &= 0
+    \end{align*}
+
+
+    % % Attempet 2
+    % % Doesn't work, c depends of x
+    % Let $\e > 0$.
+    % By Taylor's Theorem, 
+    % $\lis c$ such that 
+    % $f(x) = p_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!} (x-x_0)^{n+1}$.
+    % Choose $\delta = \e \abs{\frac{f^{(n+1)}(c)}{(n+1)!}}^{-1}$.
+    % \footnote{If $\frac{f^{(n+1)}(c)}{(n+1)!} = 0$, then $\delta$ can be anything, and the proof is trivial.}
+    % Let $\abs{x - a} < \delta$.
+    % \begin{align*}
+    %     \abs{\frac{f(x) - p_n(x)}{(x-a)^n} - 0}
+    %     &= \abs{\frac{(p_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!} (x-a)^{n+1}) - p_n(x)}{(x-a)^n}} \\
+    %     &= \abs{\frac{f^{(n+1)}(c)}{(n+1)!} (x-a)} \\
+    %     &= \abs{\frac{f^{(n+1)}(c)}{(n+1)!}} \abs{x-a} \\
+    %     &< \abs{\frac{f^{(n+1)}(c)}{(n+1)!}} \e \abs{\frac{f^{(n+1)}(c)}{(n+1)!}}^{-1} \\
+    %     &= \e
+    % \end{align*}
+    
+
+    % % Attempt 1
+    % Let $g(x) = a(x) (f(x) - p_n(x))$.
+    % Let $h(x) = a(x) (x-a)^n$.
+    % So $h'(x) = a'(x) (x-a)^n + n (x-a)^{n-1} a(x)$.
+
+    % $a(x)$ could be $(x-a)^{1-n}$.
+    % $a'(x)$ would be $(-n+1)(x-a)^{-n}$.
+
+
+    % So $g^{(n-1)} = f^{(n-1)}(x) - p_n^{(n-1)}(x)$,
+    % and $h^{(n-1)} = n! (x - a)$.
+    % \begin{align*}
+    %     test
+    % \end{align*}

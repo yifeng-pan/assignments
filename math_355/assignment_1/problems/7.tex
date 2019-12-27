@@ -1,0 +1,36 @@
+\section{Supoose $A$ and $B$ are both bounded subsets of $\R$. Find an property $\meta{X}$ so that
+    the statement $\sup A = \inf B$ if and only if $\meta{X}$ is true.}
+    
+    Property $\meta{X}$: $\forall a \in A, \forall b \in B, a \leq b$ 
+    AND $\forall \epsilon \in \R, \epsilon >0, \exists x \in A, y \in B$ such that $y - x < \epsilon$.
+
+    If $\meta{X}$ then $\sup A = \inf B$. Proof: \\ 
+    Suppose $\meta{X}$.
+    Suppose $\sup A > \inf B$. 
+    We know that $\forall a \in A, \forall b \in B, a \leq b$.
+    Therefore $\inf B$ is an upper-bound of $A$.
+    Contradiction. 
+    Now suppose $\sup A < \inf B$.
+    Now, set $\epsilon = \inf B - \sup A > 0$.
+    Then $\forall a \in A, b\in B: b - a \geq \sup B - a \geq \sup B - \inf A = \epsilon$.
+    Therefore $b - a \not < \epsilon$. 
+    Contradiction.
+    Therefore $\sup A = \inf B$.
+
+    If $\sup A = \inf B$ then $\meta{X}$. Proof: \\ 
+    Suppose $\sup A = \inf B$.
+    This means that $\forall a \in A , b \in B, a \leq \sup A = \inf B \leq b$.
+    Now, let $\epsilon \in \R, \epsilon > 0$.
+    We know $\exists x \in A$ such that $x > \sup A - \epsilon/2$ (otherwise $\sup A - \epsilon/2$ would be a upper bound).
+    We also know that $\exists y \in B$ such that $y < \inf B + \epsilon/2$ (otherwise $\inf B + \epsilon/2$ would be a lower bound).
+    Now, 
+    \begin{align*}
+        \epsilon &= \epsilon + \inf B - \inf B \\ 
+        &= (\inf B + \frac{\epsilon}{2}) - (\inf B - \frac{\epsilon}{2}) \\ 
+        &= (\inf B + \frac{\epsilon}{2}) - (\sup A - \frac{\epsilon}{2}) \\ 
+        &> y - (\sup A - \frac{\epsilon}{2}) \\ 
+        &> y - x \\ 
+    \end{align*}
+    Therefore $\meta{X}$.
+
+    Therefore $\sup A = \inf B$ IFF $\meta{X}$.
