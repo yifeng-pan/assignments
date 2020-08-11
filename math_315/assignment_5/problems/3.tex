@@ -1,0 +1,128 @@
+\section[Problem 1]{}
+    \subsection[(i)]{Let $\alpha$ be the class of $x$ in the quotient ring $\Q[x]/(f)$, where 
+        $f = x^4 + x^3 + x^2 + x+1$. Find $a_0,a_1,a_2,a_3 \in \Q$ such that 
+        $(\alpha^3 + \alpha ^2 + \alpha)(\alpha^5 + 1) = a_0+a_1\alpha +a_2\alpha^2+a_3\alpha^3$
+        in $\Q[x] / (f)$.
+    }
+
+        Let $I = (x^4 + x^3 + x^2 + x+1)$, where $a \in R$.
+
+        Let $\alpha = [x] = x + I$.
+
+        Let $n \geq 1$.
+        We have $[x]^n = (x+I)^n = x^n + I = [x^n]$.        
+
+        Now, 
+        \footnote{There is a more concise way to do this, 
+            but I was tired of dividing polynomials after problem (2.2).}
+        \begin{align*}
+            (\alpha^3 + \alpha ^2 + \alpha)(\alpha^5 + 1)
+            &= \alpha^8 + \alpha ^7 + \alpha^6 + \alpha^3 + \alpha ^2 + \alpha \\
+            &= x^8 + x^7 + x^6 + x^3 + x^2 + x + I \\
+            &= x^8 + x^7 + x^6 + x^3 + x^2 + x + q(x^4 + x^3 + x^2 + x+1), \text{ for any } q\in \Q[x] \\
+            % &= x^4x^4 + x^4x^3 + x^4x^2 + x^3 + x^2 + x + qx^4 + qx^3 + qx^2 + qx + q \\
+            &= x^8 + x^7 + x^6 + x^3 + x^2 + x + qx^4 + qx^3 + qx^2 + qx + q \\
+            &= (q+x^4)x^4 + (q+x^4 + 1)x^3 + (q+x^4+1)x^2 + (q + 1)x + q \\
+            &= (q+x^4 - 1)x^4 + (q+x^4 + 1)x^3 + (q+x^4+1)x^2 + (q + 1)x + (q + x^4)\\
+            &= (q+x^4 - x - 1)x^4 + (q+x^4 + 1)x^3 + (q+x^4+1)x^2 + (q + x^4 + 1)x + (q + x^4)\\
+            &= (q+x^4 - x)x^4 + (q+x^4 - x + 1)x^3 + (q+x^4+1)x^2 + (q + x^4 + 1)x + (q + x^4)\\
+            &= (q+x^4 - x)x^4 + (q+x^4 - x + 2)x^3 + (q+x^4 - x+1)x^2 + (q + x^4 + 1)x + (q + x^4)\\
+            &= (q+x^4 - x)x^4 + (q+x^4 - x + 2)x^3 + (q+x^4 - x+2)x^2 + (q + x^4 -x + 1)x + (q + x^4)\\
+            &= (q+x^4 - x)x^4 + (q+x^4 - x + 2)x^3 + (q+x^4 - x+2)x^2 + (q + x^4 -x + 2)x + (q + x^4 -x)\\
+            &= px^4 + (p+a_3)x^3 + (p+a_2)x^2 + (p+a_1)x+(p + a_0) \\
+            &\ \ \ \ \ \ \text{where }  
+                p = q + x^4 - x, 
+                \fbox{$\bm{ 
+                    a_3 = 2, 
+                    a_2 = 2,
+                    a_1 = 2,
+                    a_0 = 0
+                }$}
+                \\
+            &= a_0 + a_1x +a_2x^2+a_3x^3 + px^4 + px^3 + px^2 + px+p \\
+            &= a_0 + a_1x +a_2x^2+a_3x^3 + p(x^4 + x^3 + x^2 + x+1) \\
+            &= a_0 + a_1x +a_2x^2+a_3x^3 + I \\
+            &= a_0+a_1\alpha +a_2\alpha^2+a_3\alpha^3 
+        \end{align*}
+        To verify,
+        Suppose $q \in (\alpha^3 + \alpha ^2 + \alpha)(\alpha^5 + 1)$.
+
+        So $q = x^8 + x^7 + x^6 + x^3 + x^2 + x + q(x^4 + x^3 + x^2 + x+1)$, for some $q\in \Q[x]$
+
+        Then $q = 2x^3 + 2x^2 + 2x + p(x^4 + x^3 + x^2 + x+1)$, where $p = q+x^4 -x \in \Q[x]$.
+        \footnote{The two equations are equal; Calculator: \url{https://www.symbolab.com/}.}
+        \qed
+
+    \newpage % Temp
+    \subsection[(ii)]{Let $\F_p = \Z/p\Z$. Prove that $F = \F_2[x]/(x^3+x+1)$ is a field,
+        but $\F_3[x]/(x^3+x+1)$ is not a field.}
+        
+        \footnote{Input ``$IrreduciblePolynomialQ[x^3+x+1, Modulus -> 2]$'' in \url{https://www.wolframalpha.com/}}
+        $x^3+x+1$ is irreducible in $\F_2[x]$,
+        but reducible in $\F_3[x]$. 
+
+        \begin{lemma}
+            $\F_p[x] / (f(x))$ is a field $\iff$ $f(x)$ is irreducible in $\F_p[x]$.
+        \end{lemma}
+            \footnote{Reference: \url{http://sites.millersville.edu/bikenaga/abstract-algebra-1/quotient-rings-of-polynomial-rings/quotient-rings-of-polynomial-rings.html}}
+            Proof:
+            Suppose $f(x) \in \F_p[x]$ is irreducible (henceforth refered to as $f$).
+
+            Let $[g] \in \F_p[x]/(f)$, where $g \in \F_p[x] \setminus \set{0}$.
+            We find the inverse of $[g]$.
+
+            Since $f$ is irreducible, $\gcd(f, g) = c$ for some constant $c \in \F_p$.
+            Otherwise, $c$ would be a non-constant factor of $f$.
+
+            By Bézout's Identity used in (2.1): \\
+            $\lis a, b \in \F_p[x]$, such that 
+            $af + bg = 1$.
+            Now, 
+            \begin{align*}
+                [af + bg] &= [1] \\
+                % [af] + [bg] &= [1] \\
+                [a][f] + [b][g] &= [1] \\
+                [a][0] + [b][g] &= [1] \\
+                % af + bg + (f) &= 1 + (f) \\
+                % bg + (f) &= 1 + (f) \\
+                [b][g] &= [1]
+            \end{align*}
+            Therefore $[b]$ is the multiplicative inverse of $[g]$ in $\F_p[x] / (f)$,
+            where $[1]$ is the multiplicative identity.
+
+            Since $\F_p[x] / (f)$ is a quotient ring, and since every element has an inverse,
+            $\F_p[x] / (f)$ is a field.
+
+            Now for the logical inverse: Suppose $f$ is reducible.
+            So $\lis$ non-constants $a,b \in F_p[x]$ such that $ab = f$.
+            
+            We have
+            \(
+                [ab] = [f] \to
+                [a][b] = [0]
+            \).
+
+            Suppose $[a] = [0]$.
+            So $\lis r \in \F_p[x]$, such that $rf = a$.
+            Now, $ab = f \to rfb = f$,
+            and since we know $\F_p[x]$ is an integral domain, $rb = 0$.
+            But $r \neq 0$, $b \neq 0$ from construction, so $\F_p[x]$ has non-zero zero divisors.
+            Contradiction.
+
+            Therefore $[a] \neq [0]$.
+            Similarly, $[b] \neq [0]$.
+
+            Since $[a] \neq [0]$ and $[b] \neq [0]$, $\F_p[x] / (f)$ has non-zero zero divisors,
+            and therefore is not an integral domain, 
+            and therefore not a field.
+            \qed
+            
+    \subsection[(iii)]{What is the order $\abs{F}$ of $F$? Justify your answer.}
+        $\abs{F} = p^3 = 2^3 = 8$:
+        
+        Since $x^3+x+1$ is irreducible in $\F_2[x]$,
+        $\F_2[x]/(x^3+x+1)$ kills all polynomials above degree $3$.
+
+        So you have $ax^2 + bx + c$ for $a,b,c \in \Z/2\Z$.
+        \qed
+

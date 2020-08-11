@@ -1,0 +1,82 @@
+\section[Problem 1]{}
+    \subsection[(i)]{What is the polynomial in $\R[x]$ which is monic of degree $4$,
+        with roots $\set{1,2,3}$ such that the root $1$ has multiplicity $2$?}
+        \footnote{Reference: \url{https://en.wikipedia.org/wiki/Multiplicity_(mathematics)\#Multiplicity_of_a_root_of_a_polynomial}}
+        We need root $\set{1,2,3}$.
+        So $(x-1)^a (x-2)^b (x-3)^c$.
+
+        Since degree is $4$, $a+b+c = 4$.
+
+        Root $1$ has multiplicity $2$, so $a = 2$.
+
+        Therefore we have $(x-1)^2 (x-2) (x-3)$.
+
+    \subsection[(ii)]{Determine the monic divisors of $2x^3 - 4x^2 + 2x - 4$ in $\Q[x]$.
+        Justify your answer.}
+        \footnote{Reference: \url{https://en.wikipedia.org/wiki/Principal_ideal_domain\#Examples}}
+        $\Q[x]$ is a UFD, so we have to find it's irreducible factors.
+
+        By inspection $2$ is a root, so $(x-2)$ is a factor,
+        and $2x^3 - 4x^2 + 2x - 4 = (x-2)(2x^2 + 2)$.
+
+        So $x^3 - 4x^2 + 2x - 4 = 2(x-2)(x^2 + 1)$.
+
+        The monic divisors are $\set{(x-2), (x^2+1), (x-2)(x^2+1)}$.
+        
+
+    \subsection[(iii)]{Determine the monic irreducible polynomials of degree $3$ over $\Z/3\Z[x]$.
+        Justify your answer.}
+        % $\Z/3\Z[x]$ is a UFD.
+
+        We need to find all $(a,b,c)$,
+        such that $x^3 + ax^2 + bx + c$ is irreducible in $\Z / 3\Z$.
+
+        There are only $3^3 = 27$ polynomials to check.
+
+        $c \neq 0$, otherwise $x$ is a factor.
+        % Let $A = \set{(a,b,c) | a,b \in \set{0,1,2}, c \in \set{1,2}}$.
+
+        Since $\Z/3\Z$ is a field, and therefore a UFD,
+        $x^3 + ax^2 + bx + c$ has one of the following irreducible factor forms:
+        \begin{enumerate}
+            \item $(x - i) (x - j) (x - k)$.
+            \item $(x^2 + ix + j) (x - k)$.
+            \item $x^3 + ix^2 + jx + k$.
+        \end{enumerate}
+
+        Therefore, if $x^3 + ax^2 + bx + c$ is reducible, then it has a constant factor.
+        \footnote{Devin Kwok (UCID: 10016484) pointed this out to me. Before, 
+            I was calculating the image of $\set{(i,j,k)}$ and subtracting that from $\set{(a,b,c)}$ 
+            to get the irreducible solutions.}
+
+        Evaluating each $(a,b,c)$ at $x \in \Z/3\Z$ requires $3*3*2*3 = 54$ computations,
+        which can easily be done with lazy for-loops:
+
+        \begin{verbatim}
+            int p = 3;
+            for(int i = 0; i < p; ++i)
+                for(int j = 0; j < p; ++j)
+                    for(int k = 0; k < p; ++k){
+                        bool irr = true;
+                        for(int x = 0; x < p; ++x)
+                            if ((x*x*x + i*x*x + j*x + k) % p == 0)
+                                irr = false;
+                        if(irr)	
+                            std::cout << "(" << i << ", " << j << ", " << k << "), \n";
+                    }
+        \end{verbatim}
+
+        We get $x^3 + ax^2 + bx + c$ for
+        \(
+            (a,b,c) \in
+            \set{
+                (0, 2, 1), 
+                (0, 2, 2),
+                (1, 0, 2),
+                (1, 1, 2),
+                (1, 2, 1),
+                (2, 0, 1),
+                (2, 1, 1),
+                (2, 2, 2)
+            }
+        \)

@@ -1,0 +1,147 @@
+\section[Problem 6]{
+    Let $p$ be a prime number.
+}  
+    \subsection[(i)]{
+        Show that there are $\frac{p(p+1)}{2}$ reducible monic quadratic polynomials over
+        the finite field $\F_p = \Z/p\Z$.
+    }
+        Monic quadratic polynomials are of the form $x^2 + ax + b$, for some $c,d\in \F_p$.
+
+        There are $p^2$ polynomials of this form in $\F_p$.
+
+        Since quadratics are of degree $2$, the are either irreducible,
+        or can be reduced into two polynomials with degree $1$.
+
+        Therefore the reducible polynomials are of the form 
+        $x^2 + ax + b = (x + c)(x + d) = x^2 + (c+d)x + cd$, for some $c,d \in \F_p$.
+
+        % The number of distinct reducible polynomials are therefore the number of distinct
+        % solutions to the equations $c+d = a, cd = b$, $a,b,c,d \in \F_p$.
+
+        The number of distinct reducible polynomials are therefore the number of distinct
+        images of $(x+c)(x+d)$ with $c,d \in \F_p$.
+
+        We count:
+        \begin{enumerate}
+            \item Choose $c \in \F_p$. ($p$ choices)
+            \item Choose $d \in \F_p, d \neq c$. ($p - 1$ choices)
+            \item The choices for $(c,d)$ are commutative, so we counted everything twice. ($1/2$)
+            \item Now we add the the number of ways to choose $c,d\in \F_p, c= d$. ($p$ choices).
+        \end{enumerate}
+
+        We have $\frac{p(p-1)}{2} + p = \frac{p^2 - p + 2p}{2} = \bm{\frac{p(p+1)}{2}}$.
+        \qed
+
+
+
+
+
+    \subsection[(ii)]{
+        Construct a field of order $49$.
+    }
+        $F = \F_7 / (x^2 + 1)$.
+
+        Since $x^2 + 1$ has degree $2$, if it is reducible, it can be reduced into
+        two polynomials of degree $1$, which would imply it has integer roots.
+
+        It's easy to check that $x^2 + 1 \neq 0, \lall x \in \set{0,1,2,3,4,5,6} = \F_7$.
+        Therefore $x^2 + 1 $ is irreducible in $\F_7$.
+
+        Since $x^2 + 1$ is irreducible in $\F_7$, $F$ is a field.
+        \footnote{I proved this in Assignment 5, 
+            I've provided a copy of the proof on the next page.}
+
+        Since $x^2 + 1$ kills all the polynomials of above degree $2$ in $\F_7$,
+        all the elements of $F$ are of the form $ax + b, a,b \in \F_7$.
+
+        Therefore $\abs{F} = 7^2 = 49$.
+        \qed
+
+    \subsection[(iii)]{
+        Is there a field $F$ of characteristic $p$ such that $F$ is an infinite set?
+        Prove that $F$ does not exist or give an example.
+    }
+        We know $\Z/2\Z[x]$ is an integral domain.
+
+        Define $F$ as a field of fractions over $\Z/2\Z[x]$.
+
+        $F$ is a field by construction.
+
+        We have to prove $F$ is infinite with a characteristic $2$.
+
+        Let $[\frac{a}{b}]\in F$, for $a,b\in \Z/2\Z[x], b \neq 0$.
+
+        $[\frac{a}{b}] + [\frac{a}{b}] = [\frac{2a}{b}] = [\frac{0}{b}]$, since $2a = 0 \in \Z/2\Z[x]$,
+        where $[\frac{0}{b}]$ is the additive identity in $F$.
+
+        Therefore $F$ has a characteristic of $2$.
+
+        Now, we construct an infinite subset of $F$.
+        Let $S = \set{[\frac{x}{1}],[\frac{x^2}{1}],[\frac{x^3}{1}],[\frac{x^4}{1}],\hdots} \subseteq F$.
+
+        The elements of $S$ are all distinct equivalence classes, i.e. elements of $F$,
+        since $x^a 1 \neq x^b 1, \lall a,b\in \N, a\neq b$.
+
+        Since $S$ is denumerable,
+        $F$ is not finite.
+        \qed
+
+
+
+\section*{Lemma used in (6.2)}
+    \begin{lemma}
+        $\F_p[x] / (f(x))$ is a field $\iff$ $f(x)$ is irreducible in $\F_p[x]$.
+    \end{lemma}
+        Proof:
+        Suppose $f(x) \in \F_p[x]$ is irreducible (henceforth refered to as $f$).
+
+        Let $[g] \in \F_p[x]/(f)$, where $g \in \F_p[x] \setminus \set{0}$.
+        We find the inverse of $[g]$.
+
+        Since $f$ is irreducible, $\gcd(f, g) = c$ for some constant $c \in \F_p$.
+        Otherwise, $c$ would be a non-constant factor of $f$.
+
+        By Bézout's Identity: \\
+        $\lis a, b \in \F_p[x]$, such that 
+        $af + bg = 1$.
+        Now, 
+        \begin{align*}
+            [af + bg] &= [1] \\
+            % [af] + [bg] &= [1] \\
+            [a][f] + [b][g] &= [1] \\
+            [a][0] + [b][g] &= [1] \\
+            % af + bg + (f) &= 1 + (f) \\
+            % bg + (f) &= 1 + (f) \\
+            [b][g] &= [1]
+        \end{align*}
+        Therefore $[b]$ is the multiplicative inverse of $[g]$ in $\F_p[x] / (f)$,
+        where $[1]$ is the multiplicative identity.
+
+        Since $\F_p[x] / (f)$ is a quotient ring, and since every element has an inverse,
+        $\F_p[x] / (f)$ is a field.
+
+        Now for the logical inverse: Suppose $f$ is reducible.
+        So $\lis$ non-constants $a,b \in F_p[x]$ such that $ab = f$.
+        
+        We have
+        \(
+            [ab] = [f] \to
+            [a][b] = [0]
+        \).
+
+        Suppose $[a] = [0]$.
+        So $\lis r \in \F_p[x]$, such that $rf = a$.
+        Now, $ab = f \to rfb = f$,
+        and since we know $\F_p[x]$ is an integral domain, $rb = 0$.
+        But $r \neq 0$, $b \neq 0$ from construction
+        ($r\neq 0$ because $a \neq 0$)
+        ,so $\F_p[x]$ has non-zero zero divisors.
+        Contradiction.
+
+        Therefore $[a] \neq [0]$.
+        Similarly, $[b] \neq [0]$.
+
+        Since $[a] \neq [0]$ and $[b] \neq [0]$, $\F_p[x] / (f)$ has non-zero zero divisors,
+        and therefore is not an integral domain, 
+        and therefore not a field.
+        \qed

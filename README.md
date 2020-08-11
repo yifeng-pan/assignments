@@ -2,7 +2,7 @@ Archive of assignments from the University of Calgary.
 
 # LaTeX setup:  
 + Sumatra PDF  
-+ Visual Studio Code  
++ VSCodium
 + MiKTeX
 
 # Classes
@@ -22,3 +22,6 @@ Assignments are best 2 out of 3. Final was take home.
 Archive of Math 355, Fall 2019 at ucalgary.  
 Assignment 3 is incomplete.  
 Assignment 3 was never submitted.
+
+## Algebra I
+Archive of Math 315, Winter 2020 at ucalgary.

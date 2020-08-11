@@ -1,0 +1,96 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+% \documentclass[10pt, letterpaper, titlepage]{report}
+
+% % Packages
+\input{../../packages.tex}
+\input{../../commands.tex}
+
+% % Change lable to letter from number
+% \renewcommand{\thesubsection}{\alph{subsection}}
+
+% Paragraph setup
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+% Size of section header
+\usepackage{sectsty}
+\chaptertitlefont{\fontsize{17}{0}\selectfont}
+\sectionfont{\fontsize{11}{13}\selectfont}
+\subsectionfont{\fontsize{10}{12}\selectfont}
+\subsubsectionfont{\fontsize{10}{12}\selectfont}
+
+\usepackage{hyperref} % Doesn't like math in section titles
+\newcommand{\smath}[2]{\texorpdfstring{#1}{#2}} % Use this to not break hyperref
+% \section[title in bookmark]{title} % also works
+% I did'nt find this out until half way through this assignment
+
+% \setcounter{secnumdepth}{-1} % Sets sectioning level for numbering 
+% % -1 part     1 section     3 subsubsection  5 subparagraph
+% %  0 chapter  2 subsection  4 paragraph
+
+% % Debug
+% % For \hbox too wide errors.
+% \overfullrule=.01cm
+
+% Header
+% \geometry{margin = .75in, lmargin = .275in, rmargin = .275in} % For PDF Viewer (For a one line header, the white space in the top left is a ``perfect'' square)
+\geometry{margin = 1in, lmargin = .5in, rmargin = .5in} % For Printing
+\pagestyle{fancy}
+% \pagenumbering{gobble} % Removes page number
+\lhead{Yifeng Pan}
+\rhead{UCID: 30063828}
+
+% Title page
+\title{MATH 315 Assignment 5}
+\author{Instructor: Dr. Thomas Bitoun
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Winter 2020}
+
+\begin{document}
+    \maketitle
+
+    % I completed every problem independently.
+
+    % It was proofread by someone else only after I've completed every problem.
+    \newcommand*\na{\footnote{No additional references used.}}
+
+    \section*{Instructions}
+    \begin{enumerate}
+        \item Any source MUST be cited. If you use somebody else’s solution, you must demonstrate to the
+        grader that you understand the proof you are using.
+        \item For each problem, you MUST indicate, along with your solution, the people you have
+        been discussing the problem with. This includes the instructor and the TA. If you
+        haven’t discussed the problem with anyone, write so along with your solution, for each
+        problem.
+        \item Write your solutions in your own words, and legibly. Please don’t overcrowd your answers with
+        unnecessary arguments.
+        \item Please submit your solutions as a portrait-oriented pdf and put your name in the
+        filename.
+    \end{enumerate}
+
+    \textbf{With the exception of Problem (1.3),
+    I completed every problem independently without discussion with anyone.}
+
+    \textbf{Sources are cited inline.}
+
+
+
+    \newpage
+    \input{problems/1.tex}
+    \newpage
+    \input{problems/2.tex}
+    \newpage
+    \input{problems/3.tex}
+
+    % \newpage
+    \section*{Additional Citations}
+        ``Algebra'' by Michael Artin
+        (ISBN 13: 9780132413770).
+
+        Wikipedia.
+
+        Proofread by Devin Kwok
+        (UCID: 10016484).
+        
+\end{document}

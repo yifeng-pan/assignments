@@ -1,0 +1,91 @@
+\section[Problem 4]{Let $R$ be a commutative ring.}
+    \subsection[(i)]{Assume that the characteristic of $R$ is a prime number $p$.
+        Prove that if $r \in R$ is nilpotent i.e. $r^n = 0$ for some $n \geq 0$,
+        then there is an $l \geq 1$ such that $(1 + r)^l= 1$.
+    }
+        % \footnote{\url{https://en.wikipedia.org/wiki/Frobenius_homomorphism}}
+        % \footnote{Reference: \url{https://en.wikipedia.org/wiki/Characteristic_(algebra)}.}
+        Since the characteristic of $R$ is $p$,
+        $\lall r \in R, p r = 0$.
+        
+        Let $r \in R$.
+
+        % \footnote{Proof: 
+        %     \url{https://math.stackexchange.com/questions/2834493/prime-number-rows-in-a-pascals-triangle/2834502\#2834502}.}
+        \footnote{\url{https://en.wikipedia.org/wiki/Freshman\%27s_dream\#Prime_characteristic}.}
+        We know $(1+r)^p = 1 + r^p$.
+        And $(1+r)^{(p^k)} = 1+r^{(p^k)}$.
+
+        \footnote{I got the idea that I needed $p^k \geq n$, not $p^k \cmod{0}{n}$,
+            from Devin Kwok (UCID: 10016484).}
+        Choose $k$ such that $p^k \geq n$.
+
+        Let $l = p^k$.
+
+        Then $(1+r)^l = 1 + r^l = 1 + r^nr^{l-n} = 1 + 0r^{l-n} = 1$.
+        \qed
+
+%         By Euler's Theorem:
+%         Since $p$ and $n$ are coprime,
+%         $\lis k$ such that $p^k \cmod{1}{n}$.
+
+%         This means $(1 + r)^{(p^k)} = 1 + r^{(p^k)} = 1 + r$.
+
+% (
+%         Doesn't work.
+%         R is not an integral domain.
+% )
+
+%         So $(1 + r)^{(p^k)} - (1 + r) = 0
+%         \to (1 + r) ( (1 + r)^{(p^k) - 1} - 1) = 0$.
+
+%         Therefore $(1 + r)^{(p^k) - 1} = 1$.
+%         Let $l = p^k - 1$.
+        % \qed
+
+
+    \subsection[(ii)]{Prove that an integral domain of finite order is a field.}
+        \footnote{Reference: \url{https://en.wikipedia.org/wiki/Integral_domain}.}
+        Let $R = \set{0, r_1, r_2, \hdots, r_{n-1}}$ be an finite integral domain of order $n$.
+
+        We prove the only ideals of $R$ are $(0)$ and $(1)$.
+
+        Let $I$ be an ideal of $R$.
+
+        Suppose $I \neq (0)$.
+
+        Let $i \in I, i \neq 0$.
+
+        Let $J = (i) = \set{ir | r \in R} = \set{0} \union \set{ir_1, ir_2, \hdots, ir_{n-1}}$.
+
+        We prove $ir_1, ir_2, \hdots, ir_{n-1}$ are distinct.
+
+        Suppose $\lis a,b, a \neq b$ such that $ir_a = ir_b$.
+
+        Now, $ir_a = ir_b \to 0 = ir_a - ir_b = i(r_a - r_b)$.
+
+        Since $R$ is an integral domain, and $i \neq 0$, we know
+        $r_a - r_b = 0$. Contradiction.
+
+        Therefore $ir_1, ir_2, \hdots, ir_{n-1}$ are distinct,
+        and the order of $J$ is $1 + (n - 1) = n$.
+
+        Therefore $I = J = R$.
+
+        Therefore $R$ only has two ideals.
+
+        \footnote{Reference: “Algebra” by Michael Artin, Proposition 11.3.19 (b).}
+        Therefore $R$ is a field.
+        \qed
+
+    \subsection[(iii)]{Find $x \in \Z$ such that $x = 3$ modulo $8$ and $x = 2$ modulo $5$.}
+        \footnote{Reference: \url{https://en.wikipedia.org/wiki/Chinese_remainder_theorem\#Computation}.}
+        $5$ and $8$ are coprimes.
+
+        So we only have to check integers between $0$ and $5 * 8 = 45$.
+
+        The solutions to $x \cmod{2}{5}$ are $\set{2,7,12,17,22,27,32,37,42}$.
+
+        The solutions to $x \cmod{3}{8}$ are $\set{3, 11, 19, 27, \hdots}$.
+
+        We found $x = 27$.

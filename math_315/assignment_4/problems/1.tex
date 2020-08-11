@@ -1,0 +1,106 @@
+\section[Problem 1]{Let $R$ be a commutative ring and let $I$ and $J$ be ideals of $R$.}
+    \subsection[(i)]{Prove that the sets $I + J = \set{x + y | x\in I, y \in J}, I \intersection J$
+        and \\
+        \(
+            IJ = 
+            \set{x_1y_1+ x_2y_2 +\hdots + x_n y_n 
+            | n \geq 1, x_m \in I, y_m \in J, \lall 1 \leq m \leq n}
+        \) 
+        are ideals of $R$.
+    }
+        \begin{multicols}{3}
+            \subsubsection[Addition]{
+                \footnote{Reference: “Algebra” by Michael Artin, Section 11.3, Homomorphisms and Ideals.}
+                $I + J$:
+            }
+                % $I+J$:
+
+                Its clear that $I+J \neq \emptyset$.
+
+                Let $x +y, x'+y' \in I+J$.
+                Now, $x + y + x' + y' = x+x' + y+y' \in I+J$.
+
+                Let $x + y \in I+J, r \in R$.
+                Now, $r(x+y) = rx + ry \in I +J$.
+
+                Therefore $I+J$ is an ideal.
+                \qed
+            
+            \subsubsection[Intersection]{$I \intersection J$:}
+                % $I\intersection J$:
+
+                $\set{0} \subseteq I \intersection J$.
+
+                Let $x, x' \in I \intersection J$.
+                Now, $x + x'$ is closed under $I$ and under $J$, therefore $x+x' \in I \intersection J$.
+
+                Let $x \in I+J, r \in R$.
+                Now, $rx \in I$ and $rx \in J$, \\
+                therefore $rx \in I \intersection J$.
+                
+                Therefore $I \intersection J$ is an ideal.
+                \qed
+
+            \subsubsection[Linear Combination]{$IJ$:}
+                % $IJ$:
+
+                Its clear that $IJ \neq \emptyset$.
+
+                Let $z, z' \in IJ$.
+                Now, $z + z' = x_1y_1 + \hdots + x_ny_n + x_1'y_1' + \hdots + x_{n'}'y_{n'}' \in IJ$.
+
+                Let $z \in IJ, r \in R$.
+                Now, $rz = r(x_1y_1 + \hdots + x_ny_n) = (rx_1)y_1 + \hdots + (rx_n)y_n$.
+                Since $\lall k, rx_k \in I$, so $rz \in IJ$.
+
+                Therefore $IJ$ is a ideal.
+                \qed
+        \end{multicols}
+
+    \subsection[(ii)]{Show that $IJ \subset I \intersection J$, and prove that if
+        $I+J = R$, then $IJ = I \intersection J$.}
+        % \na
+        Let $z \in IJ$, where $z = x_1y_1+ x_2y_2 +\hdots + x_n y_n$, $x_k \in I, y_k \in J, \lall k$.
+
+        Since $I$ is an ideal, we know $x_k y_k \in I$, $\lall k$.
+        And since $I$ is closed under addition, $z \in I$.
+
+        Simularly $z \in J$. Therefore $z \in I \intersection J$, and $IJ \subseteq I\intersection J$.
+        \qed
+
+        Suppose $I + J = R$.
+        
+        \footnote{Reference: \url{https://en.wikipedia.org/wiki/Ideal_(ring_theory)\#Ideal_operations}.}
+        $I \intersection J = R (I \intersection J) 
+            = (I + J) (I \intersection J)
+            = I (I\intersection J) + J (I \intersection J)$
+
+            Since $I \intersection J \subseteq J$,
+            we have $I (I\intersection J) + J (I \intersection J)
+            \subseteq I J + J (I \intersection J)
+            \subseteq I J + J I
+            = IJ
+        $.\qed
+        
+        Therefore $IJ = I \intersection J$.
+
+
+    \subsection[(iii)]{Let $a$ and $b$ be relatively prime integers. Prove that 
+        there are integers $m,n$ such that $a^m+b^n = 1$ modulo $ab$.
+        (i.e. $a^m + b^n = 1$ in $\Z/ab\Z$. Note that this makes sense for $ab < 0$ as well.)
+    }
+        \footnote{Reference: \url{https://math.stackexchange.com/questions/901559/am-bn-equiv-1-mod-ab-for-some-m-n}.}
+        \footnote{\url{https://en.wikipedia.org/wiki/Chinese_remainder_theorem\#Theorem_statement}.}
+        By the Chinese Remainder Theorem: 
+        We define a ring isomorphism from $\Z/ab\Z \sim \Z/a\Z \times \Z/b\Z$.
+
+        It is sufficient to prove that $\lis m,n \in \Z$ such that 
+        $a^m+b^n \cmod{1}{a}$, and $a^m+b^n \cmod{1}{b}$.
+
+        Or equivalently: $b^n \cmod{1}{a}$, and $a^m \cmod{1}{b}$.
+
+        \footnote{\url{https://en.wikipedia.org/wiki/Euler's_theorem}}
+        By Euler's Theorem:
+        Since $a$ and $b$ are coprimes,
+        both $m$ and $n$ exists.
+        \qed

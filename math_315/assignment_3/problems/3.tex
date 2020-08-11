@@ -1,0 +1,66 @@
+\section[Problem 3]{}
+    \subsection[(i)]{Let $R, R'$ be rings. Show that the product of groups $R\times R'$
+        is a ring for the multiplication given by $(r_1, r_1') \dotp (r_2, r_2') = (r_1r_2, r_1'r_2')$.
+        It is called the (direct) product of the rings $R$ and $R'$.}
+
+        It's easy to verify that $(R \times R', +)$ is an abelian group with the identity $(0,0)$.
+
+        It's also easy to verify that $\times$ is commutative and associative on $R\times R'$, 
+        with the identity being $(1,1)$.
+
+        Let $(a, a'), (b,b'), (c,c') \in R\times R'$.
+        Now, \begin{align*}
+            ((a,a') + (b,b')) (c, c')
+            &= (a+b, a'+b') (c,c') \\
+            &= ((a+b)c, (a'+b')c') \\
+            &= (ac+bc, a'c'+b'c') \\
+            &= (a,a')(c,c') + (b,b')(c,c')
+        \end{align*}
+        Therefore the distributive law holds, and
+        $R\times R'$ is a ring.
+        \qed
+
+    \subsection[(ii)]{Prove that a surjective map $f: R \to R'$ such that $f(r_1r_2) = f(r_1)f(r_2)$
+        for all $r_1, r_2 \in R$ satisfies $f(1) = 1$.}
+        Let $b \in R'$.
+
+        Since $f$ is surjective, $\lis a \in R, f(a) = b$.
+
+        Now, $f(1)b = f(1)f(a) = f(1a) = f(a) = b$, and $bf(1) = b$.
+        
+        Therefore $f(1)$ is the identity in $R'$.
+        \qed
+
+    \subsection[(iii)]{An element $r$ of a ring $R$ is nilpotent if $r^n = 0$ for some $n \geq 0$.
+        Does the ring $F(\R, \R)$ of functions from $\R$ to $\R$ have non-zero nilpotent elements?
+        Does it have non-zero zero divisors? Prove or give an example.}
+
+        \newcommand\threec{F(\R,\R)}
+
+        Lemma: $F(\R,\R)$ of all function from $\R$ to $\R$, is a ring.
+
+        There are no non-zero nilpotent elements. Proof:
+        
+        Let $f \in \threec$, such that $f(x) \neq 0$.
+
+        So $\lis x \in \R$, such that $f(x) = c \neq 0$, for some $c \in \R$.
+
+        So $(f(x))^n = c^n \neq 0$ for all $n \in \N$.
+        \qed
+
+        There are non-zero zero divisors. Proof:
+
+        Let $f(x) = 
+        \begin{cases}
+            0 &\text{ if $x = 1$} \\
+            1 &\text{ if $x \neq 1$} 
+        \end{cases}$.
+
+        Let $g(x) = 
+        \begin{cases}
+            1 &\text{ if $x = 1$} \\
+            0 &\text{ if $x \neq 1$} 
+        \end{cases}$.
+
+        Where $f(x) \neq 0, g(x) \neq 0, f(x)g(x) = 0$.
+        \qed

@@ -1,0 +1,51 @@
+\section[Problem 1]{Let $G$ be a group.}
+    \subsection[(i)]{Prove that the relation $a \sim b$ if $b = gag^{-1}$ for some
+        $g\in G$, is an equivalence relation on $G$.}
+        Let $a,b,c \in G$, and $\sim$ be a relation on $G$.
+
+        Suppose $a \sim b$.
+        So $\lis g \in G$ such that $b = gag^{-1}$.
+        Therefore $g^{-1}b g = a$.
+        Let $g' = g^{-1} \in G$,
+        so $a = g' b g'^{-1}$.
+        Therefore $b \sim a$.
+
+        Suppose $a \sim b, b \sim c$.
+        So $\lis g,$ and $h \in G$ such that $b = gag^{-1},$ and $c = hbh^{-1}$.
+        So $c = hgag^{-1}h^{-1}$.
+        Now $hg g^{-1}h^{-1} = h1h^{-1} = 1 = g^{-1}1g = g^{-1}h^{-1}hg$.
+        Therefore $(hg)^{-1} = g^{-1}h^{-1}$.
+        % Since $(hg)^{-1} = h^{-1}g^{-1}$,
+        Let $g' = hg \in G$, where $c = g' a g'^{-1}$.
+        Therefore $a \sim c$.
+
+        Lastly, $a = 1 a 1^{-1}$.
+        Therefore $a \sim a$.
+        \qed
+
+
+    \subsection[(ii)]{Prove that $\lall u,v \in G, uv \sim vu$.}
+        % We need to prove, $\lall u,v \in G, \lis g \in G, uv = g vu g^{-1}$.
+        Let $u,v \in G$.
+        Choose $g = v^{-1}u^{-1}v^{-1} \in G$.
+        Now, 
+        \begin{align*}
+            1 v^{-1} &= v^{-1} 1 \\
+            \to (uv v^{-1}u^{-1})v^{-1} &= v^{-1}(u^{-1}v^{-1}vu) \\
+            \to uvg &= gvu \\
+            \to uv &= gvug^{-1}
+        \end{align*}
+        Therefore $uv \sim vu$.
+        \qed
+
+
+    \subsection[(iii)]{Show that if there is a surjective group homomorphism $G'\to G$ for an 
+        abelian group $G'$, then $G$ is an abelian group.}
+        Let $\phi: G' \to G$ be surjective. Let $G'$ be an abelian group.
+
+        We need to prove $G$ is commutative.
+
+        Suppose $a,b \in G$. 
+        Since $\phi$ is surjective, $\lis a',b' \in G'$ such that $a = \phi(a'), b = \phi(b')$.
+        Since $G'$ is abelian, $ab = \phi(a')\phi(b') = \phi(a'b') = \phi(b'a') = \phi(b')\phi(a')= ba$.
+        \qed

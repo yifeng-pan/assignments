@@ -1,0 +1,27 @@
+\section[Problem 1]{
+}  
+    \subsection[(i)]{Let $C_{15}$ be a cyclic group of order $15$. 
+        How many subgroups does $C_{15}$ have? List all of them.
+    }
+        Let $g$ be a generator of $C_{15}$.
+
+        The order of every subgroup of $C_{15}$ has to divide $15$.
+
+        The divisors of $15$ are $\set{1,3,5,15}$.
+        So the subgroups of $C_{15}$ can be generated using $g^1, g^3, g^5, g^{15}$.
+
+        The subgroups are:
+        \begin{align*}
+                C_{15} &= \set{g^0 = g^{15}, g^1, g^2 , \hdots, g^{14}}, \\
+                C_{5} &= \set{g^0 = g^{3^5}, g^{3}, g^{3^2}, g^{3^3}, g^{3^4}}, \\
+                C_{3} &= \set{g^0 = g^{5^3}, g^{5}, g^{5^2}}, \\
+                C_{1} &= \set{g^0}
+        \end{align*}
+
+    \subsection[(ii)]{Give an example of a simple group of order $60$.
+        (You do not need to justify your answer for part (ii).)
+    }
+        % Since every simple group of order $60$ is isomorphic to the alternating group $A_5$,
+        % $A_5$ itself must be an simple group.
+        $A_5$ is the archetypical simple group,
+        where every simple group of order $60$ is isomorphic to $A_5$.

@@ -1,0 +1,116 @@
+\section{\smath{Let $(G,*),(G_1, *_1),(G_2, *_2)$ be groups. Show the following.}{Problem 1}}
+    \subsection{
+        \smath{$(G_1 \times G_2, \star)$ with 
+            $(g_1, g_2) \star (h_1, h_2) = (g_1 *_1 h_1, g_2 *_2h_2)$ is a group.
+        }{(i)}}
+
+        Let $(a_1, a_2),(b_1, b_2),(c_1, c_2), \in G_1\times G_2$.
+        \begin{align*}
+            ((a_1, a_2) \star (b_1, b_2)) \star (c_1, c_2) 
+            &= (a_1 *_1 b_1, a_2 *_2 b_2) \star (c_1, c_2) \\
+            &= ((a_1 *_1 b_1) *_1 c_1, (a_2 *_2 b_2) *_2 c_2) \\
+            &= (a_1 *_1 (b_1 *_1 c_1), a_2 *_2 (b_2 *_2 c_2)) \\
+            &= (a_1, a_2) \star (b_1 *_1 c_1, b_2 *_2 c_2) \\
+            &= (a_1, a_2) \star ((b_1, b_2) \star (c_1, c_2)).
+        \end{align*}
+        Therefore $\star$ is associative.
+
+        Let $e_1$ be the identity of $(G_1, *_1)$,
+        and $e_2$ be the identity of $(G_2, *_2)$.
+        \begin{align*}
+            (e_1, e_2) \star (a_1, a_2) 
+            &= (e_1 *_1 a_1, e_2 *_2 a_2) \\
+            = (a_1, a_2) 
+            &= (a_1 *_1 e_1, a_2 *_2 e_2) \\
+            &= (a_1, a_2) \star (e_1, e_2).
+        \end{align*}
+        Therefore $(e_1, e_2) \in G_1 \times G_2$ is an identity.
+
+        Let $a_1^{-1}$ be the inverse of $a_1$ for the $(G_1, *_1)$ group,
+        and $a_2^{-1}$ be the inverse of $a_2$ for the $(G_2, *_2)$ group.
+        \begin{align*}
+            (a_1, a_2) \star (a_1^{-1}, a_2^{-1}) 
+            &= (a_1 *_1 a_1^{-1}, a_2 *_2 a_2^{-1}) \\
+            = (e_1, e_2) 
+            &= (a_1^{-1} *_1 a_1, a_2^{-1} *_2 a_2) \\
+            &= (a_1^{-1}, a_2^{-1}) \star (a_1, a_2).
+        \end{align*}
+        Therefore $\lall (a_1,a_2) \in G_1 \times G_2, \lis$ an inverse $(a_1^{-1}, a_2^{-1})$.
+
+        Now, $(a_1, a_2) \star (b_1, b_2) = (a_1 *_1 b_1, a_2 *_2 b_2)$,
+        where $a_1 *_1 b_1 \in G_1, a_2 *_2 b_2 \in G_2$;\\
+        Therefore $\star$ is a closed binary operation on $G_1 \times G_2$.
+
+        Therefore $(G_1\times G_2, \star)$ is a group.
+
+    % \newpage
+    \subsection{
+        \smath{The center of $(G_1 \times G_2, \star)$ is $Z(G_1) \times Z(G_2)$,
+            where $Z(G_i)$ is the center of $G_i$, for $i \in \set{1,2}$.
+        }{(ii)}}
+        Suppose $(z_1, z_2) \in Z(G_1 \times G_2)$.
+        So $\lall (a_1, a_2) \in G_1 \times G_2,$
+        \begin{align*}
+            (z_1 , z_2) \star (a_1,a_2) &= (a_1,a_2) \star (z_1, z_2) \\
+            \Rightarrow (z_1 *_1 a_1, z_2 *_2 a_2) &= (a_1 *_1 z_1, a_2 *_2 z_2) \\
+            \Rightarrow z_1 *_1 a_1 = a_1 *_1 z_1 &\text{ and } z_2 *_2 a_2 = a_2 *_2 z_2 \\
+            \Rightarrow z_1 \in Z(G_1) &\text{ and } z_2 \in Z(G_2) \\
+            \Rightarrow (z_1, z_2) &\in Z(G_1) \times Z(G_2)
+        \end{align*} 
+        \qed
+
+        Suppose $z_1 \in Z(G_1) \text{ and } z_2 \in Z(G_2)$, 
+        where $(z_1, z_2) \in Z(G_1) \times Z(G_2)$.
+        So $\lall a_1 \in G_1$ and $\lall a_2 \in G_2$.
+        \begin{align*}
+            z_1 *_1 a_1 = a_1 *_1 z_1 &\text{ and } z_2 *_2 a_2 = a_2 *_2 z_2 \\
+            \Rightarrow (z_1 *_1 a_1, z_2 *_2 a_2) &= (a_1 *_1 z_1, a_2 *_2 z_2) \\
+            \Rightarrow (z_1 , z_2) \star (a_1,a_2) &= (a_1,a_2) \star (z_1, z_2) \\
+            \Rightarrow (z_1, z_2) &\in Z(G_1 \times G_2)
+        \end{align*} 
+        \qed
+        
+        Therefore $Z(G_1 \times G_2) \subseteq Z(G_1) \times Z(G_2)$,
+        and $Z(G_1) \times Z(G_2) \subseteq Z(G_1 \times G_2)$.
+
+    \newpage
+    \subsection{
+        \smath{
+            A non-empty subset $S$ of $G$ is a subgroup if and only if 
+            $\lall s_1, s_2 \in S, s_1 * s_2^{-1} \in S$.
+        }{(iii)}}
+        % \begin{multicols}{2}
+        Suppose $S$ is a subgroup of $G$.
+        Let $s_1, s_2 \in S$.
+        Since $S$ is a group, $s_2$ has an inverse $s_2^{-1}$.
+        Since $*$ is closed on $S$, $s_1 * s_2^{-1} \in S$.
+        \qed
+
+        % The converse is false.
+        % Let $G = \set{1}, S = \set{1, -1}, * = \times$.
+        % So $G$ is a group, $\lall s_1, s_2 \in S, s_1 * s_2^{-1} \in S$,
+        % $S \neq \emptyset$, but $S \not\subseteq G$.
+        % \qed
+
+        Suppose $S \subseteq G$ is non-empty, 
+        and $\lall s_1, s_2 \in S, s_1 * s_2^{-1} \in S$.
+
+        Since $S \neq \emptyset$, let $s_1 = s_2 = s, e = s * s^{-1} \in S$. 
+        Therefore $S$ contains the identity $e$.
+
+        Now, let $s_1 = e$.
+        So $\lall s_2 \in S, e * s_2^{-1} = s_2^{-1} \in S$.
+        Therefore every element in $S$ is invertible.
+
+        $(S, *)$ inherits associativity from $(G, *)$.
+
+        Let $a, b \in S$.
+        Since $b$ has an inverse in $S$,
+        let $s_1 = a, s_2 = b^{-1}$.
+        So $a * b = s_1 * b^{{-1}^{-1}} = s_1 * s_2^{-1} \in S$.
+        Therefore $*$ is closed on $S$.
+
+        Therefore $S$ is a group.
+        Since $S \subseteq G$, $S$ is a subgroup of $G$. 
+        \qed
+        % \end{multicols}

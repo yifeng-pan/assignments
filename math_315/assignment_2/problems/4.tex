@@ -1,0 +1,78 @@
+\section[Problem 4]{}
+    \subsection[(i)]{List the even permutations in the symmetric group of degree $4$,
+        i.e. the elements of the alternating group $A_4$. How many of them are of order $3$?}
+        
+        \begin{align*}
+            p(\vectorvalue{1,2,3,4})
+            \in \{
+                &\vectorvalue{1,2,3,4},
+                \vectorvalue{1,3,4,2},
+                \vectorvalue{1,4,2,3},\\
+                &\vectorvalue{2,1,4,3},
+                \vectorvalue{2,3,1,4},
+                \vectorvalue{2,4,3,1},\\
+                &\vectorvalue{3,1,2,4},
+                \vectorvalue{3,2,4,1},
+                \vectorvalue{3,4,1,2},\\
+                &\vectorvalue{4,1,3,2},
+                \vectorvalue{4,2,1,3},
+                \vectorvalue{4,3,2,1}\}
+        \end{align*}
+        \footnote{Source: \url{https://groupprops.subwiki.org/wiki/Element_structure_of_alternating_group:A4}}
+        There are $8$ of order $3$.
+
+    \subsection[(ii)]{Let $G$ be a group. Show that a subgroup $H$ of $G$ of index $2$ is necessarily normal.}
+        \footnote{Source: \url{https://proofwiki.org/wiki/Subgroup_of_Index_2_is_Normal}}
+        Let $H$ be a subgroup of $G$, and $\abs{G:H} = 2$.
+
+        Since the index is $2$, partition $G$ into $H, H'$, 
+        so $H \union H' = G$, and $H \intersection H' = \emptyset$.
+
+        Let $g \in G$.
+
+        If $g \in H$, then $gH = Hg$, and we're done.
+
+        Suppose $g \in H'$.
+        Then $gH = H'$, otherwise $H = H'$.
+        Similarly $Hg = H'$.
+        Therefore $gH = H' = Hg$.
+
+        Therefore $H$ is a normal subgroup of $G$.
+        \qed
+
+
+    \subsection[(iii)]{Let $K$ be a subgroup of $A_4$ of order $6$. Show that for all $a \in A_4$,
+        the cosets $K, aK,$ and $a^2K$ cannot all be distinct, and deduce that $K$ must necessarily
+        contain all elements of order $3$ of $A_4$. Conclude that $A_4$ does not have a subgroup of 
+        order $6$, even though $6$ divides the order of $A_4$.}
+        
+        \footnote{Source: \url{https://math.stackexchange.com/questions/582658/a-4-has-no-subgroup-of-order-6}}
+        Let $K$ be a subgroup of $A_4$.
+        Let $\abs{K} = 6$.
+
+        % Since $\abs{G:K} = 2$, $K$ is normal.
+        
+
+        If $K, aK, a^2K$ are all distinct, then $\abs{G:H} \geq 3$, but $\abs{G:H} = 2$.
+        Therefore $K, aK, a^2K$ are not all distinct.
+        \qed
+
+        Since there are $8$ elements of order $3$ in $A_4$,
+        and $K$ only contains $6$ elements,
+        choose $a \in A_4, a \not\in K$, and the order of $a = 3$.
+
+        Suppose $K = aK$.
+        Since $1 \in K, a = a1,$ and $a \in K$.
+        Contradiction.
+
+        Suppose $K = a^2K$.
+        Similarly $a^2 \in K$, but $K$ is a group, so ${(a^2)}^{-1} = a \in K$.
+        Contradiction.
+
+        Suppose $aK = a^2K$.
+        Similarly $a(a) = a^2 (1) $, so $a \in K$.
+        Contradiction.
+
+        Therefore $K$ must necessarily contain all $a\in A_4$ of order $3$.\\
+        Therefore the subgroup $K$ of $A_4$ such that $\abs{K}= 6$ does not exist.
+        \qed

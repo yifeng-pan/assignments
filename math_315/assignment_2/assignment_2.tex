@@ -1,0 +1,75 @@
+\documentclass[10pt, letterpaper, titlepage]{article}
+% \documentclass[10pt, letterpaper, titlepage]{report}
+
+% % Packages
+\input{../../packages.tex}
+\input{../../commands.tex}
+
+% Problem 5
+\usepackage{tikz}
+\usetikzlibrary{fit,shapes}
+
+% % Change lable to letter from number
+% \renewcommand{\thesubsection}{\alph{subsection}}
+
+% Paragraph setup
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+% Size of section header
+\usepackage{sectsty}
+\chaptertitlefont{\fontsize{17}{0}\selectfont}
+\sectionfont{\fontsize{11}{13}\selectfont}
+\subsectionfont{\fontsize{10}{12}\selectfont}
+\subsubsectionfont{\fontsize{10}{12}\selectfont}
+
+\usepackage{hyperref} % Doesn't like math in section titles
+\newcommand{\smath}[2]{\texorpdfstring{#1}{#2}} % Use this to not break hyperref
+% \section[title in bookmark]{title} % also works
+% I did'nt find this out until half way through this assignment
+
+% \setcounter{secnumdepth}{-1} % Sets sectioning level for numbering 
+% % -1 part     1 section     3 subsubsection  5 subparagraph
+% %  0 chapter  2 subsection  4 paragraph
+
+% % Debug
+% % For \hbox too wide errors.
+% \overfullrule=.01cm
+
+% Header
+\geometry{margin = 1in}
+\pagestyle{fancy}
+% \pagenumbering{gobble} % Removes page number
+\headheight = 23.01503pt
+\lhead{}
+\rhead{Yifeng Pan
+     \\UCID: 30063828}
+
+% Title page
+\title{MATH 315 Assignment 2}
+\author{Instructor: Dr. Thomas Bitoun
+    \\Name: Yifeng Pan
+    \\UCID: 30063828}
+\date{Winter 2020}
+
+\begin{document}
+    \maketitle
+
+    \input{problems/1.tex}
+    \newpage
+    \input{problems/2.tex}
+    \newpage
+    \input{problems/3.tex}
+    \newpage
+    \input{problems/4.tex}
+    \newpage
+    \input{problems/5.tex}
+
+    \section*{Citations}
+    ``Algebra'' by Michael Artin
+    (ISBN 13: 9780132413770).
+
+    Proofread by Devin Kwok
+    (UCID: 10016484).
+
+\end{document}

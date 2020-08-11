@@ -1,0 +1,79 @@
+\section{\smath{Let $S_4$ be the symmetric group of degree 4, i.e. $S_4 = S_{\set{1,2,3,4}}$.}{Problem 2}}
+    \subsection{\smath{Using the cycle notation, list all elements of order $2$ of $S_4$.}{(i)}}
+        \(
+            \set{
+                (1,2),
+                (1,3),
+                (1,4),
+                (2,3),
+                (2,4),
+                (3,4)
+            }
+        \)
+    
+    \subsection{\smath{Show that the subset $H = \set{\sigma \in S_4 | \sigma(1) = 1}$ is a subgroup.}{(ii)}}
+        Since $\sigma(1) = 1$ holds true for the identity,
+        $H$ contains the identity.
+        $H$ inherits associativity from $S_4$.
+
+        All elements of $H$ has the form 
+        \(
+            \left [
+                \begin{array}{c|ccc}
+                    1 &0 &0 &0 \\
+                    \hline
+                    0 \\
+                    0 & & \tau \\
+                    0 \\
+                \end{array}
+            \right ]
+        \) 
+        for some $\tau \in S_3$.
+        when written as permutation matrices.
+        Since the transpose of a permutation matrix is its inverse,
+        every element of $H$ has an inverse.
+        Since the transpose has the same form, 
+        the inverse is in $H$.
+
+        The block matrix form of $H$ retains its form after matrix multiplication
+        with any two elements of $H$.
+        Therefore $H$ is closed.
+
+        % Since $\lall A,B \in H$, $AB$ has the same block matrix form as $A$ and $B$,
+        % $AB \in H$.
+
+        Therefore $H$ is a group. Since $H \subseteq S_4$, it is a subgroup of $S_4$.
+    
+    \subsection{
+        \smath{Assuming (2.2), show that 
+            $g H g^{-1} = \set{g \circ h \circ g^{-1} | h \in H}$ 
+            is a subgroup of $S_4$, for all $g \in S_4$.
+        }{(iii)}
+    }
+        Let $e$ be the identity, which is $\in H$.
+        So $e = g g^{-1} = (ge)g^{-1} = geg^{-1} \in gHg^{-1}$.
+        $gHg^{-1}$ inherits associativity.
+        
+        Let $gag^{-1} \in gHg^{-1}$, where $a \in H$.
+        We know $\lis a^{-1} \in H$, so $ga^{-1}g^{-1} \in gHg^{-1}$.
+        Now, 
+        \begin{align*}
+            gag^{-1}ga^{-1}g^{-1} 
+            &= gaea^{-1}g^{-1} \\
+            &= gaa^{-1}g^{-1} \\
+            &= geg^{-1} \\
+            &= gg^{-1} \\
+            = e 
+            &= ga^{-1}ag^{-1} \\
+            &= ga^{-1}eag^{-1} \\
+            = ga^{-1}g^{-1}gag^{-1} 
+        \end{align*}
+        Therefore every element of $gHg^{-1}$ has an inverse in $gHg^{-1}$.
+
+        Let $gag^{-1}, gbg^{-1} \in gHg^{-1}$, where $a,b \in H$.
+        So $gag^{-1}gbg^{-1} = gabg^{-1}$.
+        Since $ab \in H$, $gabg^{-1} \in gHg^{-1}$.
+        Therefore $gHg^{-1}$ is closed.
+
+        Therefore $gHg^{-1}$ is a group.
+        Since $gHg^{-1} \subseteq S_4$, it is a subgroup.

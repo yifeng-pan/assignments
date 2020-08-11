@@ -1,0 +1,94 @@
+\section[Problem 3]{Let $\psi : G \to G'$ be a group homomorphism such that
+    $\psi(G) \neq \set{1}$. Suppose that the orders $\abs{G} = 18$ and $\abs{G'} = 15$.}
+    \subsection[(i)]{Show that $1 < \abs{G:\ker(\psi)}$ and 
+        the index $\abs{G:\ker(\psi)}$ divides the order $\abs{G'}$.}
+
+        % Since $\psi$ is a group homomorphism, $\psi(1_G) = 1_{G'}$.
+        % So $\abs{\ker(\psi)} \geq 1$.
+
+        Since $\psi(G) \neq \set{1}$,
+        $\lis g \in G$ such that $\psi(g) \neq 1$,
+        and $\psi(g^{-1}) = \psi(g)^{-1} \neq 1$.
+        So $g\not \in \ker(\psi)$.
+
+        Let, $g\not\in \ker(\psi) = \set{1s | s \in \ker(\psi)} = A$ be a left coset of $G$.
+        Since $1\in \ker(\psi)$, 
+        let $g \in \set{g s | s \in \ker(\psi)} = B$ be a left coset of $G$.
+        Since $A$ and $B$ are distinct, $\abs{G:\ker(\psi)} \geq 2$.
+        \qed
+
+        % Since $G \setminus \set{1_G} = 17$ is odd,
+        % there is atlest $1$ element that is it's own inverse.
+        % Let $a$ be one of those elements. $\psi(a) = a$.
+        % So $\abs{\ker(\psi)} \leq 17$.
+
+        Since $\psi(G)$ is a subgroup of $G'$ , 
+        $\abs{G: \ker(\psi)} = \abs{\psi(G)}$ divides $G'$.
+        \qed
+
+
+        % \begin{lemma}
+        %     $\abs{G: \ker(\psi)} = \abs{\psi(G)}$.
+        % \end{lemma}
+        % Proof: 
+        % Let $a\in G$.
+        % Let $K = \ker(\psi)$.
+        % The cosets $aK$ partition $G$.
+
+        % Now, let $x\in G, y = \psi(x) \in \psi(G)$.
+        % Since $\psi$ is a homomorphism,
+        % $\lall k\in K, \psi(kx) = \psi(k)\psi(x) = \psi(x) = y$.
+        % Therefore $\abs{\psi(G)} \leq \frac{G}{\ker(\psi)} = \abs{G:\ker(\psi)}$.
+
+        % Let $aK, bK$ be two distinct cosets.
+        % % $a\in A, b \in B$.
+        % We need to prove $\psi(a) \neq \psi(b)$.
+        % TODO
+
+
+
+
+
+    \subsection[(ii)]{What is the order $\abs{\ker(\psi)}$?}
+        We know $\abs{\ker(\psi)}\abs{G:\ker{\psi}} = \abs{G} = 18$.
+
+        From (3.1): $\abs{G:\ker{\psi}} = \abs{\psi(G)} \neq 1$ divides $\abs{G'} = 15$.
+        So $\abs{\psi(G)} \in \set{3,5,15}$.
+
+        Solve $\abs{\ker(\psi)} \in \Z$ to get $\abs{\ker(\psi)} = 6$.
+
+    \subsection[(iii)]{Let $S$ be a subset of $G$ such that the identity element $1\in S$.
+        Assume that the subsets $aS = \set{as|s\in S} \subset G$ for $a \in G$ form a partition of $G$.
+        Prove that $S$ is a subgroup of $G$.}
+
+        % Let the subsets $\set{aS} = \set{\set{as | s \in S} | a \in G}$ 
+        % form a partition of $G$.
+
+        Let $S$ contain the identity.
+
+        Let $C$ contain
+        the subsets $aS = \set{as|s\in S} \subset G$ for same $a\in G$.
+
+        Since $C$ is a partition of $G$, $C$ defines the equivalence relation: 
+        $a,b \in G, a \sim b \iff a \in bS \iff \lis s \in S, a = bs$.
+
+        Let $a = 1$.
+        Let $b \in S$.
+        Since $b = 1b$, $b \sim a$.
+        Since $a \sim b, \lis b^{-1} \in S, a = 1 = bb^{-1}$. 
+        Therefore every element of $S$ has an inverse in $S$.
+
+        Let $x,y \in S$.
+        Let $a, a x^{-1}, ax^{-1}y^{-1} \in G$.
+        $a \sim ax^{-1}$, as $a = ax^{-1}x$.
+        And $ax^{-1} \sim ax^{-1}y^{-1}$, as $ax^{-1} = ax^{-1}y^{-1}y$.
+        Therefore $a \sim ax^{-1}y^{-1}$.
+        Since $a \sim ax^{-1}y^{-1}$,
+        $\lis s = yx \in S$ such that $a = ax^{-1} y^{-1} yx$.
+        Therefore the binary operation on $S$ is closed.
+
+        $S$ inherits associativity from $G$.
+
+        Therefore $S$ is a subgroup of $G$.
+        \qed
+

@@ -1,0 +1,107 @@
+\section[Problem 1]{Let $G$ be a group.}
+    \subsection[(i)]{Show that $g \dotp x = xg^{-1}$ for $g,x\in G$ defines an action of $G$ on itself.}
+        Let $x \in G$.
+        Now, $1 \dotp x = x1^{-1} = x$.
+
+        Let $g,h, x \in G$.
+        Now $(gh) \dotp x = x (gh)^{-1} = x h^{-1} g^{-1} = g \dotp (h \dotp x)$.
+        \qed
+
+    \subsection[(ii)]{The natural action of $GL_2(\R)$ on $\R^2$ is given by $A \dotp v = Av$,
+        for $A \in GL_2(\R)$ and $v \in \R^2$. Compute the stabilizers and the orbits of
+        $\binom{1}{0}$ and $\binom{1}{1}$.}
+
+        For $v = \binom{1}{0}$:
+
+        The stabilizer subgroup is 
+        \(
+            \left\{
+                \begin{bmatrix}
+                    1 & a \\
+                    0 & b
+                \end{bmatrix}
+                \middle|
+                a,b \in \R, b \neq 0
+            \right\}
+        \).
+
+        Since
+        \(
+            \begin{bmatrix}
+                a & 0 \\
+                b & a
+            \end{bmatrix}
+            v
+            =
+            \begin{bmatrix}
+                a & b \\
+                b & 0
+            \end{bmatrix}
+            v
+            =
+            \begin{bmatrix}
+                a \\
+                b
+            \end{bmatrix}
+        \),
+        orbit $= \set{\binom{a}{b} | a, b \in \R, a \neq 0 \text{ or } b \neq 0}$.
+
+
+        For $v = \binom{1}{1}$.
+
+        The stabilizer subgroup is 
+        \(
+            \left\{
+                \begin{bmatrix}
+                    a & b \\
+                    c & d
+                \end{bmatrix}
+                \middle|
+                a,b,c,d \in \R,
+                a + b = 1,
+                c + d = 1,
+                ad - bc \neq 0,
+            \right\}
+        \).
+
+        Since $\binom{1}{1}$ is in the orbit of $\binom{1}{0}$, 
+        it has the same orbit as $\binom{1}{0}$.
+
+
+    \subsection[(iii)]{Show that a group homomorphism for the alternating group $A_5$ to $G$ is injective
+        if its image contains an element different from the identity $1$ of $G$.}
+        Idea for the proof:
+        \footnote{
+            From a since deleted question on StackExchange (probably from a student of this class):
+            \url{
+                https://web.archive.org/web/20200314122820/https://math.stackexchange.com/questions/3580662/prove-that-fa-5-to-g-is-injective
+            }
+        }
+
+        Lemma: $A_5$ is a simple group. \footnote{
+            It's listed here:
+            \url{https://groupprops.subwiki.org/wiki/Alternating_group\#Group_properties}
+        }
+
+        Let $\phi: A_5 \to G$, such that $\lis a \in A_5, \phi(a) \neq 1_G$.
+        
+        We know the kernel of $\phi$ is a normal subgroup of $A_5$
+        % \footnote{
+        %     Point 2 of: 
+        %     \url{
+        %         https://en.wikipedia.org/wiki/Isomorphism_theorem\#First_isomorphism_theorem
+        %     }
+        % }
+        ,and that the $\ker(\phi) \neq A_5$ from construction of $\phi$.
+
+        Since $A_5$ is a simple group, and $\ker(\phi) \neq A_5$, we know $\ker(\phi) = \set{1}$.
+
+        Since $\ker(\phi) = \set{1}$, therefore $\phi$ is injective.
+        \footnote{
+            Second "Symbol-free definition" of:
+            \url{
+                https://groupprops.subwiki.org/wiki/Injective_homomorphism
+            }
+        }
+
+        \qed

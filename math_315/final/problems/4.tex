@@ -1,0 +1,43 @@
+\section[Problem 4]{
+}  
+    \subsection[(i)]{
+        Describe the units in the direct product ring $M_2(\R) \times M_2(\R)$,
+        where $M_2(\R)$ is the ring of $2$ by $2$ matrices with real coefficients.
+    }
+        To find the units of $R = M_2(\R) \times M_2(\R)$,
+        we need to find the elements of $R$ that has a multiplicative inverse.
+
+        The multiplicative identity $R$ is \(
+            (I_2, I_2)
+        \), where $I_2$ is the $2$ by $2$ identity matrix.
+
+        The units are therefore: $\set{(A,B) | A, B \in M_2(\R), \det(A) \neq 0, \det(B) \neq 0}$.
+        \qed
+
+    \subsection[(ii)]{
+        Is the direct product of groups $\Z/7\Z \times \Z/11\Z$ a cyclic group?
+        Justify your answer.
+    }
+        If $\Z/7\Z$ and $\Z/11\Z$ are under multiplication,
+        then their orders would be $6$ and $10$ respectively.
+        $6$ and $10$ are not relatively prime, and their lowest common multiple $= 30$.
+
+        Therefore a ``generator'' of $\Z/7\Z \times \Z/11\Z$ can only ever cover $30$ elements.
+        But $\Z/7\Z \times \Z/11\Z$ has $6 * 10 = 60$ elements. \\
+        \textbf{Therefore $\Z/7\Z \times \Z/11\Z$ is not a cyclic group under multiplication,
+        since there is no generator for it.}
+        \qed
+
+        If $\Z/7\Z$ and $\Z/11\Z$ are under addition,
+        then their orders would be $7$ and $11$ respectively.
+        $7$ and $11$ are relatively prime, and their lowest common multiple $= 7*11 = 77$.
+
+        Let $G = \Z/7\Z \times \Z/11\Z$ under addition.
+        We prove $(1,1)$ is a generator.
+        Since the period of $1$ in $\Z/7\Z$ is $7$,
+        and the period of $1$ in $\Z/11\Z$ is $11$,
+        the period of $(1,1)$ in $G$ is their lowest common multiple $77$.
+
+        But $G$ only contains $77$ elements, so $(1,1)$ is a generator.
+        \textbf{Therefore $\bm{G}$ under addition is a cyclic group.}
+        \qed

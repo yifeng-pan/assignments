@@ -1,0 +1,44 @@
+\section[Problem 2]{Let $p$ be a prime number.
+}  
+    \subsection[(i)]{Determine the group of group automorphisms of $(\Z/p\Z, +)$.
+    }
+        Let $A$ be the group of group automorphisms of $(\Z/p\Z, +)$.
+
+        Let $g$ be a generator of $(\Z/p\Z, +)$.
+
+        Since automorphisms are ismorphic homomorphisms, an automorphism of $(\Z/p\Z, +)$ 
+        must map $g$ to a generator.
+
+        Since $p$ is prime, $(\Z/p\Z)$ has $p-1$ unique generators.
+        Therefore $\abs{A} = p-1$,
+        and the elements of $A$ would be the unique automorphisms defined by 
+        \begin{align*}
+            \phi_1(g) = g, \phi_2(g) = g^2, \phi_3(g) = g^3, \hdots, \phi_{p-1}(g) = g^{p-1}
+        \end{align*}
+        where $g^n = \sum_{i=1}^n g$.
+
+    \subsection[(ii)]{Determine the group of ring automorphisms of $\Z/p\Z$, for the ring $\Z/p\Z$
+        with the usual addition and multiplication of integers modulo $p$.
+    }
+        Let $A$ be the group of ring automorphisms of $\Z/p\Z$.
+
+        Similarly to part (i), we consider the generators of $\Z/p\Z$.
+
+        Since every generator of $(\Z/p\Z, \times)$ is a generator of $(\Z/p\Z, +)$,
+        we only have to consider the case for $(\Z/p\Z, \times)$.
+
+        Let $\set{g_1, g_2, \hdots}$ be the generators/primative roots of $(\Z/p\Z, \times)$.
+
+        Let $n$ be the number of primative roots of $(\Z/p\Z, \times)$.
+
+        Then $\abs{A} = n$, and the elements of $A$ would be the unique automorphisms defined by 
+        \[
+            \phi_1(g_1) = g_1, \phi_2(g_1) = g_2, \phi_3(g_1) = g_3, \hdots, \phi_{n}(g_1) = g_n
+        \]
+
+    \subsection[(iii)]{Determine the group of automorphisms of the symmetric group $S_3$ of permutations of
+        the set $\set{1,2,3}$.
+    }
+        An automorphism of $S_3$ would map some permutation of $\set{1,2,3}$ to some permutation.
+
+        Therefore the group of group automorphisms of $S_3$ is $S_3$ itself.

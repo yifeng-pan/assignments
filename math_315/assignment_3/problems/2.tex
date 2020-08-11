@@ -1,0 +1,97 @@
+\section[Problem 2]{}
+    \subsection[(i)]{What is the class equation of the dihedral group $D_4$? Justify your answer.}
+        Let $y, x \in D_4$, where $x$ is basic rotation, $y$ is basic reflection.
+        
+        The identity forms a conjugacy class $\bm{\set{x^0}}$.
+
+        % We have $y \dotp x = yxy^{-1} = x^{-1}$, 
+        Let $x' = x^s$ be any rotation element. \\
+        We have $yx^n \dotp x' = yx^n x' (yx^n)^{-1} = yx^{n+s} x^{-n}y^{-1} = x'^{-1}, \lall n \in \N$.\\
+        And $x^n \dotp x' = x', \lall n \in \N$.\\
+        Therefore $\bm{\set{x, x^3}}$ and $\bm{\set{x^2}}$ are conjugacy classes.
+
+        Let $y' = x^s y$ be any reflection element.\\
+        We have $x^n \dotp y' = x^n x^s y x^{-n} = x^{2n + s} y$.\\
+        And $x^n y \dotp y' = x^n y x^s y y x^{-n} = x^{2n - s} y$. \\ 
+        Therefore $\bm{\set{x^0 y, x^2 y}}$ and $\bm{\set{x^1 y, x^3 y}}$ are conjugacy clasess.
+
+        Therefore $\abs{D_4} = 1 + 1 + 2 + 2 + 2$.
+        \qed
+
+    \subsection[(ii)]{The class equation of a group $H$ is $1+4+5+5+5$. Does $H$ have a subgroup of
+        order $4$? Could it be a normal subgroup? Justify your answers.}
+        % $H$ has a normal subgroup of order $4$. (No? what about the identity.)
+        
+        % Let $S$ be a conjugacy class of $H$ of order $4$.
+        % % We know $S$ exists from the class equation.
+
+        % So $\lall s \in S, GxG^{-1} =  G \dotp s = S$.
+        % Therefore if $S$ is a group, it is necessarily normal.
+
+        % No, since the identity is in it's own conjugacy class.
+
+        % TODO
+
+        Let $H$ be a group of order $20$, with the class equation $1+4+5+5+5 = \abs{C_1} +\hdots + \abs{C_5}$.
+    
+        $H$ has a subgroup of order $4$.
+        Example:
+
+        The stabilizer/centralizer $Z_5$ is a subgroup with the order $\abs{H} / \abs{C_5} = 20/5 = 4$.
+        \qed
+
+        $H$ does not have a normal subgroup of order $4$.
+        Proof:
+
+        Let $I$ be a normal subgroup of order $4$ of $H$.
+        
+        Let $i \in I$, such that $i \neq 1$.
+
+        Since $I$ is normal, the orbit of $i$ is a subset of $I$.
+
+        But $i \neq 1$, so its orbit is at least $4$.
+
+        Therefore $\abs{I} \geq 4 + 1 = 5$.
+        Therefore there exists no such $I$.
+        \qed
+
+
+    \subsection[(iii)]{Let $G$ be a group of order $12$. Show that if $G$ contains a conjugacy class
+        of order $4$, then the center of $G$ is $\set{1}$.}
+
+        Let $G$ be a group with order $12$
+        such that $G$ have a conjugacy class of order $4$.
+
+        So $\lis x$ such that $\abs{C(x)} = 4$.
+        
+        Now, $\abs{Z(x)} = \abs{G} / \abs{C(x)} = 12/4 = 3$.
+
+        We know $\abs{Z(G)} \leq \abs{Z(x)} = 3$, where $Z(G)\subseteq Z(x)$.
+        
+        If $x \in Z(G)$ then $\abs{C(x)} = 1$, which would be a contradiction.
+        Therefore $x \not\in Z(G)$.
+
+        Since $x \in Z(x)$, we know $\abs{Z(G)} \leq 2$.
+
+        Since $Z(x)$ and $Z(G)$ are both subgroups of $G$
+        % \footnote{
+        %     \url{
+        %         https://en.wikipedia.org/wiki/Center_of_a_group\#Conjugacy_classes_and_centralizers
+        %     }
+        % }
+        , and $Z(G) \subseteq Z(x)$,
+        we know $Z(G)$ is a subgroup of $Z(x)$.
+
+        So $\abs{Z(G)}$ divides $\abs{Z(x)}$
+        % \footnote{
+        %     \url{
+        %         https://en.wikipedia.org/wiki/Lagrange\%27s_theorem_(group_theory)
+        %     }
+        % }.
+        Therefore $\abs{Z(G)} \neq 2$.
+
+        
+        Therefore $\abs{Z(G)} \leq 1$.
+
+        Therefore $Z(G) = \set{1}$.
+        \qed

@@ -1,0 +1,44 @@
+\section[Problem 4]{}
+    \subsection[(i)]{Let $R$ be a ring. Show that if $a^2 = a$ for all $a \in R$ and $R \neq \set{0}$,
+        then the characteristic of $R$ is $2$.}
+
+        Choose $r \in R$ such that $r \neq 0$.
+
+        Now, $r + r = (r+r)^2 = r^2 + r^2 + r^2 + r^2 = r + r + r + r$.
+        So $0 = r + r$.
+        \qed
+
+    \subsection[(ii)]{Show that in $\Z/6\Z$, we have $a^3 = a$ for all elements of $a$ but 
+        the characteristic of $\Z/6\Z$ is not $3$.}
+
+        \newcommand\fourb{\Z/6\Z}
+
+        % Let $a \in \fourb$.
+
+        $\fourb$ has ring with 6 elements.
+        Now, 
+        \begin{align*}
+            &0^3 = 0 \cmod{0}{6} \\
+            &1^3 = 1 \cmod{1}{6} \\
+            &2^3 = 8 \cmod{2}{6} \\
+            &3^3 = 27 \cmod{3}{6} \\
+            &4^3 = 64 \cmod{4}{6} \\
+            &5^3 = 125 \cmod{5}{6} 
+        \end{align*}.
+        However, $ 1 + 1 + 1 = 3 \not\cmod{0}{6}$.
+        \qed
+
+    \subsection[(iii)]{Show that if the characteristic of a commutative ring $R'$ is $2$, then the map
+        $a \mapsto a^2$ is a ring homomorphism $R' \to R'$.}
+
+        Let $\phi: a \to a^2$, for $a \in R'$.
+
+        Let $a, b \in R'$.
+
+        Now, $f(a+b) = (a+b)^2 = (a+b)(a+b) = a(a+b) + b(a+b) = aa + ab + ab + bb
+        = f(a) + f(b) + ab + ab = f(a) + f(b)$.
+
+        And, $f(ab) = (ab)^2 = a^2 b^2 = f(a)f(b)$.
+
+        Lastly, $f(1) = 1^2 = 1$.
+        \qed

@@ -1,0 +1,108 @@
+\section[Problem 2]{}
+    \subsection[(i)]{Show that the map $\alpha: GL_2(\R) \to GL_2(\R)$ sending a matrix $A$
+        to the inverse of its transposed matrix $(A^t)^{-1}$ is an isomorphism of groups.}
+        Let $\alpha : GL_2(\R) \to GL_2(\R), \alpha(A) = (A^t)^{-1}$.
+
+        We need to prove $\alpha$ is a homomorphism, surjective, and injective.
+
+        Suppose $A,B \in GL_2(\R)$.
+        Now, $\alpha(AB) = ((AB)^t)^{-1} = (B^tA^t)^{-1} = (A^t)^{-1}(B^t)^{-1} = \alpha(A)\alpha(B)$.
+
+        Let $C \in GL_2(\R)$.
+        Choose $C' = (C^{-1})^t \in GL_2(\R)$.
+        Now, $\alpha(C') = (((C^{-1})^t)^t)^{-1} = C$.
+
+        Let $A,B \in GL_2(\R)$.
+        Suppose $\alpha(A) = \alpha(B)$.
+        So $(A^t)^{-1} = (B^t)^{-1}$.
+        Since the inverse of $B^t$ is unique, $A^t = B^t$, and $A = B$.
+        \qed
+
+    \subsection[(ii)]{Let $U = 
+        \set{
+            \begin{bmatrix}
+            a & b \\
+            0 & d
+            \end{bmatrix} 
+            \middle | a,b,d\in \R \text{ and } ad \neq 0
+        } \subset GL_2(\R)$
+        denote the subset of invertible upper-triangular matrices. 
+        Show that $U$ is a subgroup of $GL_2(\R)$.
+    }
+        $U$ is a subset of $GL_2(\R)$.
+        We need to prove $U$ is a group.
+
+        Let $A,A' \in U$,
+        where $
+        A = 
+        \begin{bmatrix}
+            a & b \\
+            0 & d
+        \end{bmatrix},
+        A' = 
+        \begin{bmatrix}
+            a' & b' \\
+            0 & d'
+        \end{bmatrix}$.
+        So $AA' = \begin{bmatrix}
+            aa' & b'a + d'b \\
+            0 & d'd
+        \end{bmatrix} \in U$.
+
+        $U$ inherits associativity from $GL_2(\R)$.
+
+        $I_2 \in U$.
+
+        Let $A = 
+        \begin{bmatrix}
+            a & b \\
+            0 & d
+        \end{bmatrix} \in U$.
+        $A^{-1} = \begin{bmatrix}
+            a^{-1} & -b(ad)^{-1} \\
+            0 & d^{-1}
+        \end{bmatrix} \in U$, which exists as $ad \neq 0$.
+        \qed
+
+    \subsection[(iii)]{Show that the map $\phi : U \to \R^\times$
+        which sends 
+        \(
+            \begin{bmatrix}
+                a & b \\
+                0 & d
+            \end{bmatrix}
+        \) 
+        to $a^2$ is a group homomorphism and determine its image and kernel.
+    }
+        Let $A,A' \in U$,
+        where $
+        A = 
+        \begin{bmatrix}
+            a & b \\
+            0 & d
+        \end{bmatrix},
+        A' = 
+        \begin{bmatrix}
+            a' & b' \\
+            0 & d'
+        \end{bmatrix}$,
+        and $AA' = \begin{bmatrix}
+            aa' & b'a + d'b \\
+            0 & d'd
+        \end{bmatrix} \in U$.
+
+        $\phi(A)\phi(A') = a^2a'^2 = (aa')^2 = \phi(AA')$.
+        \qed
+
+        $\phi(U) = (0,\infty)$.
+        \(
+            \ker(\phi) =
+            \set{
+                A = 
+                \begin{bmatrix}
+                    a & b \\
+                    0 & d
+                \end{bmatrix}
+                \middle | A \in U, a \in \set{1,-1}
+            }
+        \).

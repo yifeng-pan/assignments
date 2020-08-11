@@ -1,0 +1,51 @@
+\section[Problem 3]{
+}  
+    \subsection[(i)]{
+        Define the class equation of a finite group $G$.
+    }
+        \textbf{Definition 1:} (Used in (3.2))\\
+        Define an equivalence relation of $G$ such that $a \sim b \iff \lis g \in G, gag^{-1} = b$.
+
+        The class equation is the summation of the sizes of the equivalence classes of the above relation.
+
+        \textbf{Definition 2:} (Used in (3.3))\\
+        Define a group action of $G$ on itself such that $(g,x) \to gxg^{-1}$.
+
+        Denote an orbit of this action $C(x)$ as an conjugacy class.
+        Denote an stabilizer subgroup of this action $Z(x)$ as an centralizer.
+
+        The class equation is $\abs{G} = \sum \abs{C(x)}$.
+
+
+    \subsection[(ii)]{
+        What is the class equation of an abelian group of order $10$? Justify your answer.
+    }
+        Using the equivalence relation from above.
+
+        Since the binary operation of an abelian group is commutative, $gag^{-1} = b \iff a = b$.
+        Therefore the class equation is $10 = \sum_{i=1}^{10} 1$, 
+        since the group has $10$ distinct elements. 
+
+    \subsection[(iii)]{
+        Show that there is no group of class equation $10 = 1+1+1+1+1+5$.
+    }   
+        Let $G$ be a group with the class equation 
+        $10 = 1+1+1+1+1+5 = \abs{C_1} + \abs{C_2}+ \hdots + \abs{C_6}$.
+
+        Since there are $5$ conjugacy clases with the size $1$,
+        these $5$ elements are commutative with every element of $G$.
+        Therefore the center of $G$ contains these $5$ elements.
+
+        % Center of $G = C_1 \union C_2 \union C_3 \union C_4 \union C_5$.
+
+        Now, we find the size of the centralizers using the equlity: $\abs{G} = \abs{C(x)} \abs{Z(x)}$.\\
+        We get $\abs{Z_1} = \abs{Z_2} = \abs{Z_3} = \abs{Z_4} = \abs{Z_5} =  10 , \abs{Z_6} = 2$.
+
+        Now, since the center of $G$ is also the intersection of all the centralizers of $G$,
+        and $\abs{Z_6} = 2$, then order of the center $\leq 2$.
+
+        But the center contains $5$ elements, therefore we have a contradiction, and there exists no such 
+        group $G$.
+        \qed
+
+

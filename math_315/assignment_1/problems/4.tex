@@ -1,0 +1,184 @@
+\section[Problem 4]{
+    Recall the group 
+    \(
+        GL_2(\R) =
+        \left \{
+        \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix}
+        \middle |
+        a, b, c, d \in \R
+        \text{ and }
+        ad - bc \neq 0
+        \right \}
+    \),
+    with matrix multiplication.
+}
+    \subsection[(i)]{
+        Show that the subset 
+        \(
+            \left \{
+            \begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}
+            \middle |
+            a, b, c, d \in \Z
+            \text{ and }
+            ad - bc \neq 0
+            \right \}
+        \)
+        is not a subgroup.
+    }
+        Let $H$ be the above subset.
+        Let \(
+            a = 
+            \begin{bmatrix}
+                2 & 0 \\
+                0 & 2
+            \end{bmatrix}
+            , a \in H
+        \).
+        So \(
+            a^{-1} = 
+            \begin{bmatrix}
+                \frac{1}{2} & 0 \\
+                0 & \frac{1}{2}
+            \end{bmatrix}
+            , a^{-1} \not\in H
+        \).
+        Therefore $H$ is not a group, and therefore not a subgroup.
+
+    \subsection[(ii)]{
+        Show that the subset $SL_2(\Z)$
+        of invertible matrices with integer coefficients and determinant $1$,
+        i.e.
+        \[
+            \left \{
+            \begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}
+            \middle |
+            a, b, c, d \in \Z
+            \text{ and }
+            ad - bc = 1
+            \right \}
+        \]
+        is a subgroup.
+    }
+        We know $I_2 \in SL_2(\Z) \subseteq GL_2(\R)$ and matrix multiplication is associative.
+
+        Let $A,B \in SL_2(\Z)$.
+        Now, $\det(AB) = \det(A)\det(B) = 1 \times 1 = 1$.
+        Since $AB$ is an integer matrix, $AB \in SL_2(\Z)$.
+        Therefore $SL_2(\Z)$ is closed.
+
+        % Let $A \in SL_2(\Z)$.
+        % Since $\det(A) \neq 0$,
+        % $A^{-1}$ exists,
+        % and $\det(A^{-1}) = \dfrac{1}{\det(A)} = 1$.
+
+        Let \(
+            A = 
+            \begin{bmatrix}
+                a & b \\
+                c & d
+            \end{bmatrix}
+            \in SL_2(\Z)
+        \).
+        We know \( 
+            A^{-1} =
+            \dfrac{1}{ad-bc}
+            \begin{bmatrix}
+                d & -b \\
+                -c & a 
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                d & -b \\
+                -c & a 
+            \end{bmatrix}
+        \),
+        which is an integer matrix with $\det(A^{-1}) = da - (-c)(-b) = ad - bc = 1$.
+        Therefore $A^{-1}$ exists and is in $SL_2(\Z)$.
+
+        Therefore $SL_2(\Z)$ is a group and a subgroup of $GL_2(\R)$.
+
+
+    \subsection[(iii)]{
+        Let $SL_2(\Z / 3\Z)$ be $SL_2(\Z)$ with the matrix entries interpreted modulo $3$.
+        It is a group.
+        What is the order of \(
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}
+            \in SL_2(\Z/3\Z)
+        \)?
+    }
+        \(
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}^1
+            =
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}
+            \neq I_2
+        \) and
+        \(
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}^2
+            =
+            \begin{bmatrix}
+                1 & 2 \\
+                0 & 1 
+            \end{bmatrix}
+            \neq I_2
+        \) and
+        \(
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}^3
+            =
+            \begin{bmatrix}
+                1 & 0 \\
+                0 & 1 
+            \end{bmatrix}
+            = I_2
+        \) under $SL_2(\Z/3\Z)$.
+
+        Therefore the peroid of \(
+            \begin{bmatrix}
+                1 & 1 \\
+                0 & 1 
+            \end{bmatrix}
+            \in SL_2(Z/3\Z)
+        \) is $3$,
+        as $3$ is the smallest positive integer with this property.
+        \qed
+        
+        % The order of the group $SL_2(\Z / 3\Z)$ 
+        % is the number of solutions to $a,b,c,d \in \set{0,1,2}, ab - cd = 1$.
+
+        % Solutions: \(
+        %     \set{
+        %         (1,1,0,0), 
+        %         (1,1,0,1), 
+        %         (1,1,0,2), 
+        %         (1,1,1,0), 
+        %         (1,1,2,0), 
+        %         (1,2,1,1), 
+        %         (2,1,1,1)
+        %     }
+        % \).
+
+        % $\abs{SL_2(\Z / 3\Z)} = 7$.
+        % \qed

@@ -1,0 +1,120 @@
+\section[Problem 3]{Let $n$ be the natural number $\in\set{1,2,3,\hdots}$.
+    An $n$th root of unity is a complex number $z$ such that $z^n = 1$.}
+    \subsection[(i)]{Prove that the $n$th roots of unity form a cyclic subgroup 
+        $H_n$ of $\C^\times$ of order $n$.
+        (Recall that $\C^\times = \C - \set{0}$, with the complex multiplication.)}
+
+        Let $n \in \set{1,2,3,\hdots} = \N$.
+        Let $Z_n = \set{z | z \in \C \land z^n = 1}$.
+        Let the group $H_n$ be $Z_n$ under complex multiplication.
+        Since there are $n$ solution to $z \in \C, z^n = 1$,
+        the order of $H_n$ is $n$.
+
+        $H_n$ inherits associativity from $\C^\times$.
+
+        $H_n$ contains the identity $1$, as $1^n = 1, \lall n \in \N$.
+
+        Let $a,b \in H_n$. Now, $(ab)^n = a^nb^n = 1 \times 1 = 1$.
+        Therefore $ab \in H_n$, and $H_n$ is closed.
+
+        Let $a \in H_n$. $a^{n-1}$ is the inverse,
+        as $aa^{n-1} = a^{n-1}a = a^n = 1$.
+        Now, $\left(a^{n-1}\right)^n = \left(a^n\right)^{n-1} = 1^{n-1} = 1$.
+        Therefore every element of $H_n$ has an inverse in $H_n$.
+
+        Therefore $H_n$ is a subgroup of $\C^\times, \lall n \in \N$.
+        \qed
+        
+        Now, since all elements of $H_n$ are on the unit circle on the complex plane centered at $(0,0)$,
+        all elements of $H_n$ can be written in the form $\exp(ix)$.
+        (Assume reduced form where $x = x\mod 2\pi$.
+            % \footnote{Define an equivelence class where $\exp(ia) = \exp(ib) \liff$}
+        )
+
+        Let $n \geq 2$. ($n = 1$ is the trivial case.)
+
+        Let $m = \exp(ix) |( x \neq 0 \land \exp(ix) \in H_n) \land \lall \exp(iy) \in H_n, x \leq y$.
+        (If $m$ is not unique, then $H_n$ is not a set. Therefore $m$ is unique.)
+
+        Let $Y_n$ be the cyclic subgroup generated from $m \in \C^\times$.
+
+        Let $y \in Y_n$.
+        So $y = m^z$ for some $z \in \Z$.
+        Now, since $m \in H_n$, $y^n = m^{z^n} = m^{n^z} = 1^z = 1$.
+        Therefore $y \in H_n$.
+
+        Now we find the order of $Y_n = \abs{\set{m^{0}, m^1, m^{-1}, m^2, m^{-2}, \hdots}}$.
+        Let $z \in Z$.
+        Let $z = qn + r | q \in \Z, r \in [0,n) \intersection \Z$. (The solution to $q,r$ is unique.)
+
+        Now $m^z = m^{qn} m^r = 1^q m^r = m^r$.
+        Therefore $Y_n = \set{m^0, m^1, m^2, \hdots, m^{n-1}} = \set{m^r}$.
+
+        Now we prove $m^0, \hdots, m^{n-1}$ are distinct.
+        Due to the cancellation law derived from the inverse property of groups,
+        it is sufficient to prove that $m^0 \neq m^k, \lall 0 < k < n, k \in \N$.
+
+        By contradiction:
+        Suppose $\lis k \in (0,n) \intersection \N$
+        , where $m^k = 1$.
+        % So $\exp(\frac{ixkn}{n}) = \exp(ix k) = m^k = 1$.
+        Since $\exp(i\frac{xk}{n})^n = \exp(\frac{ixkn}{n}) = \exp(ix k) = m^k = 1$,
+        therefore $\exp(i\frac{xk}{n}) \in H_n$.
+        Since $\frac{k}{n} < 1$,
+        $x > \frac{xk}{n}$.
+        This is a contradiction from the construction of $x$.
+        Therefore there exists no such $m^k$.
+
+        Therefore $m^0, \hdots, m^{n-1}$ are distinct,
+        and $\abs{Y_n} = n$.
+        
+        Therefore $Y_n$ and $H_n$ have the same order,
+        and since $Y_n \subseteq H_n, Y_n = H_n$.
+
+        Therefore $H_n$ is a cyclic subgroup of $\C^\times$.
+        \qed
+
+
+    \subsection[(ii)]{Determine the product of all the $n$th roots of unity.}
+        $-1$ if $n$ is even, $1$ if $n$ is odd. 
+
+        Let $a \in H_n$.
+        If $a$ and $a^{-1}$ are distinct elements,
+        then they cancel out to the identity.
+        The only cases where $a = a^{-1}$ is $a \in \set{1, -1}$.
+        We can ignore the identity.
+        And $-1 \in H_n \liff n $ is even.
+
+    \newpage
+    \subsection[(iii)]{Show that if the only subgroups of $H_n$ are the trivial subgroups 
+        $\set{1}$ and $H_n$, then $n = 1$ or $n$ is a prime number.}
+        We prove the contrapositive.
+        Suppose $n \neq 1$ and $n$ is not prime.
+        So $\lis a,b \in \N$ such that $ab = n \geq 4, a > 1, b > 1$.
+
+        (The following two paragraphs are a repeat of (3.1):)
+
+        Now, since all elements of $H_n$ are on the unit circle on the complex plane centered at $(0,0)$,
+        all elements of $H_n$ can be written in the form $\exp(ix)$.
+        (Assume reduced form where $x = x\mod 2\pi$.)
+        
+        Let $m = \exp(ix) |( x \neq 0 \land \exp(ix) \in H_n) \land \lall \exp(iy) \in H_n, x \leq y$.
+        (If $m$ is not unique, then $H_n$ is not a set. Therefore $m$ is unique.)
+
+        Let $Y_n$ be the cyclic subgroup generated from $m^a \in \C^\times$.
+
+        We've proven in (3.1) that $m^a \neq m^0 = 1$.
+        Therefore $Y_n \neq \set{1}$.
+
+        Now we prove $m \not\in Y_n$ by contradiction (Note: $Y_n$ is generated from $m^a$.):
+        Suppose $m \in Y_n$.
+        So $\lis z \in \Z, m^1 = m^{az}$.
+        Therefore $az \cmod{1}{n}$, or $az = kn + 1$ for some $k \in Z$.
+        So $az = kab + 1$ and $a(z - kb) = 1$.
+        Therefore $a \in \set{-1,1}$,
+        which is a contradiction as $a > 1$ by construct.
+        Therefore $m \not\in Y_n$.
+        Since $m \in H_n$, $Y_n \neq H_n$.
+
+        Therefore if $n \neq 1$ and $n$ is a non-prime, 
+        then we can construct $Y_n$ to be a non-trivial subgroup of $H_n$.
